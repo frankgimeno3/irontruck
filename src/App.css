@@ -1,0 +1,260 @@
+body{
+  background-color: grey;
+}
+
+App {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* HomeTransportista styles */
+.HomeStructure {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+}
+
+.MainMenu {
+  display: flex;  
+  flex-direction: column;
+  background-color: grey;
+  height: 91vh;
+  margin: 1vw;
+  padding: 1vw;
+  border-radius: 0.5vw;
+  position: fixed;
+  top: 0;
+  }
+
+.upperButtons {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: auto;
+}
+
+.ProfileButton {
+  background-color: white;
+  margin: 1vw;
+  padding: 2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.5vw;
+}
+
+.ProfileButton img {
+  width: 100px;
+  height: auto;
+}
+
+.ProfileButton p {
+  color: black;
+}
+
+.ConversationsButton {
+  background-color: white;
+  color: black;
+  margin: 1vw;
+  padding: 2vw;
+  border: none;
+  border-radius: 0.5vw;
+  cursor: pointer;
+  max-width: 100%;
+  
+}
+
+.LogOutButton {
+  background-color: white;
+  color: black;
+  margin-top: auto;
+  padding: 2vw;
+  border: none;
+  border-radius: 0.5vw;
+  cursor: pointer;
+  width: 100%;
+}
+
+.Content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: calc(5/6*100%);
+  padding: 2vw;
+  margin: 2vw 2vw 2vw calc(1/6*100% + 2vw);
+  background-color: grey;
+  width: 100%;
+}
+
+.CreateOfferSection{
+  background-color: lightgrey;
+  margin: 2vw;
+  padding: 2vw;
+  padding-top: 1vw;
+  border-radius: 0.5vw;
+}
+
+.SearchMyOffer {
+  background-color: lightgrey;
+  margin: 2vw;
+  padding: 2vw;
+  padding-top: 1vw;
+  border-radius: 0.5vw;
+}
+.SearchMyOffer label {
+  padding: 2vw;
+  border-radius: 0.5vw;
+}
+.SearchMyOffer input {
+  padding:1vh;
+  border-radius: 0.5vw;
+}
+.SearchMyOffer button {
+  margin-left: 10px;
+  border: solid;
+  border-width: 0.5px;
+  border-color: rgb(163, 160, 160);
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: large;
+}
+
+.MyOffers{
+  background-color: lightgrey;
+  margin: 2vw;
+  border-radius: 0.5vw;
+} 
+.MyOffers h2{
+  padding-left: 10px;
+} 
+
+
+@media (max-width: 768px) {
+  .HomeStructure {
+    flex-direction: column;
+  }
+
+  .MainMenu {
+    width: 100%;
+  }
+
+
+}
+
+/* Contenido en el Offer Card */
+.OfferDetailsBox{
+  background-color: white;
+}
+.OfferDetailsBox {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+.OfferDetails {
+  font-size: 16px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+}
+.OfferDetailsleft{
+  padding-right: 100px;
+  padding-left: 10px;
+}
+
+.myOfferButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.myOfferButtons button {
+  margin-left: 10px;
+  border: solid;
+  border-width: 0.5px;
+  border-color: lightgray;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: large;
+}
+
+.myOfferButtons button.delete {
+  color: #fff;
+  background-color: #ff0000;
+}
+.Offer {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px #ccc;
+  margin-bottom: 10px;
+}
+
+.Offer h3 {
+  font-size: 1.4rem;
+  margin: 0;
+  padding-top: 3vh;
+  padding-bottom: 1vh;
+  padding-left: 15px;
+}
+
+.OfferDetailsleft {
+  width: 50%;
+}
+
+.OfferDetailsleft p {
+  margin: 0;
+  padding: 5px 0;
+}
+
+.OfferDetails p {
+  margin: 0;
+  padding: 5px 0;
+  width: 50%;
+}
+
+.myOfferButtons {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.myOfferButtons button {
+  margin-left: 10px;
+}
+
+.Offer:last-child {
+  margin-bottom: 0;
+}
+
+footer {
+  background-color: #f2f2f2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  padding: 2vw;
+  margin: 0 2vw 2vw calc(1/6*100% + 6vw);
+  width: 67vw;
+}
+
+
+
+footer a {
+  color: #666;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #333;
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+}
+
