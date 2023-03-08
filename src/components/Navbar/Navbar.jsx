@@ -9,38 +9,28 @@ function Navbar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
-    <nav>
-      <Link to="/">
-        <button>Home</button>
-      </Link>
-
-      {isLoggedIn && (
-        <>
-          <button onClick={logOutUser}>Logout</button>
-
-          <Link to="/profile">
-            <button>Profile</button>
-            {/* <img src="https://picsum.photos/id/402/200/300" style={{ width: 50, height: 50, borderRadius: 25}} alt="profile" /> */}
-          </Link>
-
-          <span>{user && user.name}</span>
-        </>
-      )}
-
-      {!isLoggedIn && (
-        <>
-          <Link to="/signup">
-            {" "}
-            <button>Sign Up</button>{" "}
-          </Link>
-          <Link to="/login">
-            {" "}
-            <button>Login</button>{" "}
-          </Link>
-        </>
-      )}
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <h2 class="navbar-brand">Navbar</h2>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+          <Link to="/"><a class="nav-link active" aria-current="page" href="/">Dashboard</a> </Link>
+          <Link to="/"><a class="nav-link" href="/profile">Profile</a></Link>
+          <Link to="/"><a class="nav-link" href="/signup">Signup</a></Link>
+          <Link to="/"><a class="nav-link" href="/login">LogIn</a></Link>
+          <Link to="/"><a class="nav-link" href="/signup">Signup</a></Link>
+          <Link to="/"><a class="nav-link" href="/">LogOut</a></Link>
+          <Link to="/"><a class="nav-link" href="/signup">Conversations</a></Link>
+          </div>
+        </div>
+      </div>
     </nav>
   );
 }
 
 export default Navbar;
+
+ 

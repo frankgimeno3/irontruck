@@ -1,15 +1,15 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
-import HomePage from "./pages/HomePage/HomePage";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import HomeTransportista from './pages/HomeTransportista';
 
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
+import LandingPage from "./pages/LandingPage/LandingPage";
 
 function App() {
   return (
@@ -18,33 +18,11 @@ function App() {
 
       <Routes>
         {/* <Route path="/" element={<HomePage />} /> */}
-        <Route path="/" element={<HomeTransportista/>} />
-
-        <Route
-          path="/profile"
-          element={
-            <IsPrivate>
-              <ProfilePage />
-            </IsPrivate>
-          }
-        />
-
-        <Route
-          path="/signup"
-          element={
-            <IsAnon>
-              <SignupPage />
-            </IsAnon>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <IsAnon>
-              <LoginPage />
-            </IsAnon>
-          }
-        />
+        <Route path="/" element={<IsAnon><LandingPage/></IsAnon>} />
+        <Route path="/" element={<Dashboard/>} />
+        <Route path="/profile" element={<IsPrivate><ProfilePage /></IsPrivate>} />
+        <Route path="/signup" element={ <IsAnon><SignupPage /> </IsAnon> } />
+        <Route path="/login" element={ <IsAnon> <LoginPage /> </IsAnon> } />
       </Routes>
     </div>
   );

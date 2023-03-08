@@ -1,31 +1,19 @@
 import React from 'react';
-import CreateOfferForm from '../components/CreateOfferForm';
-import OfferCard from '../components/OfferCard';
-import '../App.css';
+import CreateOfferForm from '../../components/CreateOfferForm/CreateOfferForm';
+import OfferCard from '../../components/CargoOfferCard/CargoOfferCard';
+import '../../App.css';
 
-function HomeTransportista() {
+function Dashboard() {
   return (
     <>
     <div className="HomeStructure">
-      <div className="MainMenu">
-        <section className="upperButtons">
-          <div className="ProfileButton">
-            <a href="#">
-              <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="ProfileImage" />
-              <p>Go to My Profile</p>
-            </a>
-          </div>
-          <button className='ConversationsButton'>Conversations Button</button>
-        </section>
-        <button className='LogOutButton'>Log Out</button>
-      </div>
-      <div className="Content">
+        <div className="Content">
         <section className="CreateOfferSection">
         <h2>Create an Offer</h2>
           <CreateOfferForm />
         </section>
-          <div className="SearchMyOffer">
-          <h2>Search an Offer</h2>
+        <div className="SearchMyOffer">
+            <h2>Search an Offer</h2>
             <form>
               <label htmlFor="date">Date:</label>
               <input type="date" id="date" />
@@ -35,10 +23,10 @@ function HomeTransportista() {
               <input type="text" id="keywords" />
               <button type="submit">Search</button>
             </form>
-          </div>
-          <div className="MyOffers">
+        </div>
+        <div className="MyOffers">
             <OfferCard />
-          </div>
+        </div>
       </div>
     </div>
       <footer>
@@ -59,4 +47,4 @@ function HomeTransportista() {
   );
 }
 
-export default HomeTransportista;
+export default Dashboard;

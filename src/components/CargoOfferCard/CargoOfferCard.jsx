@@ -1,4 +1,4 @@
-function OfferCard() {
+function CargoOfferCard() {
   return (
     <div className="MyOffers">
       <h2>My Offers</h2>
@@ -30,7 +30,7 @@ function OfferCard() {
             <p><strong>Fecha de origen:</strong> 14/04/2023</p>
             <p><strong>Hora estimada origen:</strong> 05:30h</p>
           </div>
-          <div className="OfferDetails">
+          <div >
             <p><strong>Destino:</strong> Manresa</p>
             <p><strong>Fecha de destino:</strong> 14/04/2023</p>
             <p><strong>Hora estimada destino:</strong> 13:00h</p>
@@ -46,4 +46,4 @@ function OfferCard() {
   );
 }
 
-export default OfferCard;
+export default CargoOfferCard;
