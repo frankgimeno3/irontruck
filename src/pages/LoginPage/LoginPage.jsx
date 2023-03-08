@@ -45,6 +45,8 @@ function LoginPage() {
   };
 
   return (
+    <>
+        <img src="https://www.rlicorp.com/sites/default/files/banner-images/LossControl_WebsiteHeader_02_72dpi_1.jpg" alt="banner" className="landingjpg"/>
     <div className="LoginPage">
       <h1>Login</h1>
 
@@ -67,6 +69,9 @@ function LoginPage() {
       <p>Don't have an account yet?</p>
       <Link to={"/signup"}> Sign Up</Link>
     </div>
+    <img src="https://www.volvotrucks.com/content/dam/volvo-trucks/markets/master/home/transport-needs/volvo-trucks-transport-needs-regional-haul-hero-link-img.jpg" alt="truck" className="landingjpg"/>
+
+    </>
   );
 }
 

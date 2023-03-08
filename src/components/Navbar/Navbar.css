@@ -1,0 +1,11 @@
+nav{
+    display: flex;
+    height: 10vh;
+    align-items: center;
+    padding-left: 10vw;
+}
+
+.brandicon{
+    font-size: 2rem;
+    padding-left: 1vw;
+}
