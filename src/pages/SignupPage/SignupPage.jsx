@@ -47,7 +47,6 @@ function SignupPage() {
 
   return (
     <>
-    <img src="https://www.rlicorp.com/sites/default/files/banner-images/LossControl_WebsiteHeader_02_72dpi_1.jpg" alt="banner" className="landingjpg"/>
     <div className="SignupPage">
       <h1>Sign Up</h1>
 
@@ -74,6 +73,7 @@ function SignupPage() {
       <p>Already have account?</p>
       <Link to={"/login"}> Login</Link>
     </div>
+    <img src="https://www.rlicorp.com/sites/default/files/banner-images/LossControl_WebsiteHeader_02_72dpi_1.jpg" alt="banner" className="landingjpg"/>
     </>
   );
 }

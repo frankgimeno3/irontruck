@@ -18,7 +18,7 @@ function IsDriver({ children }) {
   }
 
   // If the user is not logged in, allow to see the page ✅
-  return <Dashboard />;
+  return children;
 }
 
 export default IsDriver;

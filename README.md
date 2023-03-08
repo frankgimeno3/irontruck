@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# IRONTRUCK
+This is the frontend repository of the Irontruck Project. Please find the link for the backend repository here: https://github.com/frankgimeno3/irontruck 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Irontruck is a web app that connects truck drivers with companies who need to send cargos. Whenever a company needs to send a cargo, they can post a solicitude in Irontruck's cargo exchange. There, truck drivers can make them an offer and start chatting with the sender company to initiate a negotiaton.
 
-## Available Scripts
+Irontruck enables truck drivers to fill the empty spaces on their trucks by finding companies who need to send their pallets to similar destinations. Senders can benefit from Irontruck by saving the extra cost added by intermediaries, being able to check by themselves the real costs of the transport through the direct feedback from truck drivers.  
 
-In the project directory, you can run:
+This web app is a green non-profit initiative with the main goal of saving fuel, and helping the local economy to become more productive through cutting unnecessary costs and offering a better access to information for both drivers and senders. 
 
-### `npm start`
+## About
+Hi! We are Ivan, Edu and Frank, we are full-stack website developers currently studying in Ironhack Coding School. This is our final project, wich we called IronTRUCK.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Project Image](https://i.imgur.com/6k3J5gW.png "Project Image")
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Deployment
+You can check the app fully deployed [here](https://afabregasm.herokuapp.com/). If you wish to view the API deployment instead, check [here](https://afabregasm-back.herokuapp.com/api/).
 
-### `npm test`
+## Work structure
+We developed this project together, using [Trello](https://trello.com/b/OfHdU6hA/irontruck) to our my workflow.
+The project was initially designed by Ivan and Frank, who created the main structure. They created the internal folder structure of the client project (this repository), and created internal routes.
+Edu was our backend specialist, who assesed Ivan and Frank for a better routing and deployment structure, also the interaction of the project with MongoDB. Edu was latter in charge of the functioning of the models and schemas, and Cloudinary. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation guide
+- Fork this repo
+- Clone this repo 
 
-### `npm run build`
+```shell
+$ cd portfolio-front
+$ npm install
+$ npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Routes
+| Route                | Privacy         | Renders                  |
+| -------------------- | :-------------: | ------------------------ |
+| /                    | public          | HomePage                 |
+| /signup              | public          | SignupPage               |
+| /login               | public          | LoginPage                |
+| /about               | public          | ResumePage               |
+| /coding-projects     | public          | CodingProjectListPage    |
+| /design-projects     | public          | DesignProjectListPage    |
+| /coding-projects/:id | public          | CodingProjectDetailsPage |
+| /design-projects/:id | public          | DesignProjectDetailsPage |
+| /all-orders          | private (admin) | AllOrdersPage            |
+| /all-orders/:id      | private (admin) | EditOrderPage            |
+| /profile             | private (user)  | UserProfilePage          |
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Components
+- AddCodingProject
+- AddDesignProject
+- AddOrder
+- AnonRoute
+- CodingProjectCard
+- DesignProjectCard
+- EditCodingProject
+- EditDesignProject
+- Navbar
+- OrderCard
+- PrivateRoute
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Any doubts? Contact us! 
