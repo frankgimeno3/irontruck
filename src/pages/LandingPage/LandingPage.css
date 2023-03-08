@@ -1,0 +1,17 @@
+.LandingStructure{
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    padding: 10vw; 
+    padding-top:1vw;
+    padding-bottom:1vw;
+}
+
+.CallButtons{
+    display: flex;
+    flex-direction: row;
+}
+.CallButtons div{
+    padding: 1%;
+    width: 50vw;
+}

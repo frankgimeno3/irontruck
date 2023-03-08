@@ -1,16 +1,22 @@
 import React from 'react';
 import '../../App.css';
+import './LandingPage.css'
 
 function LandingPage() {
   return (
     <>
-      <div className="HomeStructure">
-        <header>
-            <h1>Shipping of Pallets - Drivers and Senders</h1>
-            <p>Do you want to send a pallet? Register as Driver or Sender!</p>
+      <div className="LandingStructure">
+        <header className="Landingheader">
+            <h1>Send pallets or merchandise efficiently, make a request and receive an offer!</h1>
+            <div className="CallButtons">            
+                <div>
+                <p>Do you want to send a pallet? Register as a Sender, post your request, receive offers from drivers and choose the best one.</p>
+                <p>Do you have a truck? Do you need to find new customers? Are you sending a cargo and have an empty space and want to sell it? Create an account as a a driver, look for requests and get a profit from the empty spaces in your truck</p>
+                </div>
             <button>Sign Up</button>
-            </header>
-            <main>
+            </div>
+        </header>
+        <main>
             <section>
                 <h2>What do we do specifically?</h2>
                 <p>We are a company that connects Drivers (truck drivers) and Senders (people who need to send pallets). We take care of facilitating contact between both parties and guaranteeing a safe and efficient service for sending pallets nationally and internationally.</p>
