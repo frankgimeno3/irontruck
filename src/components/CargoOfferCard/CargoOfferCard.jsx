@@ -1,39 +1,19 @@
-function CargoOfferCard() {
+function CargoOfferCard({shipment}) {
   return (
     <div className="MyOffers">
       <h2>My Offers</h2>
       <div className="Offer">
-        <h3>Espacio de tres pallets para llevar a Cuenca</h3>
+        <h3>{shipment.pallets} pallets pto be delivered into {shipment.pickUpProvince}</h3>
         <div className="OfferDetailsBox">
           <div className="OfferDetailsleft">
-            <p><strong>Origen:</strong> Cornellà de llobregat</p>
-            <p><strong>Fecha de origen:</strong> 13/04/2023</p>
-            <p><strong>Hora estimada origen:</strong> 05:30h</p>
+            <p><strong>Author:</strong> {shipment.author.name}</p>
+            <p><strong>Pickup Direction :</strong> {shipment.pickUpDireccion} </p>
+            <p><strong>Pickup Province:</strong> {shipment.pickUpProvince}</p>
           </div>
           <div >
-            <p><strong>Destino:</strong> Cuenca</p>
-            <p><strong>Fecha de destino:</strong> 13/04/2023</p>
-            <p><strong>Hora estimada destino:</strong> 14:00h</p>
-          </div>
-        </div>
-        <div className="myOfferButtons">
-          <button>Comments</button>
-          <button>Edit</button>
-          <button className="delete">Delete</button>
-        </div>
-      </div>
-      <div className="Offer">
-        <h3>Espacio de tres pallets para llevar a Manresa</h3>
-        <div className="OfferDetailsBox">
-          <div className="OfferDetailsleft">
-            <p><strong>Origen:</strong> Cuenca</p>
-            <p><strong>Fecha de origen:</strong> 14/04/2023</p>
-            <p><strong>Hora estimada origen:</strong> 05:30h</p>
-          </div>
-          <div >
-            <p><strong>Destino:</strong> Manresa</p>
-            <p><strong>Fecha de destino:</strong> 14/04/2023</p>
-            <p><strong>Hora estimada destino:</strong> 13:00h</p>
+            <p><strong>Pickup Direction:</strong> {shipment.deliveryDireccion}</p>
+            <p><strong>Delivery Province:</strong> {shipment.deliveryProvince}</p>
+            <p><strong>Number of Pallets:</strong> {shipment.pallets}</p>
           </div>
         </div>
         <div className="myOfferButtons">

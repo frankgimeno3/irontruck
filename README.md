@@ -31,33 +31,55 @@ $ npm start
 ```
 
 ## Routes
+Users will end up in the landing page when entering into out website.
+It's an informative page, containing calls to action for signup and log in.
+This routes are public, whenever an unauthorised user tries to find a non-public website will be redirected to one of these pages.
+We have an additional error page, in case the user manually introduces a route in the URL and commits come mistake
+
 | Route                | Privacy         | Renders                  |
 | -------------------- | :-------------: | ------------------------ |
-| /                    | public          | HomePage                 |
+| /                    | public          | LandingPage              |
 | /signup              | public          | SignupPage               |
 | /login               | public          | LoginPage                |
 | /about               | public          | ResumePage               |
-| /coding-projects     | public          | CodingProjectListPage    |
-| /design-projects     | public          | DesignProjectListPage    |
-| /coding-projects/:id | public          | CodingProjectDetailsPage |
-| /design-projects/:id | public          | DesignProjectDetailsPage |
-| /all-orders          | private (admin) | AllOrdersPage            |
-| /all-orders/:id      | private (admin) | EditOrderPage            |
-| /profile             | private (user)  | UserProfilePage          |
+| /not-found           | public          | Error Page               |
+
+Once logged in, when accessing the deffault route,  "/" , the user will end up in the dashboard.
+From the dashboard, the user will be able to post solicitudes if he/she is a "Driver" user, and will be able to see a list with all the cargo solicitudes if he/she is a "Sender" User.
+
+Once the user is authenticated, he/she will also be able to access their profile, and a view from which the cargos can be managed.
+
+| Route                 | Privacy         | Renders                               |
+| --------------------- | :-------------: | ------------------------------------- |
+| /profile/id           | private (user)  | Profile page                          |
+| /profile/id/edit      | private (user)  | Profile page, edit form               |
+| /mycargos             | private (user)  | DesignProjectDetailsPage              |
+| /mycargos/created     | private (user)  | Shows cargos created by the user      |
+| /mycargos/negotiating | private (user)  | Shows cargos in negotiation           |
+| /mycargos/completed   | private (user)  | Shows the completed cargos            |
+| /mycargos/details/:id | private (user)  | Shows the details of a specific cargo |
+
 
 ## Components
-- AddCodingProject
-- AddDesignProject
-- AddOrder
-- AnonRoute
-- CodingProjectCard
-- DesignProjectCard
-- EditCodingProject
-- EditDesignProject
+FOR ALL ROUTES
 - Navbar
-- OrderCard
-- PrivateRoute
+- Footer
+- Loading
+FOR PRIVATE ROUTES
+(Forms)
+- Cargo Filter Form
+- Create Offer Form
+(Miniatures)
+- Cargo Offer Card  
+CHECKING COMPONENTS
+- IsClient
+- IsDriver
+- IsPublic
+- IsPrivate
 
 ---
 
+TALK JS INFORMAtion here!
+
+---
 Any doubts? Contact us! 
