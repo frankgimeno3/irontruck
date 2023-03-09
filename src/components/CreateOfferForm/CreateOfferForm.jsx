@@ -5,36 +5,36 @@ function CreateOfferForm() {
   return (
     <form>
     <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Origin</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Insert origin city"/>
+      <label for="exampleFormControlInput1" className="form-label">Origin</label>
+      <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Insert origin city"/>
     </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Departure Date</label>
-      <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="DD/MM/YYYY"/>
+    <div className="mb-3">
+      <label for="exampleFormControlInput1" className="form-label">Departure Date</label>
+      <input type="date" className="form-control" id="exampleFormControlInput1" placeholder="DD/MM/YYYY"/>
     </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Departure Hour</label>
-      <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="Approx departure hour"/>
+    <div className="mb-3">
+      <label for="exampleFormControlInput1" className="form-label">Departure Hour</label>
+      <input type="date" className="form-control" id="exampleFormControlInput1" placeholder="Approx departure hour"/>
     </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Destination</label>
-      <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Insert destination city"/>
+    <div className="mb-3">
+      <label for="exampleFormControlInput1" className="form-label">Destination</label>
+      <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Insert destination city"/>
     </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">ArriVal Date</label>
-      <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="DD/MM/YYYY"/>
+    <div className="mb-3">
+      <label for="exampleFormControlInput1" className="form-label">ArriVal Date</label>
+      <input type="date" className="form-control" id="exampleFormControlInput1" placeholder="DD/MM/YYYY"/>
     </div>
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">ArriVal Hour</label>
-      <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="Approx departure hour"/>
+    <div className="mb-3">
+      <label for="exampleFormControlInput1" className="form-label">ArriVal Hour</label>
+      <input type="date" className="form-control" id="exampleFormControlInput1" placeholder="Approx departure hour"/>
     </div>
-    <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Available Space</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <div className="mb-3">
+      <label for="exampleFormControlTextarea1" className="form-label">Available Space</label>
+      <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
-    <div class="mb-3">
-      <label for="exampleFormControlTextarea1" class="form-label">Coments</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <div className="mb-3">
+      <label for="exampleFormControlTextarea1" className="form-label">Coments</label>
+      <textarea className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
     </form>
   );

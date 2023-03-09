@@ -30,16 +30,16 @@ function Dashboard() {
       </div>
     </div>
       <footer>
-        <div class="legal-notice">
+        <div className="legal-notice">
             <a href="/">Aviso Legal</a>
         </div>
-        <div class="cookies-policy">
+        <div className="cookies-policy">
             <a href="/">Política de Cookies</a>
         </div>
-        <div class="contact-us">
+        <div className="contact-us">
             <a href="/">Contacto</a>
         </div>
-        <div class="copyright">
+        <div className="copyright">
             © 2023 Todos los derechos reservados.
         </div>
         </footer>
