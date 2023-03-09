@@ -1,12 +1,12 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-// import { useContext } from "react";
-// import { AuthContext } from "../../context/auth.context";
+import { useContext } from "react";
+import { AuthContext } from "../../context/auth.context";
 
 function Navbar() {
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider's `value` prop
-  // const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -17,9 +17,12 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse flexrow" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <Link to="/"><a className="nav-link active" aria-current="page" href="/">Dashboard</a> </Link>
-            <Link to="/profile"><a className="nav-link" href="/profile">Profile</a></Link>
-            <Link to="/coversations"><a className="nav-link" href="/signup">Conversations</a></Link>
+            <Link to="/" className="nav-link active" aria-current="page" href="/">Dashboard </Link>
+            <Link to="/profile" className="nav-link">Profile </Link>
+            <Link to="/signup" className="nav-link">Signup</Link>
+            <Link to="/login" className="nav-link">LogIn</Link>
+            <Link to="/coversations" className="nav-link">Conversations</Link>
+            <button className="nav-link" onClick={logOutUser}>LogOut</button>
           </div>
             <div className="rightsided">
               <Link to="/signup"><a className="nav-link" href="/signup">Signup</a></Link>
@@ -34,4 +37,3 @@ function Navbar() {
 
 export default Navbar;
 
- 
