@@ -4,8 +4,17 @@ nav{
     align-items: center;
     padding-left: 10vw;
 }
-
+.flexrow{
+    display: flex;
+    flex-direction: row;
+}
 .brandicon{
     font-size: 2rem;
     padding-left: 1vw;
+}
+
+.rightsided{
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
 }
