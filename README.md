@@ -1,4 +1,4 @@
-# IRONTRUCK
+ # IRONTRUCK
 This is the frontend repository of the Irontruck Project. Please find the link for the backend repository here: https://github.com/frankgimeno3/irontruck 
 
 Irontruck is a web app that connects truck drivers with companies who need to send cargos. Whenever a company needs to send a cargo, they can post a solicitude in Irontruck's cargo exchange. There, truck drivers can make them an offer and start chatting with the sender company to initiate a negotiaton.
@@ -49,14 +49,11 @@ From the dashboard, the user will be able to post solicitudes if he/she is a "Dr
 
 Once the user is authenticated, he/she will also be able to access their profile, and a view from which the cargos can be managed.
 
-| Route                 | Privacy         | Renders                               |
-| --------------------- | :-------------: | ------------------------------------- |
-| /profile/id           | private (user)  | Profile page                          |
-| /mycargos             | private (user)  | DesignProjectDetailsPage              |
-| /mycargos/created     | private (user)  | Shows cargos created by the user      |
-| /mycargos/negotiating | private (user)  | Shows cargos in negotiation           |
-| /mycargos/completed   | private (user)  | Shows the completed cargos            |
-| /mycargos/details/:id | private (user)  | Shows the details of a specific cargo |
+| Route                  | Privacy         | Renders                               |
+| ---------------------  | :-------------: | ------------------------------------- |
+| /profile/:id           | private (user)  | Profile page                          |
+| /shipments             | private (user)  | DesignProjectDetailsPage              |
+| /shipments/:id         | private (user)  | Shows the details of a specific cargo |
 
 
 ## Components
