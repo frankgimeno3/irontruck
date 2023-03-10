@@ -1,3 +1,7 @@
+// ESTO TENEMOS QUE IMPORTARLO DESDE DASHBOARD
+// ACTUALMENTE EN DASHBOARD ESTÁ ESCRITO A MANO EN PLAN CUTRE SALCHICHERO
+
+
 import React, { useState } from 'react';
 import '../../App.css';
 import axios from 'axios'; // importa Axios

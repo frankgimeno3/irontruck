@@ -43,8 +43,6 @@ class ExampleService {
   deleteProject = async (id) => {
     return this.api.delete(`/api/examples/${id}`);
   } 
-
-
 }
 
 // Create one instance of the service

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import authService from "../services/auth.service";
+//import authService from "../services/auth.service";
 import axios from "axios";
 const AuthContext = React.createContext();
 function AuthProviderWrapper(props) {
@@ -15,12 +15,17 @@ function AuthProviderWrapper(props) {
     // If the token exists in the localStorage
     if (storedToken) {
       // Send a request to the server using axios
-      axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/auth/verify`,
-        { headers: { Authorization: `Bearer ${storedToken}` } }
-      )
-        .then((response) => {       setIsLoggedIn(true);
-})
+      axios
+        .get(`${process.env.REACT_APP_SERVER_URL}/auth/verify`, {
+          headers: { Authorization: `Bearer ${storedToken}` },
+        })
+        .then((response) => {
+          setIsLoggedIn(true);
+          setIsLoading(false);
+          setUser(response.data);
+        })
+        .catch(err => console.log(err));
+
       // Or using a service
       // authService
       //   .verify()
