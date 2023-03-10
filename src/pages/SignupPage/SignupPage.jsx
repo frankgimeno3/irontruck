@@ -79,7 +79,8 @@ function SignupPage() {
   };
   return (
     <>
-      <div className="SignupPage">
+
+      <div className="input-group mb-3">
         <h1>Sign Up</h1>
 
         <form onSubmit={handleSignupSubmit}>
@@ -90,8 +91,8 @@ function SignupPage() {
           <input type="text" name="name" value={name} onChange={handleName} />
 
           <label>Password:</label>
-          <input
-            type="password" name="password" value={password} onChange={handlePassword} />
+          <input type="password" name="password" value={password} onChange={handlePassword} />
+
 
           <label>Repeat Password</label>
           <input type="password" name="password" value={passwordRep} onChange={handlePasswordRep} />
