@@ -6,7 +6,7 @@ import { AuthContext } from "../../context/auth.context";
 function Navbar() {
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider's `value` prop
-  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+  const { isLoggedIn, logOutUser } = useContext(AuthContext);
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -17,18 +17,23 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse flexrow" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <Link to="/" className="nav-link active" aria-current="page" href="/">Dashboard </Link>
-            <Link to="/profile" className="nav-link">Profile </Link>
-            <Link to="/signup" className="nav-link">Signup</Link>
-            <Link to="/login" className="nav-link">LogIn</Link>
-            <Link to="/coversations" className="nav-link">Conversations</Link>
-            <button className="nav-link" onClick={logOutUser}>LogOut</button>
+            
+            { !isLoggedIn &&
+              <>
+              <Link to="/signup" className="nav-link">Signup</Link>
+              <Link to="/login" className="nav-link">LogIn</Link>
+              </>
+            }
+            { isLoggedIn &&
+                <>
+                <Link to="/dashboard" className="nav-link active" aria-current="page" href="/">Dashboard </Link>
+                <Link to="/profile" className="nav-link">Profile </Link>
+                <Link to="/coversations" className="nav-link">Conversations</Link>
+                <Link  className="nav-link" onClick={logOutUser}>LogOut</Link>
+                </>
+            }
+
           </div>
-            <div className="rightsided">
-              <Link to="/signup"><a className="nav-link" href="/signup">Signup</a></Link>
-              <Link to="/login"><a className="nav-link" href="/login">LogIn</a></Link>
-              <Link to="/"><a className="nav-link" href="/">LogOut</a></Link>
-            </div>
         </div>
       </div>
     </nav>

@@ -1,19 +1,22 @@
-function CargoOfferCard({shipment}) {
+import "./CargoOfferCard.css"
+
+
+function CargoOfferCard() {
   return (
     <div className="MyOffers">
       <h2>My Offers</h2>
       <div className="Offer">
-        <h3>{shipment.pallets} pallets pto be delivered into {shipment.pickUpProvince}</h3>
+        <h3>3 pallets pto be delivered into CUENCA</h3>
         <div className="OfferDetailsBox">
           <div className="OfferDetailsleft">
-            <p><strong>Author:</strong> {shipment.author.name}</p>
-            <p><strong>Pickup Direction :</strong> {shipment.pickUpDireccion} </p>
-            <p><strong>Pickup Province:</strong> {shipment.pickUpProvince}</p>
+            <p><strong>Author:</strong> ANTONIO</p>
+            <p><strong>Pickup Direction :</strong> Casa de Antonio </p>
+            <p><strong>Pickup Province:</strong> Barcelona</p>
           </div>
           <div >
-            <p><strong>Pickup Direction:</strong> {shipment.deliveryDireccion}</p>
-            <p><strong>Delivery Province:</strong> {shipment.deliveryProvince}</p>
-            <p><strong>Number of Pallets:</strong> {shipment.pallets}</p>
+            <p><strong>Delivery Direction:</strong> Casa de la chati de Antonio</p>
+            <p><strong>Delivery Province:</strong> Chatilandia</p>
+            <p><strong>Number of Pallets:</strong>12</p>
           </div>
         </div>
         <div className="myOfferButtons">

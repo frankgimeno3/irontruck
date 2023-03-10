@@ -1,6 +1,6 @@
 import React from 'react';
 import CreateOfferForm from '../../components/CreateOfferForm/CreateOfferForm';
-import OfferCard from '../../components/CargoOfferCard/CargoOfferCard';
+import CargoExchange from '../../components/CargoExchange/CargoExchange';
 import '../../App.css';
 
 function Dashboard() {
@@ -25,7 +25,7 @@ function Dashboard() {
             </form>
         </div>
         <div className="MyOffers">
-            <OfferCard />
+            <CargoExchange />
         </div>
       </div>
     </div>

@@ -52,7 +52,6 @@ Once the user is authenticated, he/she will also be able to access their profile
 | Route                 | Privacy         | Renders                               |
 | --------------------- | :-------------: | ------------------------------------- |
 | /profile/id           | private (user)  | Profile page                          |
-| /profile/id/edit      | private (user)  | Profile page, edit form               |
 | /mycargos             | private (user)  | DesignProjectDetailsPage              |
 | /mycargos/created     | private (user)  | Shows cargos created by the user      |
 | /mycargos/negotiating | private (user)  | Shows cargos in negotiation           |

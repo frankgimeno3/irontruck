@@ -1,6 +1,4 @@
-body{
-  background-color: rgb(238, 240, 248);
-}
+
 
 App {
   height: 100%;
@@ -81,9 +79,7 @@ App {
   flex-direction: column;
   flex-grow: 1;
   width: calc(5/6*100%);
-  padding: 2vw;
-  margin: 2vw 2vw 2vw calc(1/6*100% + 2vw);
-  background-color: grey;
+
   width: 100%;
 }
 
