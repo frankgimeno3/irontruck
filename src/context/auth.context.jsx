@@ -24,7 +24,18 @@ function AuthProviderWrapper(props) {
         `${process.env.REACT_APP_SERVER_URL}/auth/verify`,
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
-        .then((response) => { })
+        .then((response) => {
+          setIsLoggedIn(true);
+          setIsLoading(false);
+          setUser(response.data)
+        })
+        .catch((error) => {
+          // If the server sends an error response (invalid token) ❌
+          // Update state variables
+          setIsLoggedIn(false);
+          setIsLoading(false);
+          setUser(null);
+        });
 
       // Or using a service
       // authService

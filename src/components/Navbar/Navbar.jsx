@@ -17,18 +17,18 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse flexrow" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <Link to="/" className="nav-link active" aria-current="page" href="/">Dashboard </Link>
-            <Link to="/profile" className="nav-link">Profile </Link>
-            <Link to="/signup" className="nav-link">Signup</Link>
+            {isLoggedIn && <>
+              <Link to="/dashboard" className="nav-link active">Dashboard </Link>
+              <Link to="/profile" className="nav-link">Profile </Link>
+
+              <Link to="/coversations" className="nav-link">Conversations</Link>
+              <button className="nav-link" onClick={logOutUser}>LogOut</button>
+            </>
+            }
             <Link to="/login" className="nav-link">LogIn</Link>
-            <Link to="/coversations" className="nav-link">Conversations</Link>
-            <button className="nav-link" onClick={logOutUser}>LogOut</button>
+
+
           </div>
-            <div className="rightsided">
-              <Link to="/signup"><a className="nav-link" href="/signup">Signup</a></Link>
-              <Link to="/login"><a className="nav-link" href="/login">LogIn</a></Link>
-              <Link to="/"><a className="nav-link" href="/">LogOut</a></Link>
-            </div>
         </div>
       </div>
     </nav>
