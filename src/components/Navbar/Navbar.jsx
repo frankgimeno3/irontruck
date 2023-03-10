@@ -16,11 +16,21 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse flexrow" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <Link to="/" className="nav-link active" aria-current="page" href="/">Dashboard </Link>
-            <Link to="/profile" className="nav-link">Profile </Link>
-            <Link to="/signup" className="nav-link">Signup</Link>
-            <Link to="/login" className="nav-link">LogIn</Link>
-            <Link to="/coversations" className="nav-link">Conversations</Link>
+
+            {!isLoggedIn &&
+              <>
+                <Link to="/signup" className="nav-link">Signup</Link>
+                <Link to="/login" className="nav-link">LogIn</Link>
+              </>
+            }
+            {isLoggedIn &&
+              <>
+                <Link to="/dashboard" className="nav-link active" aria-current="page" href="/">Dashboard </Link>
+                <Link to="/profile" className="nav-link">Profile </Link>
+                <Link to="/coversations" className="nav-link">Conversations</Link>
+                <Link className="nav-link" onClick={logOutUser}>LogOut</Link>
+              </>
+            }
 
             <button className="nav-link" onClick={logOutUser}>LogOut</button>
           </div>

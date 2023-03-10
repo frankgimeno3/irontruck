@@ -7,7 +7,7 @@ function CargoExchange() {
 return (
     <div>
         <ul>
-            <li>Hola mocoso</li>
+            <li>Hola </li>
               {/* {shipments.map(shipments => <li key={shipments._id}>{shipments.pickUpDireccion}</li>)} */}
         </ul>
     </div>
