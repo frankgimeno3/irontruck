@@ -15,11 +15,11 @@ function LandingPage() {
                 <div className="CallButtons">            
                     <div>
                         <p>Do you want to send a pallet? Register as a Sender, post your request, receive offers from drivers and choose the best one.</p>
-                        <Link to="/signup"><button class="learn-more">
-                                            <span class="circle" aria-hidden="true">  
-                                                <span class="icon arrow"></span>
+                        <Link to="/signup"><button className="learn-more">
+                                            <span className="circle" aria-hidden="true">  
+                                                <span className="icon arrow"></span>
                                             </span>  
-                                            <span class="button-text">Sign Up</span>
+                                            <span className="button-text">Sign Up</span>
                                             </button>
                         </Link>
                     </div>

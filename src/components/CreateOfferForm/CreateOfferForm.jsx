@@ -4,7 +4,7 @@ import '../../App.css';
 function CreateOfferForm() {
   return (
     <form>
-    <div class="mb-3">
+    <div className="mb-3">
       <label for="exampleFormControlInput1" className="form-label">Origin</label>
       <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Insert origin city"/>
     </div>
