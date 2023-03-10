@@ -21,12 +21,8 @@ function Navbar() {
             <Link to="/signup" className="nav-link">Signup</Link>
             <Link to="/login" className="nav-link">LogIn</Link>
             <Link to="/coversations" className="nav-link">Conversations</Link>
+
             <button className="nav-link" onClick={logOutUser}>LogOut</button>
-          </div>
-          <div className="rightsided">
-            <Link to="/signup"><a className="nav-link" href="/signup">Signup</a></Link>
-            <Link to="/login"><a className="nav-link" href="/login">LogIn</a></Link>
-            <Link to="/"><a className="nav-link" href="/">LogOut</a></Link>
           </div>
         </div>
       </div>
