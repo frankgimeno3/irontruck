@@ -40,4 +40,15 @@
     border: 1px solid rgba(255, 255, 255, 0.552);
   }
   
+  .detailsbutton{
+    background-color: blue;
+    padding: 5px;
+    border-color: black;
+  }
+
+  .detailsbutton:hover{
+    background-color: blue;
+    padding: 10px;
+    border-color: white;
+  }
  

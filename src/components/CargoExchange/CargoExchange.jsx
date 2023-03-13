@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ShipmentsService from "../../services/shipments.service";
+import { Link } from "react-router-dom";
 import "./CargoExchange.css";
 
 function CargoExchange() {
@@ -39,6 +40,9 @@ function CargoExchange() {
               <p>Delivery province: {shipment.deliveryProvince}</p>
             </div>
           </div>
+          <Link to={`/api/${shipment._id}`}>
+            <button className="detailsbutton">Ver Detalles</button>
+          </Link>
         </div>
       ))}
     </div>
