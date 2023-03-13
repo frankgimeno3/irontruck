@@ -1,0 +1,14 @@
+.labels {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+
+    justify-content: center;
+
+}
