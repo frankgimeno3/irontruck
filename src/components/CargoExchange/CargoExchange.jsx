@@ -1,16 +1,48 @@
-import {useContext} from "react";
-import { shipmentsContext } from "../../context/shipments.context";
+import React, { useState, useEffect } from "react";
+import ShipmentsService from "../../services/shipments.service";
+import "./CargoExchange.css";
 
 function CargoExchange() {
-    // const {shipments} = useContext(shipmentsContext);
+  const [shipments, setShipments] = useState([]);
 
-return (
+  useEffect(() => {
+    const shipmentsService = new ShipmentsService("your-token-here");
+    shipmentsService
+      .getShipments()
+      .then((response) => {
+        setShipments(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  return (
     <div>
-        <ul>
-            <li>Hola </li>
-              {/* {shipments.map(shipments => <li key={shipments._id}>{shipments.pickUpDireccion}</li>)} */}
-        </ul>
+      <h1>Shipments List</h1>
+      {shipments.map((shipment) => (
+        <div key={shipment._id} className="card">
+          <div className="shipment-info">
+            {/* <p>{shipment.author.name}</p> */}
+            {/* <p>{shipment.author.email}</p> */}
+            <p>Creation Date: {shipment.creationDate}</p>
+            <p>Shipment pallets: {shipment.pallets}</p>
+            {/* other shipment data */}
+          </div>
+          <div className="shipment-address">
+            <div className="pickup-address">
+              <p>Pick up direction: {shipment.pickUpDireccion}</p>
+              <p>Pick up province: {shipment.pickUpProvince}</p>
+            </div>
+            <div className="delivery-address">
+              <p>Delivery direction: {shipment.deliveryDireccion}</p>
+              <p>Delivery province: {shipment.deliveryProvince}</p>
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
-);
+  );
 }
-    export default CargoExchange;
+
+export default CargoExchange;
