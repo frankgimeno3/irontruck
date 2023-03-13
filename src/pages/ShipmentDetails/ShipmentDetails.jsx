@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import ShipmentsService from "../../services/shipments.service";
+import { useParams } from "react-router-dom";
 
-const ShipmentDetails = (props) => {
+const ShipmentDetails = () => {
+  const { id } = useParams();
   const [shipment, setShipment] = useState({});
+  console.log(id);
+
 
   useEffect(() => {
-    const { idShipment } = props.match.params;
-    axios
-      .get(`/api/Shipment/${idShipment}`)
+    const shipmentsService = new ShipmentsService("your-token-here");
+    shipmentsService
+      .getShipmentById(id)
       .then((response) => {
         setShipment(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [id]);
+
 
   return (
     <div>
@@ -27,8 +32,9 @@ const ShipmentDetails = (props) => {
       <p>Dirección de entrega: {shipment.deliveryDireccion}</p>
       <p>Provincia de entrega: {shipment.deliveryProvince}</p>
       <p>Número de pallets: {shipment.pallets}</p>
+
+      <button>deletion</button>
     </div>
   );
-};
-
+  }
 export default ShipmentDetails;
