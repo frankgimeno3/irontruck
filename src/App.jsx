@@ -12,6 +12,7 @@ import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
 import LandingPage from "./pages/LandingPage/LandingPage";
 import MyCargos from "./pages/MyCargos/MyCargos";
+import ShipmentDetails from "./pages/ShipmentDetails/ShipmentDetails";
 function App() {
   return (
     <div className="App">
@@ -26,6 +27,7 @@ function App() {
         <Route path="transportist/signup" element={<IsAnon><SignupTranspPage /> </IsAnon>} />
         <Route path="transportist/login" element={<IsAnon> <LoginTranspPage /> </IsAnon>} />
         <Route path="mycargos" element={<MyCargos />} />
+        <Route path="/shipments/:id" element={<ShipmentDetails />} />
       </Routes>
     </div>
   );
