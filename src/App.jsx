@@ -4,7 +4,9 @@ import { Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SignupPage from "./pages/SignupPage/SignupPage";
-import LoginPage from "./pages/LoginPage/LoginPage";
+import LoginPage from "./components/LoginPage/LoginPage";
+import SignupTranspPage from "./pages/SignupTranspPage/SignupPageTransp";
+import LoginTranspPage from "./pages/LoginTranspPage /LoginTranspPage";
 
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
@@ -23,6 +25,8 @@ function App() {
         <Route path="/profile" element={<IsPrivate><ProfilePage /></IsPrivate>} />
         <Route path="/signup" element={<IsAnon><SignupPage /> </IsAnon>} />
         <Route path="/login" element={<IsAnon> <LoginPage /> </IsAnon>} />
+        <Route path="transportist/signup" element={<IsAnon><SignupTranspPage /> </IsAnon>} />
+        <Route path="transportist/login" element={<IsAnon> <LoginTranspPage /> </IsAnon>} />
       </Routes>
     </div>
   );

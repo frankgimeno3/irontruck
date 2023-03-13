@@ -8,6 +8,13 @@ function LandingPage() {
     return (
         <>
             <img src="https://www.rlicorp.com/sites/default/files/banner-images/LossControl_WebsiteHeader_02_72dpi_1.jpg" alt="banner" className="landingjpg" />
+
+            <Link to="transportist/login"><button type="button" className="btn btn-primary btn-lg">Buscar Mercancia</button>
+            </Link>
+
+            <Link to="/login"><button type="button" className="btn btn-secondary btn-lg">Hacer Envio
+            </button></Link>
+
             <div className="LandingStructure">
                 <header >
                     <h1>Send pallets or merchandise efficiently, make a request and receive an offer!</h1>
@@ -15,23 +22,24 @@ function LandingPage() {
                         <div className="CallButtons">
                             <div>
                                 <p>Do you want to send a pallet? Register as a Sender, post your request, receive offers from drivers and choose the best one.</p>
-                                <Link to="/signup"><button class="learn-more">
-                                    <span class="circle" aria-hidden="true">
-                                        <span class="icon arrow"></span>
-                                    </span>
-                                    <span class="button-text">Sign Up</span>
-                                </button>
-                                </Link>
-                            </div>
-                            <div>
-                                <p>Do you have a truck? Do you need to find new customers? Are you sending a cargo and have an empty space and want to sell it? Create an account as a a driver, look for requests and get a profit from the empty spaces in your truck</p>
                                 <Link to="/signup"><button className="learn-more">
                                     <span className="circle" aria-hidden="true">
                                         <span className="icon arrow"></span>
                                     </span>
                                     <span className="button-text">Sign Up</span>
                                 </button>
-                                </Link>                </div>
+                                </Link>
+                            </div>
+                            <div>
+                                <p>Do you have a truck? Do you need to find new customers? Are you sending a cargo and have an empty space and want to sell it? Create an account as a a driver, look for requests and get a profit from the empty spaces in your truck</p>
+                                <Link to="transportist/signup"><button className="learn-more">
+                                    <span className="circle" aria-hidden="true">
+                                        <span className="icon arrow"></span>
+                                    </span>
+                                    <span className="button-text">Sign Up</span>
+                                </button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </header>
