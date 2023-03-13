@@ -20,7 +20,7 @@ function CargoOfferCard() {
           </div>
         </div>
         <div className="myOfferButtons">
-          <button>Comments</button>
+          <button>Save for Send</button>
           <button>Edit</button>
           <button className="delete">Delete</button>
         </div>
