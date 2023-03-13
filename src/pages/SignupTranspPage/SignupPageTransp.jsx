@@ -1,4 +1,4 @@
-import "./SignupPage.css";
+import "./SignupPageTransp.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 // import authService from "../../services/auth.service";
@@ -33,7 +33,7 @@ function SignupTranspPage() {
     const handleSignupSubmit = (e) => {
         e.preventDefault();
         // Create an object representing the request body
-        const requestBody = { email, password, name, phoneNumber, licensePlate, professionalType, company, nif };
+        const requestBody = { email, password, name, phoneNumber, licensePlate, professionalType, company, nif, };
 
 
         if (email === "" || password === "" || name === "" || phoneNumber === "" || nif === "" || licensePlate === "") {
@@ -117,7 +117,7 @@ function SignupTranspPage() {
                     <label>Profesional type</label>
                     <input type="text" name="address" value={professionalType} onChange={handleProfessionalType} />
 
-                    <label>NIF</label>
+                    <label>Company </label>
                     <input type="text" name="Company" value={company} onChange={handleCompany} />
 
 
