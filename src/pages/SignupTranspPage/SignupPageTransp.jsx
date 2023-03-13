@@ -91,7 +91,7 @@ function SignupTranspPage() {
             <div className="input-group mb-3">
                 <h1>Sign Up</h1>
 
-                <form onSubmit={handleSignupSubmit}>
+                <form className="labels" onSubmit={handleSignupSubmit}>
                     <label>Email:</label>
                     <input type="email" name="email" value={email} onChange={handleEmail} />
 
@@ -126,7 +126,6 @@ function SignupTranspPage() {
 
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-                <p>Already have account?</p>
                 <Link to={"transportist/login"}> Login</Link>
             </div>
             <img src="https://www.rlicorp.com/sites/default/files/banner-images/LossControl_WebsiteHeader_02_72dpi_1.jpg" alt="banner" className="landingjpg" />

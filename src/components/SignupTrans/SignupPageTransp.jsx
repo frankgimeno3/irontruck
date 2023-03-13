@@ -109,13 +109,13 @@ function SignupTranspPage() {
           <input type="number" name="phoneNumber" value={phoneNumber} onChange={handlePhoneNumber} />
 
           <label>Linsence Plate</label>
-          <input type="text" name="address" value={licensePlate} onChange={handleLicensePlate} />
+          <input type="text" name="licensePlate" value={licensePlate} onChange={handleLicensePlate} />
 
           <label>NIF</label>
-          <input type="text" name="address" value={nif} onChange={handleNif} />
+          <input type="text" name="nif" value={nif} onChange={handleNif} />
 
           <label>Profesional type</label>
-          <input type="text" name="address" value={professionalType} onChange={handleProfessionalType} />
+          <input type="text" name="professionalType" value={professionalType} onChange={handleProfessionalType} />
 
           <label>NIF</label>
           <input type="text" name="Company" value={company} onChange={handleCompany} />

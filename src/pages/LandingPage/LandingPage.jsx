@@ -8,12 +8,16 @@ function LandingPage() {
     return (
         <>
             <img src="https://www.rlicorp.com/sites/default/files/banner-images/LossControl_WebsiteHeader_02_72dpi_1.jpg" alt="banner" className="landingjpg" />
+            <div className="botones">
+                <Link to="transportist/login"><button type="button" className="btn btn-primary btn-lg">Buscar Mercancia</button>
+                </Link>
 
-            <Link to="transportist/login"><button type="button" className="btn btn-primary btn-lg">Buscar Mercancia</button>
-            </Link>
+                <Link to="/login"><button type="button" className="btn btn-secondary btn-lg">Hacer Envio
+                </button></Link>
 
-            <Link to="/login"><button type="button" className="btn btn-secondary btn-lg">Hacer Envio
-            </button></Link>
+
+            </div>
+
 
             <div className="LandingStructure">
                 <header >
