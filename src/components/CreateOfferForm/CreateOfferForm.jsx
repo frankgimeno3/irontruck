@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+
 import ShipmentsService from "../../services/shipments.service";
 import './CreateOfferForm.css';
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../../context/auth.context"
+
+
+
 
 function CreateOfferForm() {
+
+  const { user } = useContext(AuthContext)
+
   const [formValues, setFormValues] = useState({
     pickUpDireccion: "",
     pickUpProvince: "",
@@ -15,6 +23,7 @@ function CreateOfferForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const shipment = {
+      author: user._id,
       pickUpDireccion: formValues.pickUpDireccion,
       pickUpProvince: formValues.pickUpProvince,
       deliveryDireccion: formValues.deliveryDireccion,
@@ -22,23 +31,23 @@ function CreateOfferForm() {
       pallets: formValues.pallets,
       creationDate: formValues.creationDate
     };
-  const shipmentsService = new ShipmentsService("your-token-here");
-  shipmentsService
-    .addShipments(shipment)
-    .then((response) => {
-      console.log(response.data);
-      setFormValues({
-        pickUpDireccion: "",
-        pickUpProvince: "",
-        deliveryDireccion: "",
-        deliveryProvince: "",
-        pallets: 0,
-        creationDate: "2022-12-12"
+    const shipmentsService = new ShipmentsService("your-token-here");
+    shipmentsService
+      .addShipments(shipment)
+      .then((response) => {
+        console.log(response.data);
+        setFormValues({
+          pickUpDireccion: "",
+          pickUpProvince: "",
+          deliveryDireccion: "",
+          deliveryProvince: "",
+          pallets: 0,
+          creationDate: "2022-12-12"
+        });
+      })
+      .catch((error) => {
+        console.log(error);
       });
-    })
-    .catch((error) => {
-      console.log(error);
-    });
   };
 
   const handleInputChange = (event) => {
@@ -63,7 +72,7 @@ function CreateOfferForm() {
           placeholder="Insert origin city"
         />
       </div>
-  
+
       <div className="mb-3">
         <label htmlFor="pickUpProvinceInput" className="form-label">Pick up province</label>
         <input
@@ -76,7 +85,7 @@ function CreateOfferForm() {
           placeholder="Insert origin province"
         />
       </div>
-  
+
       <div className="mb-3">
         <label htmlFor="deliveryDireccionInput" className="form-label">Delivery direction</label>
         <input
@@ -89,7 +98,7 @@ function CreateOfferForm() {
           placeholder="Insert destination city"
         />
       </div>
-  
+
       <div className="mb-3">
         <label htmlFor="deliveryProvinceInput" className="form-label">Delivery province</label>
         <input
@@ -102,7 +111,7 @@ function CreateOfferForm() {
           placeholder="Insert destination province"
         />
       </div>
-  
+
       <div className="mb-3">
         <label htmlFor="palletsInput" className="form-label">Number of pallets</label>
         <input
@@ -127,7 +136,7 @@ function CreateOfferForm() {
           placeholder="Insert number of pallets"
         />
       </div>
-  
+
       <button type="submit" className="btn btn-primary">Submit</button>
     </form>
   );

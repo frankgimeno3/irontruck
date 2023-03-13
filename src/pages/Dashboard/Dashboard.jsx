@@ -1,18 +1,28 @@
-import React from 'react';
+
 import CreateOfferForm from '../../components/CreateOfferForm/CreateOfferForm';
 import CargoExchange from '../../components/CargoExchange/CargoExchange';
 import '../../App.css';
+import { AuthContext } from "../../context/auth.context"
+import React, { useState, useContext } from "react";
+
+
 
 function Dashboard() {
+
+
+
+
+  const { user } = useContext(AuthContext)
+
   return (
     <>
-    <div className="HomeStructure">
+      <div className="HomeStructure">
         <div className="Content">
-        <section className="CreateOfferSection">
-        <h2>Create an Offer</h2>
-          <CreateOfferForm />
-        </section>
-        <div className="SearchMyOffer">
+          <section className="CreateOfferSection">
+            <h2>Create an Offer</h2>
+            <CreateOfferForm />
+          </section>
+          <div className="SearchMyOffer">
             <h2>Search an Offer</h2>
             <form>
               <label htmlFor="date">Date:</label>
@@ -23,26 +33,26 @@ function Dashboard() {
               <input type="text" id="keywords" />
               <button type="submit">Search</button>
             </form>
-        </div>
-        <div className="MyOffers">
+          </div>
+          <div className="MyOffers">
             <CargoExchange />
+          </div>
         </div>
       </div>
-    </div>
       <footer>
         <div className="legal-notice">
-            <a href="/">Aviso Legal</a>
+          <a href="/">Aviso Legal</a>
         </div>
         <div className="cookies-policy">
-            <a href="/">Política de Cookies</a>
+          <a href="/">Política de Cookies</a>
         </div>
         <div className="contact-us">
-            <a href="/">Contacto</a>
+          <a href="/">Contacto</a>
         </div>
         <div className="copyright">
-            © 2023 Todos los derechos reservados.
+          © 2023 Todos los derechos reservados.
         </div>
-        </footer>
+      </footer>
     </>
   );
 }
