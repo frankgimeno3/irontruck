@@ -46,32 +46,45 @@ function LoginPage() {
 
   return (
     <>
-      <div className="LoginPage">
-        <h1>Login</h1>
 
-        <form onSubmit={handleLoginSubmit}>
-          <label>Email:</label>
-          <input type="email" name="email" value={email} onChange={handleEmail} />
 
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handlePassword}
-          />
-
-          <button type="submit">Login</button>
+      <div className="Loading Page">
+        <form className="px-4 py-3" onSubmit={handleLoginSubmit}>
+          <div className="mb-3">
+            <label htmlFor="exampleDropdownFormEmail1" className="form-label">Email address</label>
+            <input type="email" className="form-control" id="exampleDropdownFormEmail1" name="email" value={email} onChange={handleEmail} placeholder="email@example.com" />
+          </div>
+          <div className="mb-3">
+            <label htmlFOR="exampleDropdownFormPassword1" className="form-label">Password</label>
+            <input type="password" className="form-control" id="exampleDropdownFormPassword1" name="password" value={password} onChange={handlePassword} placeholder="Password" />
+          </div>
+          <div className="mb-3">
+            <div className="form-check">
+              <input type="checkbox" className="form-check-input" id="dropdownCheck" />
+              <label className="form-check-label" HTMLfor="dropdownCheck">
+                Remember me
+              </label>
+            </div>
+          </div>
+          <button type="submit" className="btn btn-primary">Log In</button>
         </form>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-        <p>Don't have an account yet?</p>
-        <Link to={"/signup"}> Sign Up</Link>
+        <div className="dropdown-divider"></div>
+        <p>New around here?</p>
+        <Link to={"/signup"} className="dropdown-item">  Sign up  </Link>
       </div>
+
       <img src="https://www.rlicorp.com/sites/default/files/banner-images/LossControl_WebsiteHeader_02_72dpi_1.jpg" alt="banner" className="landingjpg" />
+
+
+
 
     </>
   );
 }
 
 export default LoginPage;
+
+
+
+

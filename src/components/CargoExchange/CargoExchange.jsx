@@ -19,33 +19,47 @@ function CargoExchange() {
   }, []);
 
   return (
+
     <div>
       <h1>Shipments List</h1>
       {shipments.map((shipment) => (
         <div key={shipment._id} className="card">
-          <div className="shipment-info">
+          <h2 className="card-header">
+            Shipment {shipment.pickUpProvince} to {shipment.deliveryProvince}
+          </h2>
+          <div className="card-body">
             {/* <p>{shipment.author.name}</p> */}
             {/* <p>{shipment.author.email}</p> */}
-            <p>Creation Date: {shipment.creationDate}</p>
-            <p>Shipment pallets: {shipment.pallets}</p>
+            {/* <p>Creation Date: {shipment.creationDate}</p> */}
+            <h5 className="card title">Number of Pallets</h5>
+            <p> {shipment.pallets}</p>
             {/* other shipment data */}
           </div>
           <div className="shipment-address">
+
             <div className="pickup-address">
-              <p>Pick up direction: {shipment.pickUpDireccion}</p>
-              <p>Pick up province: {shipment.pickUpProvince}</p>
+              <h5> Datos de Recogida</h5>
+              <p> {shipment.pickUpDireccion}, {shipment.pickUpProvince}</p>
+
             </div>
+
             <div className="delivery-address">
-              <p>Delivery direction: {shipment.deliveryDireccion}</p>
-              <p>Delivery province: {shipment.deliveryProvince}</p>
+              <h5> Datos de Entrega</h5>
+              <p>{shipment.deliveryDireccion}, {shipment.deliveryProvince}</p>
+
             </div>
           </div>
-          <Link to={`/api/${shipment._id}`}>
-            <button className="detailsbutton">Ver Detalles</button>
-          </Link>
+          <div className="card-footer">
+            <Link to={`/api/${shipment._id}`}>
+              <button className="btn btn-primary">Ver Detalles</button>
+            </Link>
+            <button type="submit" className="btn btn-primary">Save</button>
+          </div>
         </div>
       ))}
     </div>
+
+
   );
 }
 
