@@ -5,14 +5,14 @@ import "../../CargoExchange/CargoExchange.css";
 import '../../../pages/MyCargos/MyCargos.css';
 
 
-function Completed () {
+function Completed() {
   const [shipments, setShipments] = useState([]);
   useEffect(() => {
     const shipmentsService = new ShipmentsService("your-token-here");
     shipmentsService
       .getShipments()
       .then((response) => {
-        setShipments(response.data);
+        ;
       })
       .catch((error) => {
         console.log(error);
@@ -43,13 +43,13 @@ function Completed () {
             </div>
           </div>
           <Link to={`/shipments/${shipment._id}`}>
-          {/* <Route path="/:idShipment" component={ShipmentDetails} /> */}
+            {/* <Route path="/:idShipment" component={ShipmentDetails} /> */}
             <button className="detailsbutton">See Details</button>
           </Link>
 
         </div>
       ))}
-          </div>
+    </div>
   );
 };
 

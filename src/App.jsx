@@ -20,14 +20,14 @@ function App() {
       <Routes>
         {/* <Route path="/" element={<HomePage />} /> */}
         <Route path="/" element={<IsAnon><LandingPage /></IsAnon>} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<IsPrivate> <Dashboard /> </IsPrivate>} />
         <Route path="/profile" element={<IsPrivate><ProfilePage /></IsPrivate>} />
         <Route path="/signup" element={<IsAnon><SignupPage /> </IsAnon>} />
         <Route path="/login" element={<IsAnon> <LoginPage /> </IsAnon>} />
         <Route path="transportist/signup" element={<IsAnon><SignupTranspPage /> </IsAnon>} />
         <Route path="transportist/login" element={<IsAnon> <LoginTranspPage /> </IsAnon>} />
-        <Route path="mycargos" element={<MyCargos />} />
-        <Route path="/shipments/:id" element={<ShipmentDetails />} />
+        <Route path="mycargos" element={<IsPrivate><MyCargos /></IsPrivate>} />
+        <Route path="/shipments/:id" element={<IsPrivate> <ShipmentDetails /> </IsPrivate>} />
       </Routes>
     </div>
   );

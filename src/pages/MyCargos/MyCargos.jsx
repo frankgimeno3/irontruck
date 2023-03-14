@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './MyCargos.css';
-import SavedShipments from '../../components/MyCargos/SavedShipments/SavedShipments';
 import CreatedShipments from '../../components/MyCargos/CreatedShipments/CreatedShipments';
 import Negotiating from '../../components/MyCargos/Negotiating/Negotiating';
 import Completed from '../../components/MyCargos/Completed/Completed';
@@ -16,7 +15,6 @@ const MyCargos = () => {
   return (
     <div className="my-cargos">
       <section className="buttons">
-        <button className="button" onClick={() => handleClick(<SavedShipments />)}>Saved</button>
         <button className="button" onClick={() => handleClick(<CreatedShipments />)}>Created</button>
         <button className="button" onClick={() => handleClick(<Negotiating />)}>Negotiating</button>
         <button className="button green" onClick={() => handleClick(<Completed />)}>Completed</button>

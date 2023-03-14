@@ -3,7 +3,6 @@ import ShipmentsService from "../../services/shipments.service";
 import './CreateOfferForm.css';
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../../context/auth.context"
-import { Link } from "react-router-dom";
 
 
 
@@ -22,6 +21,7 @@ function CreateOfferForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const shipment = {
+      author: user._id,
       pickUpDireccion: formValues.pickUpDireccion,
       pickUpProvince: formValues.pickUpProvince,
       deliveryDireccion: formValues.deliveryDireccion,
@@ -32,7 +32,6 @@ function CreateOfferForm() {
     shipmentsService
       .addShipments(shipment)
       .then((response) => {
-        console.log(response.data);
         setFormValues({
           pickUpDireccion: "",
           pickUpProvince: "",
@@ -58,11 +57,11 @@ function CreateOfferForm() {
   return (
 
     <>
-      <div class="dropdown">
-        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+      <div className="dropdown">
+        <button type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
           Create Offer
         </button>
-        <form class="dropdown-menu p-4" onSubmit={handleSubmit}>
+        <form className="dropdown-menu p-4" onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="pickUpDireccionInput" className="form-label">Pick up direction</label>
             <input
@@ -153,29 +152,3 @@ function CreateOfferForm() {
 export default CreateOfferForm;
 
 
-
-
-{/* <div class="dropdown">
-  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-    Dropdown form
-  </button>
-  <form class="dropdown-menu p-4">
-    <div class="mb-3">
-      <label for="exampleDropdownFormEmail2" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
-    </div>
-    <div class="mb-3">
-      <label for="exampleDropdownFormPassword2" class="form-label">Password</label>
-      <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
-    </div>
-    <div class="mb-3">
-      <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-          <label class="form-check-label" for="dropdownCheck2">
-            Remember me
-          </label>
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Sign in</button>
-  </form>
-</div> */}

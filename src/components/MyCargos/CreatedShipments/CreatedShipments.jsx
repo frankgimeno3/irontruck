@@ -1,31 +1,41 @@
-import React, { useState, useEffect } from "react";
-import ShipmentsService from "../../../services/shipments.service";
+import React, { useContext, useState, useEffect } from "react";
+// import ShipmentsService from "../../../services/shipments.service";
 import { Link } from "react-router-dom";
 import "../../CargoExchange/CargoExchange.css";
 import '../../../pages/MyCargos/MyCargos.css';
+import ProfileService from "../../../services/profile.service";
+import { AuthContext } from "../../../context/auth.context"
 
 
-function CreatedShipments () {
+function CreatedShipments() {
+  const { user } = useContext(AuthContext)
   const [shipments, setShipments] = useState([]);
+
+  console.log("hello")
+
   useEffect(() => {
-    const shipmentsService = new ShipmentsService("your-token-here");
-    shipmentsService
-      .getShipments()
+    const profileService = new ProfileService();
+    //   profileService
+    profileService.getProfile(user._id)
       .then((response) => {
-        setShipments(response.data);
+        console.log(response.data.createdShipments)
+        setShipments(response.data.createdShipments)
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((err) => { console.log(err) });
   }, []);
 
+
   return (
-    <div >
+    <div>
       <h2>Created Shipments</h2>
+
+
+
       {shipments.map((shipment) => (
+
         <div key={shipment._id} className="card">
           <div className="shipment-info">
-            {/* <p>{shipment.author.name}</p> */}
+            {/* <p>{shipment.author}</p> */}
             {/* <p>{shipment.author.email}</p> */}
             <p>Creation Date: {shipment.creationDate}</p>
             <p>Shipment pallets: {shipment.pallets}</p>
@@ -42,7 +52,7 @@ function CreatedShipments () {
             </div>
           </div>
           <Link to={`/shipments/${shipment._id}`}>
-          {/* <Route path="/:idShipment" component={ShipmentDetails} /> */}
+            {/* <Route path="/:idShipment" component={ShipmentDetails} /> */}
             <button className="detailsbutton">See Details</button>
           </Link>
 

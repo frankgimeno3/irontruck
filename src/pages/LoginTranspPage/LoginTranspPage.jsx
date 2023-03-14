@@ -53,13 +53,13 @@ function LoginTranspPage() {
             <input type="email" className="form-control" id="exampleDropdownFormEmail1" name="email" value={email} onChange={handleEmail} placeholder="email@example.com" />
           </div>
           <div className="mb-3">
-            <label htmlFOR="exampleDropdownFormPassword1" className="form-label">Password</label>
+            <label htmlFor="exampleDropdownFormPassword1" className="form-label">Password</label>
             <input type="password" className="form-control" id="exampleDropdownFormPassword1" name="password" value={password} onChange={handlePassword} placeholder="Password" />
           </div>
           <div className="mb-3">
             <div className="form-check">
               <input type="checkbox" className="form-check-input" id="dropdownCheck" />
-              <label className="form-check-label" HTMLfor="dropdownCheck">
+              <label className="form-check-label" htmlFor="dropdownCheck">
                 Remember me
               </label>
             </div>

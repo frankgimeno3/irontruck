@@ -87,19 +87,19 @@ function SignupPage() {
             <input type="email" className="form-control" id="exampleDropdownFormEmail1" name="email" value={email} onChange={handleEmail} placeholder="email@example.com" />
           </div>
           <div className="mb-3">
-            <label htmlFOR="exampleDropdownFormPassword1" className="form-label">Password</label>
+            <label htmlFor="exampleDropdownFormPassword1" className="form-label">Password</label>
             <input type="password" className="form-control" id="exampleDropdownFormPassword1" name="password" value={password} onChange={handlePassword} placeholder="Password" />
           </div>
           <div className="mb-3">
-            <label htmlFOR="exampleDropdownFormPassword11" className="form-label">Repeat Password</label>
+            <label htmlFor="exampleDropdownFormPassword11" className="form-label">Repeat Password</label>
             <input type="password" className="form-control" id="exampleDropdownFormPassword1" name="password" value={passwordRep} onChange={handlePasswordRep} placeholder="Password" />
           </div>
           <div className="mb-3">
-            <label htmlFOR="exampleDropdownFormEmail1" className="form-label">Phone Number</label>
+            <label htmlFor="exampleDropdownFormEmail1" className="form-label">Phone Number</label>
             <input type="number" className="form-control" id="exampleDropdownFormEmail1" name="phoneNumber" value={phoneNumber} onChange={handlePhoneNumber} placeholder="654432234" />
           </div>
           <div className="mb-3">
-            <label htmlFOR="exampleDropdownFormEmail1" className="form-label">Address</label>
+            <label htmlFor="exampleDropdownFormEmail1" className="form-label">Address</label>
             <input type="text" className="form-control" id="exampleDropdownFormEmail1" name="address" value={address} onChange={handleAddress} placeholder="c/falsa 123, Barcelona" />
           </div>
 
@@ -152,12 +152,12 @@ function SignupPage() {
 
 export default SignupPage;
 
-<div class="card">
-  <h5 class="card-header">Featured</h5>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+<div className="card">
+  <h5 className="card-header">Featured</h5>
+  <div className="card-body">
+    <h5 className="card-title">Special title treatment</h5>
+    <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <Link href="#" className="btn btn-primary">Go somewhere</Link>
+    <Link href="#" className="btn btn-primary">Go somewhere</Link>
   </div>
 </div> 
