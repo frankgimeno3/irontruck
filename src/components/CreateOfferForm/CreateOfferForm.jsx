@@ -16,7 +16,7 @@ function CreateOfferForm() {
     deliveryDireccion: "",
     deliveryProvince: "",
     pallets: 0,
-    creationDate: "2022-12-12"
+    // creationDate: "2022-12-12"
   });
 
   const handleSubmit = (event) => {
