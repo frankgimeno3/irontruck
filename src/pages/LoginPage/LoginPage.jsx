@@ -47,7 +47,7 @@ function LoginPage() {
   return (
     <>
       <div className="LoginPage">
-        <h1>Login</h1>
+        <h1>Login as a Sender</h1>
 
         <form onSubmit={handleLoginSubmit}>
           <label>Email:</label>
@@ -66,8 +66,13 @@ function LoginPage() {
         {errorMessage && <p className="error-message">{errorMessage}</p>}
 
         <p>Don't have an account yet?</p>
-        <Link to={"/signup"}> Sign Up</Link>
+        <Link to={"/signup"} className="btn btn-secondary btn-lg"> Sign Up</Link>
+        
+        <p>Do you want to get hired to send a cargo?</p>
+        <Link to="/transportist/login"><button type="button" className="btn btn-secondary btn-lg">Click here to Log In as a Carrier Instead</button></Link>
       </div>
+      <br></br>
+
       <img src="https://www.rlicorp.com/sites/default/files/banner-images/LossControl_WebsiteHeader_02_72dpi_1.jpg" alt="banner" className="landingjpg" />
 
     </>

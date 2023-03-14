@@ -10,7 +10,6 @@ import { AuthContext } from "../../context/auth.context"
 function CreateOfferForm() {
 
   const { user } = useContext(AuthContext)
-
   const [formValues, setFormValues] = useState({
     pickUpDireccion: "",
     pickUpProvince: "",
@@ -23,13 +22,11 @@ function CreateOfferForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const shipment = {
-      author: user._id,
       pickUpDireccion: formValues.pickUpDireccion,
       pickUpProvince: formValues.pickUpProvince,
       deliveryDireccion: formValues.deliveryDireccion,
       deliveryProvince: formValues.deliveryProvince,
       pallets: formValues.pallets,
-      creationDate: formValues.creationDate
     };
     const shipmentsService = new ShipmentsService("your-token-here");
     shipmentsService
@@ -42,7 +39,7 @@ function CreateOfferForm() {
           deliveryDireccion: "",
           deliveryProvince: "",
           pallets: 0,
-          creationDate: "2022-12-12"
+
         });
       })
       .catch((error) => {

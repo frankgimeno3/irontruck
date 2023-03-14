@@ -47,7 +47,7 @@ function LoginTranspPage() {
   return (
     <>
       <div className="LoginPage">
-        <h1>Login</h1>
+        <h1>Login as a Carrier</h1>
 
         <form onSubmit={handleLoginSubmit}>
           <label>Email:</label>
@@ -66,8 +66,12 @@ function LoginTranspPage() {
         {errorMessage && <p className="error-message">{errorMessage}</p>}
 
         <p>Don't have an account yet?</p>
-        <Link to={"/transportist/signup"}> Sign Up</Link>
+        <Link to={"/transportist/signup"} className="btn btn-secondary btn-lg"> Sign Up</Link>
+
+        <p>Do you want to hire a carrier to send a cargo?</p>
+        <Link to="/login"><button type="button" className="btn btn-secondary btn-lg">Click here to Log In as a Sender Instead</button></Link>
       </div>
+      <br></br>
       <img src="https://www.rlicorp.com/sites/default/files/banner-images/LossControl_WebsiteHeader_02_72dpi_1.jpg" alt="banner" className="landingjpg" />
 
     </>
