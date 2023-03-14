@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import ShipmentsService from "../../services/shipments.service";
 import { Link } from "react-router-dom";
 import "./CargoExchange.css";
+// import { Route } from "react-router-dom";
+// import ShipmentDetails from "../../pages/ShipmentDetails/ShipmentDetails"
 
 function CargoExchange() {
   const [shipments, setShipments] = useState([]);
@@ -21,7 +23,7 @@ function CargoExchange() {
   return (
 
     <div>
-      <h1>Shipments List</h1>
+      <h1>Shipments List (CargoExchange)</h1>
       {shipments.map((shipment) => (
         <div key={shipment._id} className="card">
           <h2 className="card-header">
@@ -49,12 +51,11 @@ function CargoExchange() {
 
             </div>
           </div>
-          <div className="card-footer">
-            <Link to={`/api/${shipment._id}`}>
-              <button className="btn btn-primary">Ver Detalles</button>
-            </Link>
-            <button type="submit" className="btn btn-primary">Save</button>
-          </div>
+          <Link to={`/shipments/${shipment._id}`}>
+            {/* <Route path="/:idShipment" component={ShipmentDetails} /> */}
+            <button className="detailsbutton">See Details</button>
+          </Link>
+
         </div>
       ))}
     </div>

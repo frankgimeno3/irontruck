@@ -22,9 +22,8 @@ function Navbar() {
               <>
                 <Link to="/dashboard" className="nav-link active" aria-current="page" href="/">Dashboard </Link>
                 <Link to="/profile" className="nav-link">Profile </Link>
-                <Link to="/mycargos" className="nav-link">Mis Envios</Link>
-                <Link className="nav-link" onClick={logOutUser}>LogOut</Link>
-
+                <Link to="/mycargos" className="nav-link">Shipments</Link>
+                <Link to="/" className="nav-link" onClick={logOutUser}>LogOut</Link>
               </>
             }
 
