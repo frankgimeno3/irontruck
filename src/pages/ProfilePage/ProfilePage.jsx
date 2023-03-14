@@ -1,29 +1,55 @@
 import React from 'react';
 import ProfileDataTransportist from '../../components/ProfileDataTransportist/ProfileDataTransportist';
 import "./ProfilePage.css";
- import { useContext, useEffect, useState } from "react";
- import { AuthContext } from "../../context/auth.context"
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../../context/auth.context"
+import axios from "axios";
 
- 
+
 function ProfilePage() {
 
-  const {user, authenticateUser} = useContext(AuthContext);
+  const { user, authenticateUser, isLoggedIn, getToken } = useContext(AuthContext);
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentUser, setCurrentUser] = useState(null)
+
+  const getCurrentUser = async (id) => {
+    try {
+      authenticateUser();
+      console.log(id)
+      const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/profile/${id}`, {headers: {Authorization:`Bearer ${getToken()}`}})
+      setCurrentUser(response.data);
+      setIsLoading(false);
+    } catch (err) { 
+      console.log("error del catch del getCurrentUser:", err);
+    }
+  }
 
   useEffect(() => {
-    authenticateUser();
-    }, []);
+    getCurrentUser(user._id);
+
+    // axios
+    //   .get(`${process.env.REACT_APP_SERVER_URL}/profile/${user._id}`)
+    //   .then((response) => {
+
+    //   })
+    //   .catch((err)=> console.log("error en el catch de profilepage", err))
+  }, []);
 
   return (
-    <div>
-      <h1>Profile page</h1>
-      <p className="card-text">{user.name}</p>
-      <p className="card-text">{user.email}</p>
-      <p className="card-text">{user.imageUrl}</p>
-      <section>
-      <h2>Edit your profile data </h2>
-      <ProfileDataTransportist />
-      </section>
-    </div>
+    <>
+      {!isLoading && isLoggedIn &&
+        <div>
+          <h1>Profile page</h1>
+          <p className="card-text">{currentUser.name}</p>
+          <p className="card-text">{currentUser.email}</p>
+          <p className="card-text">{currentUser.imageUrl}</p>
+          <section>
+            <h2>Edit your profile data </h2>
+            <ProfileDataTransportist />
+          </section>
+        </div>}
+    </>
   );
 }
 
