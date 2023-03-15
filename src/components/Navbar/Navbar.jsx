@@ -21,7 +21,7 @@ function Navbar() {
             {isLoggedIn &&
               <>
                 <Link to="/dashboard" className="nav-link active" aria-current="page" href="/">Dashboard </Link>
-                <Link to="/profile/myprofile" className="nav-link">Profile </Link>
+                <Link to="/profile" className="nav-link">Profile </Link>
                 <Link to="/mycargos" className="nav-link">Shipments</Link>
                 <Link to="/" className="nav-link" onClick={logOutUser}>LogOut</Link>
               </>
