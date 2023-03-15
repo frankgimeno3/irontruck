@@ -6,7 +6,7 @@ import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignupTranspPage from "./pages/SignupTranspPage/SignupPageTransp";
 import LoginTranspPage from "./pages/LoginTranspPage/LoginTranspPage";
-
+import ProfilePage from "./pages/ProfilePage/ProfilePage"
 import Navbar from "./components/Navbar/Navbar";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
@@ -21,7 +21,8 @@ function App() {
         {/* <Route path="/" element={<HomePage />} /> */}
         <Route path="/" element={<IsAnon><LandingPage /></IsAnon>} />
         <Route path="/dashboard" element={<IsPrivate> <Dashboard /> </IsPrivate>} />
-        <Route path="/profile/:id" element={<IsPrivate><MyProfilePage /></IsPrivate>} />
+        <Route path="/profile" element={<IsPrivate><MyProfilePage /></IsPrivate>} />
+        <Route path="/profile/:id" element={<IsPrivate><ProfilePage /></IsPrivate>} />
         <Route path="/signup" element={<IsAnon><SignupPage /> </IsAnon>} />
         <Route path="/login" element={<IsAnon> <LoginPage /> </IsAnon>} />
         <Route path="transportist/signup" element={<IsAnon><SignupTranspPage /> </IsAnon>} />
