@@ -14,7 +14,6 @@ function SignupTranspPage() {
     const [professionalType, setProfessionalType] = useState("");
     const [company, setCompany] = useState("");
     const [nif, setNif] = useState("");
-
     const [errorMessage, setErrorMessage] = useState(undefined);
 
     const navigate = useNavigate();

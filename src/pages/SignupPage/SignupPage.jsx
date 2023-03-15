@@ -109,36 +109,40 @@ function SignupPage() {
         <div className="dropdown-divider"></div>
         <p>New around here?</p>
         <Link to={"/login"} className="dropdown-item">  Log In  </Link>
-      </div>
+        <div className="input-group mb-3">
+          <h1>Sign Up</h1>
+
+          <form onSubmit={handleSignupSubmit}>
+            <label>Email:</label>
+            <input type="email" name="email" value={email} onChange={handleEmail} />
+
+            <label>Name:</label>
+            <input type="text" name="name" value={name} onChange={handleName} />
+
+            <label>Password:</label>
+            <input type="password" name="password" value={password} onChange={handlePassword} />
 
 
-      <div className="input-group mb-3">
-        <h1>Sign Up</h1>
+            <label>Repeat Password</label>
+            <input type="password" name="password" value={passwordRep} onChange={handlePasswordRep} />
 
-        <form onSubmit={handleSignupSubmit}>
-          <label>Email:</label>
-          <input type="email" name="email" value={email} onChange={handleEmail} />
+            <label>Phone Number</label>
+            <input type="number" name="phoneNumber" value={phoneNumber} onChange={handlePhoneNumber} />
 
-          <label>Name:</label>
-          <input type="text" name="name" value={name} onChange={handleName} />
-
-          <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={handlePassword} />
-
-
-          <label>Repeat Password</label>
-          <input type="password" name="password" value={passwordRep} onChange={handlePasswordRep} />
-
-          <label>Phone Number</label>
-          <input type="number" name="phoneNumber" value={phoneNumber} onChange={handlePhoneNumber} />
-
-          <label>Address</label>
-          <input type="text" name="address" value={address} onChange={handleAddress} />
+            <label>Address</label>
+            <input type="text" name="address" value={address} onChange={handleAddress} />
 
 
 
-          <button type="submit">Sign Up</button>
-        </form>
+            <button type="submit">Sign Up</button>
+          </form>
+
+
+
+        </div>
+
+
+
 
         {errorMessage && <p className="error-message">{errorMessage}</p>}
 

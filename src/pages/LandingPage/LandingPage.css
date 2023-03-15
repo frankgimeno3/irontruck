@@ -28,7 +28,7 @@
 
 p {
   padding-right: 1vw;
-  width: 40vw;
+  width: 80vw;
   font-size: 1.5rem;
 }
 
@@ -152,4 +152,16 @@ button:hover .button-text {
   align-items: center;
   margin-top: 30px;
   justify-content: space-evenly;
+}
+
+.videoLanding {
+  background-image: url("../../../public/image/pexels-tiger-lily-4481260.jpg");
+  background-size: cover;
+  height: 500px;
+
+}
+
+.homepage-video-container {
+  width: 20%;
+  height: 200px;
 }

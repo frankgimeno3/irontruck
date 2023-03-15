@@ -1,8 +1,6 @@
 .card {
   box-sizing: border-box;
-  width: auto;
-  height: auto;
-  background: rgba(217, 217, 217, 0.58);
+  background-color: white;
   text-align: center;
   cursor: pointer;
   transition: all 0.5s;
@@ -11,28 +9,28 @@
   justify-content: center;
   user-select: none;
   margin: 1vw;
-  flex-direction: column;
-
+  flex-direction: row;
+  height: 75px;
+  width: 80%;
+  padding-right: 20px;
 
 }
 
 .card:hover {
   border: 1px solid black;
   transform: scale(1.01);
-  background: rgba(240, 239, 239, 0.58);
+  background: whitesmoke;
 }
 
-.shipment-info {
-  display: flex;
-  flex-direction: column;
-  /* padding: ;
-  margin: ; */
-  border: 1px solid rgba(255, 255, 255, 0.552);
+.card-body p {
+  font-size: 15px;
+  color: rgb(57, 57, 226)
 }
 
 .shipment-address {
   display: flex;
   flex-direction: row;
+  font-weight: 900;
 }
 
 /* .pickup-address,
@@ -44,7 +42,7 @@
   } */
 
 .detailsbutton {
-
+  margin-right: 50px;
   display: flex;
   justify-content: space-evenly;
 }
@@ -52,5 +50,13 @@
 .detailsbutton:hover {
 
   border-color: white;
+
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
 
 }
