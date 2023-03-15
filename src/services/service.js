@@ -1,14 +1,14 @@
-import axios from "axios";
+// import axios from "axios";
 
-const service = axios.create({
-  baseURL: `${process.env.REACT_APP_SERVER_URL}`,
-});
+// // const service = axios.create({
+// //   baseURL: `${process.env.REACT_APP_SERVER_URL}`,
+// // });
 
-service.interceptors.request.use((config) => {
-  const storedToken = localStorage.getItem("authToken");
-  config.headers = storedToken && { Authorization: `Bearer ${storedToken}` };
+// // service.interceptors.request.use((config) => {
+// //   const storedToken = localStorage.getItem("authToken");
+// //   config.headers = storedToken && { Authorization: `Bearer ${storedToken}` };
 
-  return config;
-});
+// //   return config;
+// // });
 
-export default service;
+// // export default service;

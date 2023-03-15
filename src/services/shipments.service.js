@@ -21,7 +21,3 @@ class ShipmentsService {
     }
 }
 export default ShipmentsService;
-
-
-
-
