@@ -10,12 +10,12 @@ function ShipmentDetails() {
   const [shipment, setShipment] = useState({});
   console.log(id);
 
-
   useEffect(() => {
     const shipmentsService = new ShipmentsService("your-token-here");
     shipmentsService
       .getShipmentById(id)
       .then((response) => {
+        console.log("console.log del response:", response)
         setShipment(response.data);
       })
       .catch((error) => {
@@ -28,11 +28,11 @@ function ShipmentDetails() {
     <div>
       <h1>Shipping Details</h1>
        <p>Shipment id: {shipment._id}</p>
-       <p>Author: {shipment.author}</p>
+       {/* <p>Author: {shipment.author.name}</p> */}
        <p>Creation Date: {shipment.creationDate}</p>
-       <p>Pickup address: {shipment.pickUpAddress}</p>
+       <p>Pickup address: {shipment.pickUpDireccion}</p>
        <p>PickUp Province: {shipment.pickUpProvince}</p>
-       <p>Delivery address: {shipment.deliveryAddress}</p>
+       <p>Delivery address: {shipment.deliveryDireccion}</p>
        <p>Delivery Province: {shipment.deliveryProvince}</p>
        <p>Number of pallets: {shipment.pallets}</p>
 
