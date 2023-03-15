@@ -5,7 +5,6 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/auth.context"
 import axios from "axios";
 
-
 function ProfilePage() {
 
   const { user, authenticateUser, isLoggedIn, getToken } = useContext(AuthContext);
@@ -17,7 +16,7 @@ function ProfilePage() {
     try {
       authenticateUser();
       console.log(id)
-      const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/profile/${id}`, {headers: {Authorization:`Bearer ${getToken()}`}})
+       const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/profile/myprofile/${id}`, {headers: {Authorization:`Bearer ${getToken()}`}})
       setCurrentUser(response.data);
       setIsLoading(false);
     } catch (err) { 
@@ -43,7 +42,7 @@ function ProfilePage() {
           <h1>Profile page</h1>
           <p className="card-text">{currentUser.name}</p>
           <p className="card-text">{currentUser.email}</p>
-          <p className="card-text">{currentUser.imageUrl}</p>
+          <img src={currentUser.image} alt="profile image"/>
           <section>
             <h2>Edit your profile data </h2>
             <ProfileDataForm />

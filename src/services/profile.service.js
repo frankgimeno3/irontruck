@@ -14,14 +14,18 @@ class ProfileService {
     }
 
     getProfile(id) {
+        return this.api.get(`/profile/myprofile/${id}`, this.headerObject);
+    }
+
+    getotherProfile(id) {
         return this.api.get(`/profile/${id}`, this.headerObject);
     }
 
     editProfile(id, profile) {
-        return this.api.put(`/profile/${id}`, profile, this.headerObject);
+        return this.api.put(`/profile/myprofile/${id}`, profile, this.headerObject);
     }
     deleteProfile(id) {
-        return this.api.delete(process.env.REACT_APP_SERVER_URL+`/delete/${id}`, this.headerObject);
+        return this.api.delete(process.env.REACT_APP_SERVER_URL+`/myprofile/delete/${id}`, this.headerObject);
     }
 
 }
