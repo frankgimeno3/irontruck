@@ -5,14 +5,14 @@ import Loading from "../Loading/Loading";
 import Dashboard from "../../pages/Dashboard/Dashboard";
 
 function IsDriver({ children }) {
-  const { isDriver, isLoading } = useContext(AuthContext);
+  const { isTransportist, isLoading } = useContext(AuthContext);
 
   // If the authentication is still loading ⏳
   if (isLoading) {
     return <Loading />;
   }
 
-  if (isDriver) {
+  if (isTransportist) {
     // If the user is logged in, navigate to home page ❌
     return <Navigate to="/" />;
   }
