@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import MyProfilePage from "./pages/MyProfilePage/MyProfilePage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import SignupTranspPage from "./pages/SignupTranspPage/SignupPageTransp";
@@ -21,7 +21,7 @@ function App() {
         {/* <Route path="/" element={<HomePage />} /> */}
         <Route path="/" element={<IsAnon><LandingPage /></IsAnon>} />
         <Route path="/dashboard" element={<IsPrivate> <Dashboard /> </IsPrivate>} />
-        <Route path="/profile/:id" element={<IsPrivate><ProfilePage /></IsPrivate>} />
+        <Route path="/profile/:id" element={<IsPrivate><MyProfilePage /></IsPrivate>} />
         <Route path="/signup" element={<IsAnon><SignupPage /> </IsAnon>} />
         <Route path="/login" element={<IsAnon> <LoginPage /> </IsAnon>} />
         <Route path="transportist/signup" element={<IsAnon><SignupTranspPage /> </IsAnon>} />

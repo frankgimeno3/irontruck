@@ -12,7 +12,7 @@ const errorHandler = (err) => {
  
 
 const uploadImage = (file) => {
-  return api.post("/profile/upload", file)
+  return api.post("/profile/myprofile/upload", file)
     .then(res => res.data)
     .catch(errorHandler);
 };

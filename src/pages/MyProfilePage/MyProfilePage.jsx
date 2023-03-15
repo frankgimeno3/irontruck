@@ -1,11 +1,11 @@
 import React from 'react';
 import ProfileDataForm from '../../components/ProfileDataForm/ProfileDataForm';
-import "./ProfilePage.css";
+import "./MyProfilePage.css";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/auth.context"
 import axios from "axios";
 
-function ProfilePage() {
+function MyProfilePage() {
 
   const { user, authenticateUser, isLoggedIn, getToken } = useContext(AuthContext);
 
@@ -52,4 +52,4 @@ function ProfilePage() {
   );
 }
 
-export default ProfilePage;
+export default MyProfilePage;
