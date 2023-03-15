@@ -12,7 +12,7 @@ function Completed() {
     shipmentsService
       .getShipments()
       .then((response) => {
-        ;
+        setShipments(response.data);
       })
       .catch((error) => {
         console.log(error);

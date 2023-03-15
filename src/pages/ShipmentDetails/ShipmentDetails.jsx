@@ -15,6 +15,7 @@ function ShipmentDetails() {
     const shipmentsService = new ShipmentsService("your-token-here");
     shipmentsService
       .getShipmentById(id)
+
       .then((response) => {
         setShipment(response.data);
       })
@@ -27,25 +28,25 @@ function ShipmentDetails() {
   return (
     <div>
       <h1>Shipping Details</h1>
-       <p>Shipment id: {shipment._id}</p>
-       <p>Author: {shipment.author}</p>
-       <p>Creation Date: {shipment.creationDate}</p>
-       <p>Pickup address: {shipment.pickUpAddress}</p>
-       <p>PickUp Province: {shipment.pickUpProvince}</p>
-       <p>Delivery address: {shipment.deliveryAddress}</p>
-       <p>Delivery Province: {shipment.deliveryProvince}</p>
-       <p>Number of pallets: {shipment.pallets}</p>
+      <p>Shipment id: {shipment._id}</p>
+      <p>Author: {shipment.author}</p>
+      <p>Creation Date: {shipment.creationDate}</p>
+      <p>Pickup address: {shipment.pickUpAddress}</p>
+      <p>PickUp Province: {shipment.pickUpProvince}</p>
+      <p>Delivery address: {shipment.deliveryAddress}</p>
+      <p>Delivery Province: {shipment.deliveryProvince}</p>
+      <p>Number of pallets: {shipment.pallets}</p>
 
       <button className="button" >Save Shipment</button>
       <button className="button" >Start Negotiating</button>
-  
-      <hr/>
+
+      <hr />
       <h2>Offers Received</h2>
       <OffersReceivedComponent />
-      <hr/>
+      <hr />
       <Chat />
-      </div>
-      
+    </div>
+
   );
-  }
+}
 export default ShipmentDetails;

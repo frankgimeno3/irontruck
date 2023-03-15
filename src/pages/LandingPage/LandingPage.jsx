@@ -2,16 +2,31 @@ import React from 'react';
 import '../../App.css';
 import './LandingPage.css';
 import { Link } from "react-router-dom";
-
+import videoBg from "../../assets/production ID_5200378.mp4";
 
 function LandingPage() {
     return (
         <>
-            <img src="https://www.rlicorp.com/sites/default/files/banner-images/LossControl_WebsiteHeader_02_72dpi_1.jpg" alt="banner" className="landingjpg" />
-            <div className="botones">
-                <Link to="transportist/login"><button type="button" className="btn btn-primary btn-lg">Log In as a Carrier</button></Link>
-                <Link to="/login"><button type="button" className="btn btn-secondary btn-lg">Log In as a Sender</button></Link>
+
+
+
+
+            <div className="homepage-video-overlay">
+
+                {/* <div className="homepage-video-container">
+                    <video autoPlay loop muted>
+                        <source src={videoBg} type="video/mp4" />
+                    </video>
+                </div> */}
+
+
+                <div className="botones">
+                    <Link to="transportist/login"><button type="button" className="btn btn-primary btn-lg">Log In as a Carrier</button></Link>
+                    <Link to="/login"><button type="button" className="btn btn-secondary btn-lg">Log In as a Sender</button></Link>
+                </div>
+
             </div>
+
 
 
             <div className="LandingStructure">
@@ -46,8 +61,34 @@ function LandingPage() {
                 <main>
                     <section>
                         <h2>About Irontruck</h2>
-                        <p>We are a company that connects Drivers (truck drivers) and Senders (people who need to send pallets). We take care of facilitating contact between both parties and guaranteeing a safe and efficient service for sending pallets nationally and internationally.</p>
+                        <p>At Irontruck, we firmly believe that the logistics industry has a responsibility to minimize its environmental impact and promote sustainability. We understand that our operations can have significant ecological consequences, and we are committed to reducing our carbon footprint through optimized routes and sustainable practices. Our mission is not only to provide exceptional shipping services but also to do so in a way that contributes towards a cleaner and more sustainable future for all..</p>
                     </section>
+
+                    <h1>Send pallets or merchandise efficiently, make a request and receive an offer!</h1>
+                    <div className='headerStructure'>
+                        <div className="CallButtons">
+                            <div>
+                                <p>Do you want to send a pallet? Register as a Sender, post your request, receive offers from drivers and choose the best one.</p>
+                                <Link to="/signup"><button className="learn-more">
+                                    <span className="circle" aria-hidden="true">
+                                        <span className="icon arrow"></span>
+                                    </span>
+                                    <span className="button-text">Sign Up</span>
+                                </button>
+                                </Link>
+                            </div>
+                            <div>
+                                <p>Do you have a truck? Do you need to find new customers? Are you sending a cargo and have an empty space and want to sell it? Create an account as a a driver, look for requests and get a profit from the empty spaces in your truck</p>
+                                <Link to="transportist/signup"><button className="learn-more">
+                                    <span className="circle" aria-hidden="true">
+                                        <span className="icon arrow"></span>
+                                    </span>
+                                    <span className="button-text">Sign Up</span>
+                                </button>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
 
                     <section>
                         <h2>How to Send a Pallet?</h2>
@@ -89,6 +130,8 @@ function LandingPage() {
                     © 2023 Todos los derechos reservados.
                 </div>
             </footer>
+
+
         </>
     );
 }
