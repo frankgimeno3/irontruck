@@ -35,7 +35,7 @@ function CreatedShipments() {
         .filter((shipment) => shipment.state === "inNegotiation")
         .map((shipment) => (
 
-          shipment.state == "inNegotiation" &&
+          shipment.state === "inNegotiation" &&
           <div key={shipment._id} className="card">
             <div className="shipment-info">
               {/* <p>{shipment.author}</p> */}

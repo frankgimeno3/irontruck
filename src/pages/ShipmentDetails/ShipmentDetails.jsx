@@ -8,12 +8,12 @@ import SenderChatComponent from "../../components/Chat/SenderChatComponent"
 import DriverChatComponent from "../../components/Chat/DriverChatComponent"
 import OffersReceivedComponent from "../../components/OffersReceivedComponent/OffersReceivedComponent"
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/auth.context"
+
 
 
 
 function ShipmentDetails() {
-  const { user, isLoggedIn, isLoading } = useContext(AuthContext);
+  const { user, isLoggedIn } = useContext(AuthContext);
   const { id } = useParams();
   const [shipment, setShipment] = useState({});
   const [isLoading, setIsLoading] = useState(false)
@@ -75,24 +75,22 @@ function ShipmentDetails() {
         </Link>
       }
 
-      <hr />
-      <h2>Offers Received</h2>
-      <OffersReceivedComponent />
-      <hr />
+
       {/* {shipment.transportists.includes(user._id) ? ( */}
 
       <button className="btn btn-primary" onClick={startNegotiation}>
         Negotiate Shipment
       </button>
       {/* ) : null} */}
-      {!isLoading && !isTransportist && (
+
+      {/* {!isLoading && !isTransportist && (
         < SenderChatComponent />
       )}
 
       {!isLoading && isTransportist && (
         < DriverChatComponent />
-      )}
-      <Chat />
+      )}  */}
+      {/* <Chat /> */}
     </div>
 
   );
