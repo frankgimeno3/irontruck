@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ShipmentsService from "../../services/shipments.service";
 import { useParams } from "react-router-dom";
 import "../../pages/MyCargos/MyCargos.css";
-import Chat from "../../components/Chat/Chat"
+import ChatComponent from "../../components/Chat/ChatComponent"
 import OffersReceivedComponent from "../../components/OffersReceivedComponent/OffersReceivedComponent"
 
 function ShipmentDetails() {
@@ -43,7 +43,7 @@ function ShipmentDetails() {
       <h2>Offers Received</h2>
       <OffersReceivedComponent />
       <hr/>
-      <Chat />
+      < ChatComponent />
       </div>
       
   );

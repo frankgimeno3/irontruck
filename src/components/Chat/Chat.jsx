@@ -1,15 +1,27 @@
+import React from 'react';
+import TalkJSChat from './TalkJSChat';
 
+const ChatPage = () => {
+  const currentUser = {
+    id: '1',
+    name: 'John Doe',
+    email: 'john@example.com',
+    photoUrl: 'https://example.com/john.jpg',
+    role: 'user'
+  };
 
-function Chat() {
+  const otherUser = {
+    id: '2',
+    name: 'Jane Doe',
+    email: 'jane@example.com',
+    photoUrl: 'https://example.com/jane.jpg',
+    role: 'user'
+  };
+
   return (
-    <form >
-      <div className="mb-3">
-        <label htmlFor="creationDateInput" className="form-label">THIS WILL BE A CHAT</label>
-        <input placeholder="Here you will write"/>
-      <button>Send</button>
-      </div>
-    </form>
-  );
-}
+     <TalkJSChat currentUser={currentUser} otherUser={otherUser} />
+  )
 
-export default Chat;
+};
+
+export default ChatPage;
