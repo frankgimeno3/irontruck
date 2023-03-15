@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import ShipmentsService from "../../services/shipments.service";
 import { useParams } from "react-router-dom";
 import "../../pages/MyCargos/MyCargos.css";
 import SenderChatComponent from "../../components/Chat/SenderChatComponent"
 import DriverChatComponent from "../../components/Chat/DriverChatComponent"
 import OffersReceivedComponent from "../../components/OffersReceivedComponent/OffersReceivedComponent"
-import { AuthContext } from "../../context/auth.context";
-import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/auth.context"
+
+
 
 function ShipmentDetails() {
+
   const { id } = useParams();
   const [shipment, setShipment] = useState({});
   const [isLoading, setIsLoading] = useState(false)
@@ -16,7 +19,7 @@ function ShipmentDetails() {
   const { user, authenticateUser, isTransportist, getToken } = useContext(AuthContext);
 
   useEffect(() => {
-    const shipmentsService = new ShipmentsService("your-token-here");
+    const shipmentsService = new ShipmentsService(getToken());
     shipmentsService
       .getShipmentById(id)
 
@@ -44,8 +47,13 @@ function ShipmentDetails() {
 
       <button className="button" >Save Shipment</button>
       <button className="button" >Start Negotiating</button>
-
-      <hr />
+      {isLoading &&
+      <Link to={`/profile/${shipment.author._id}`}>
+            {/* <Route path="/:idShipment" component={ShipmentDetails} /> */}
+            <button className="detailsbutton">See Details</button>
+          </Link>
+      }
+      <hr/>
       <h2>Offers Received</h2>
       <OffersReceivedComponent />
       <hr/>

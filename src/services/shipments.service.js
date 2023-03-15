@@ -7,8 +7,8 @@ class ShipmentsService {
     getShipments() {
         return axios.get(process.env.REACT_APP_SERVER_URL + "/api/shipment", this.headerObject);
     }
-    getShipmentById(shipmentId) {
-        return axios.get(process.env.REACT_APP_SERVER_URL + `/api/shipment/${shipmentId}`, this.headerObject);
+    getShipmentById(idShipment) {
+        return axios.get(process.env.REACT_APP_SERVER_URL + `/api/shipment/${idShipment}`, this.headerObject);
     }
     addShipments(shipment) {
         return axios.post(process.env.REACT_APP_SERVER_URL + "/api/shipment/new", shipment, this.headerObject);
