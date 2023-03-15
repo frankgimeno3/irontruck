@@ -18,7 +18,7 @@ function CreatedShipments() {
     //   profileService
     profileService.getProfile(user._id)
       .then((response) => {
-        console.log(response.data.createdShipments)
+
         setShipments(response.data.createdShipments)
       })
       .catch((err) => { console.log(err) });
