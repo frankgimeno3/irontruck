@@ -37,7 +37,6 @@ function AuthProviderWrapper(props) {
       setIsLoggedIn(false);
       setIsLoading(false);
       setUser(null);
-      setIsTransportist(false);
     }
   };
 
@@ -55,7 +54,7 @@ function AuthProviderWrapper(props) {
     return localStorage.getItem("authToken");
   }
   useEffect(() => {
-    authenticateUser();
+      authenticateUser();
   }, []);
 
   return (
@@ -67,7 +66,8 @@ function AuthProviderWrapper(props) {
         storeToken,
         authenticateUser,
         logOutUser,
-        getToken
+        getToken,
+        isTransportist
       }}
     >
       {props.children}

@@ -7,7 +7,6 @@ import { AuthContext } from "../../context/auth.context";
 function Dashboard() {
   const { isTransportist, isLoading } = useContext(AuthContext);
 
-
   return (
     <>
       <div className="HomeStructure">

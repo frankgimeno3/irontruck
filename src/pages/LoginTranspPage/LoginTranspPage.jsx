@@ -2,7 +2,7 @@ import "./LoginTranspPage.css";
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
-import authService from "../../services/auth.service";
+import transpService from "../../services/transp.service";
 
 function LoginTranspPage() {
   const [email, setEmail] = useState("");
@@ -27,7 +27,7 @@ function LoginTranspPage() {
     */
 
     // Or using a service
-    authService
+    transpService
       .login(requestBody)
       .then((response) => {
         // If the POST request is successful store the authentication token,
@@ -72,9 +72,7 @@ function LoginTranspPage() {
           <p>New around here?</p>
           <Link to={""} className="dropdown-item">  Sign up  </Link>
         </div>
-
       </div>
-
     </>
   );
 }

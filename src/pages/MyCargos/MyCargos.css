@@ -1,3 +1,6 @@
+.card{
+  height: 30vh;
+}
 .my-cargos {
     display: flex;
     flex-direction: column;

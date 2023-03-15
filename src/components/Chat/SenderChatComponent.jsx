@@ -2,7 +2,7 @@ import Talk from 'talkjs';
 import { useEffect, useState, useRef } from 'react';
 import "./ChatComponent.css"
 
-function ChatComponent() {
+function SenderChatComponent() {
   const chatboxEl = useRef();
 
   // wait for TalkJS to load
@@ -51,4 +51,4 @@ function ChatComponent() {
   return <div ref={chatboxEl} className="chatbox" />;
 }
 
-export default ChatComponent;
+export default SenderChatComponent;

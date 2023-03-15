@@ -10,7 +10,7 @@ const TalkJSChat = ({ currentUser, otherUser }) => {
       const other = new Talk.User(otherUser);
 
       const session = new Talk.Session({
-        appId: 'TU_APP_ID',
+        appId: 'tdU8Q2dM',
         me,
       });
 

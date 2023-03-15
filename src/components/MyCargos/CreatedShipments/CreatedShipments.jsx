@@ -45,6 +45,10 @@ function CreatedShipments() {
             <div className="pickup-address">
               <p>Pick up direction: {shipment.pickUpDireccion}</p>
               <p>Pick up province: {shipment.pickUpProvince}</p>
+              <Link to={`/shipments/${shipment._id}`}>
+            {/* <Route path="/:idShipment" component={ShipmentDetails} /> */}
+            <button className="detailsbutton">See Details</button>
+          </Link>
             </div>
             <div className="delivery-address">
               <p>Delivery direction: {shipment.deliveryDireccion}</p>
