@@ -1,30 +1,29 @@
 import axios from "axios";
 
-
 class ProfileService {
     constructor() {
-      this.api = axios.create({
-        baseURL: process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
-      });
-  
-      // Automatically set JWT token in the headers for every request
-      this.api.interceptors.request.use((config) => {
-        // Retrieve the JWT token from the local storage
-        const storedToken = localStorage.getItem("authToken");
-  
-        if (storedToken) {
-          config.headers = { Authorization: `Bearer ${storedToken}` };
-        }
-  
-        return config;
-      });
-    }
-    get(id) {
-        return axios.get(process.env.REACT_APP_SERVER_URL+"/profile/" + id, this.headerObject);
-    }
-    put(id, profile) {
-        return axios.put(process.env.REACT_APP_SERVER_URL +`/profile/${id}`, profile, this.headerObject);
+        this.api = axios.create({
+            baseURL: process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
+        });
 
+        // Create header object with JWT token
+        const storedToken = localStorage.getItem("authToken");
+        this.headerObject = storedToken
+            ? { headers: { Authorization: `Bearer ${storedToken}` } }
+            : {};
     }
+
+    getProfile(id) {
+        return this.api.get(`/profile/${id}`, this.headerObject);
+    }
+
+    editProfile(id, profile) {
+        return this.api.put(`/profile/${id}`, profile, this.headerObject);
+    }
+    deleteProfile(id) {
+        return this.api.delete(process.env.REACT_APP_SERVER_URL+`/delete/${id}`, this.headerObject);
+    }
+
 }
+
 export default ProfileService;

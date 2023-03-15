@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfileDataTransportist from '../../components/ProfileDataTransportist/ProfileDataTransportist';
+import ProfileDataForm from '../../components/ProfileDataForm/ProfileDataForm';
 import "./ProfilePage.css";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/auth.context"
@@ -46,7 +46,7 @@ function ProfilePage() {
           <p className="card-text">{currentUser.imageUrl}</p>
           <section>
             <h2>Edit your profile data </h2>
-            <ProfileDataTransportist />
+            <ProfileDataForm />
           </section>
         </div>}
     </>
