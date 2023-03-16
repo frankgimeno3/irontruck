@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { useState, useEffect, useContext } from "react";
 import ShipmentsService from "../../services/shipments.service.js";
 import ProfileService from "../../services/profile.service.js";
@@ -9,18 +8,13 @@ import SenderChatComponent from "../../components/Chat/SenderChatComponent"
 import DriverChatComponent from "../../components/Chat/DriverChatComponent"
 import { Link, useNavigate } from "react-router-dom";
 import TransportistCard from "../../components/Transportists/TransportistsCard"
-
-
 function ShipmentDetails() {
   const { id } = useParams();
   const [shipment, setShipment] = useState({});
   const [isLoading, setIsLoading] = useState(false)
   const { authenticateUser, isTransportist, getToken, user, isLoggedIn } = useContext(AuthContext);
-
-  console.log(id);
   const profileService = new ProfileService();
   const shipmentsService = new ShipmentsService();
-
   useEffect(() => {
     shipmentsService
       .getShipmentById(id)
@@ -33,7 +27,6 @@ function ShipmentDetails() {
         console.log(error);
       });
   }, [id]);
-
   const startNegotiation = () => {
     shipmentsService
       .editShipments(shipment._id, { state: "inNegotiation", $push: { transportist: user._id } })
@@ -54,7 +47,16 @@ function ShipmentDetails() {
         console.error("Failed to update shipment state", error);
       });
   }
-
+  const deleteShipment = () => {
+    shipmentsService
+      .deleteShipments(shipment._id)
+      .then((response) => {
+          console.log(response)
+      })
+      .catch((error) => {
+        console.error("Failed to delete shipment ", error);
+      });
+  }
   return (
     <div>
       <h1>Shipping Details</h1>
@@ -67,8 +69,6 @@ function ShipmentDetails() {
       <p>Delivery Province: {shipment.deliveryProvince}</p>
       <p>Number of pallets: {shipment.pallets}</p>
       <p>State: {shipment.state}</p>
-
-
       {isLoading &&
         <Link to={`/profile/${shipment.author._id}`}>
           <button className="detailsbutton">See Sender Details</button>
@@ -79,15 +79,17 @@ function ShipmentDetails() {
           Negotiate Shipment
         </button>
       )}
-
       <TransportistCard shipment={shipment._id} />
-
       {!isTransportist && (
         < SenderChatComponent />
       )}
-
       {isTransportist && (
         < DriverChatComponent />
+      )}
+      {!isTransportist && (
+        <button className="btn btn-danger" onClick={deleteShipment}>
+          Delete Shipment
+        </button>
       )}
     </div>
 
