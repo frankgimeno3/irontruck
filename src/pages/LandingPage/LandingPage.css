@@ -145,14 +145,6 @@ button:hover .button-text {
 
 }
 
-.botones {
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-top: 30px;
-  justify-content: space-evenly;
-}
 
 .videoLanding {
   background-image: url("../../../public/image/pexels-tiger-lily-4481260.jpg");
@@ -164,4 +156,50 @@ button:hover .button-text {
 .homepage-video-container {
   width: 20%;
   height: 200px;
+}
+
+
+body {
+  margin: 0;
+}
+
+.sect {
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#sect1,
+#sect3 {
+  background-color: #3333337d;
+  color: #fff;
+}
+
+#sect1 {
+  position: relative;
+  overflow: hidden;
+}
+
+video {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 720px;
+  width: 100%;
+  z-index: -1;
+  position: cover;
+}
+
+h1 {
+  margin: 0;
+  padding-top: 3rem;
+  padding-left: 2rem;
+}
+
+h2 {
+  margin: 0;
+  padding-top: 3rem;
+  padding-left: 2rem;
 }

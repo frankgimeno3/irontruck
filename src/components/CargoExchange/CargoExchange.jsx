@@ -63,24 +63,9 @@ function CargoExchange() {
 
 
 
-              {/* <h5 className="card title">Number of Pallets</h5>
-            <p> {shipment.pallets}</p> */}
-              {/* other shipment data */}
-            </div>
-            {/* <div className="shipment-address">
-
-            <div className="pickup-address">
-              <h5> Datos de Recogida</h5>
-              <p> {shipment.pickUpDireccion}, {shipment.pickUpProvince}</p>
 
             </div>
 
-            <div className="delivery-address">
-              <h5> Datos de Entrega</h5>
-              <p>{shipment.deliveryDireccion}, {shipment.deliveryProvince}</p>
-
-            </div>
-          </div> */}
 
             <Link to={`/shipments/${shipment._id}`}>
               {/* <Route path="/:idShipment" component={ShipmentDetails} /> */}

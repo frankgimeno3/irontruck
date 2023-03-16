@@ -8,8 +8,7 @@ import SenderChatComponent from "../../components/Chat/SenderChatComponent"
 import DriverChatComponent from "../../components/Chat/DriverChatComponent"
 import OffersReceivedComponent from "../../components/OffersReceivedComponent/OffersReceivedComponent"
 import { Link, useNavigate } from "react-router-dom";
-
-
+import TransportistCard from "../../components/Transportists/TransportistsCard"
 
 
 function ShipmentDetails() {
@@ -52,9 +51,31 @@ function ShipmentDetails() {
       });
   }
 
+
+  const transportistShipment = () => {
+
+    shipmentsService
+      .getShipmentsById({ state: "inNegotiation", $push: { transportist: user.id } })
+      .then((response) => {
+        setShipment(response.data)
+        profileService.editProfile(user.id, { $push: { currentShipments: response.data._id } })
+          .then((response) => {
+            console.log(response.data)
+          })
+          .catch((error) => {
+            console.error("Failed to update Transportist state", error);
+          })
+      })
+      .catch((error) => {
+        console.error("Failed to update shipment state", error);
+      });
+
+
+  }
+
   const acceptTransportist = () => {
     shipmentsService
-      .editShipments(shipment._id, { state: "Completed", $push: { transportist: user._id } })
+      .getShipmentById(shipment._id, { state: "Completed", $push: { transportist: user._id } })
       .then((response) => {
         setShipment(response.data)
         profileService.editProfile(user._id, { $push: { completedShipments: response.data._id }, $pull: { currentShipments: response.data._id } })
@@ -100,6 +121,7 @@ function ShipmentDetails() {
         Negotiate Shipment
       </button>
 
+      <TransportistCard shipment={shipment._id} />
 
       {/* <button className="btn btn-success" onClick={acceptTransportist}>
         Accept Transaccion

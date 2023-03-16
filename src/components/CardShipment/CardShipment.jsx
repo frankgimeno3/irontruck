@@ -38,10 +38,6 @@ function CardShipment() {
 
                                 <div className="info">
 
-
-
-
-
                                     <div className="contact">
                                         <h6> Contact Information </h6>
 
