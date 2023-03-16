@@ -12,8 +12,7 @@
   flex-direction: row;
   height: 75px;
   width: 80%;
-  padding-right: 20px;
-
+  ;
 }
 
 .card:hover {
@@ -27,11 +26,7 @@
   color: rgb(57, 57, 226)
 }
 
-.shipment-address {
-  display: flex;
-  flex-direction: row;
-  font-weight: 900;
-}
+
 
 /* .pickup-address,
   .delivery-address {

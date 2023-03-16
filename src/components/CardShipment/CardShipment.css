@@ -1,0 +1,41 @@
+.card p {
+    font-size: 10px;
+    font-weight: bolder;
+
+
+}
+
+
+.card-body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.fondo-Cards {
+    background-color: rgb(124, 124, 124);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+
+}
+
+.contact {
+
+    padding: 0px
+}
+
+.info {
+
+    display: flex;
+    flex-direction: row;
+}
+
+.Card-text {
+    font-size: 10px;
+}
+
+.card-title {
+    margin-top: 10px;
+}

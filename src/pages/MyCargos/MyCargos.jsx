@@ -19,11 +19,12 @@ const MyCargos = () => {
   return (
     <div className="my-cargos">
       <section className="buttons">
-      {!isLoading && !isTransportist && (
-        <>
-        <button className="button" onClick={() => handleClick(<CreatedShipments />)}>Created</button>
-        </>
-      )} 
+        {!isLoading && !isTransportist && (
+          <>
+            <button className="button" onClick={() => handleClick(<CreatedShipments />)}>Created</button>
+          </>
+        )}
+
         <button className="button" onClick={() => handleClick(<Negotiating />)}>Negotiating</button>
         <button className="button green" onClick={() => handleClick(<Completed />)}>Completed</button>
         <button className="button red" onClick={() => handleClick(<Rejected />)}>Rejected</button>

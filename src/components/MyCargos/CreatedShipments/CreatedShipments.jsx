@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import "../../CargoExchange/CargoExchange.css";
 import '../../../pages/MyCargos/MyCargos.css';
 import ProfileService from "../../../services/profile.service";
-import { AuthContext } from "../../../context/auth.context"
-
+import { AuthContext } from "../../../context/auth.context";
+import CardShipment from "../../CardShipment/CardShipment"
 
 function CreatedShipments() {
   const { user } = useContext(AuthContext)
@@ -26,43 +26,20 @@ function CreatedShipments() {
 
 
   return (
-    <div>
-      <h2>Created Shipments</h2>
-
+    <div className="bg-dark-subtle">
+      <h2 className="text-body-emphasis">Created Shipments</h2>
 
 
       {shipments.map((shipment) => (
+        <CardShipment />
 
-        <div key={shipment._id} className="card">
-          <div className="shipment-info">
-            {/* <p>{shipment.author}</p> */}
-            {/* <p>{shipment.author.email}</p> */}
-            <p>Creation Date: {shipment.creationDate}</p>
-            <p>Shipment pallets: {shipment.pallets}</p>
-            {/* other shipment data */}
-          </div>
-          <div className="shipment-address">
-            <div className="pickup-address">
-              <p>Pick up direction: {shipment.pickUpDireccion}</p>
-              <p>Pick up province: {shipment.pickUpProvince}</p>
-              <Link to={`/shipments/${shipment._id}`}>
-            {/* <Route path="/:idShipment" component={ShipmentDetails} /> */}
-            <button className="detailsbutton">See Details</button>
-          </Link>
-            </div>
-            <div className="delivery-address">
-              <p>Delivery direction: {shipment.deliveryDireccion}</p>
-              <p>Delivery province: {shipment.deliveryProvince}</p>
-            </div>
-          </div>
-          <Link to={`/shipments/${shipment._id}`}>
-            {/* <Route path="/:idShipment" component={ShipmentDetails} /> */}
-            <button className="detailsbutton">See Details</button>
-          </Link>
-
-        </div>
-      ))}    </div>
+      ))}
+    </div>
   );
 };
 
 export default CreatedShipments;
+
+
+
+
