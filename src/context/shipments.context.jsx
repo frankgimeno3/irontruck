@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import axios from 'axios';
 import { createContext, useContext, useEffect, useState } from 'react';
 import { AuthContext } from './auth.context';
@@ -8,27 +10,25 @@ const shipmentsContext = createContext();    //para "consumir" los datos del con
 function ShipmentsProviderWrapper(props) {    //para "proveer" datos
 
     const [shipments, setShipments] = useState([]);
-    const {getToken} = useContext(AuthContext);
+    const { getToken } = useContext(AuthContext);
 
     const ShipmentsService = new ShipmentsService(getToken());
 
     const getShipments = () => {
-        // axios.get(process.env.REACT_APP_API_URL+"/shipments", {headers: {authorization: `Bearer ${getToken()}`}})
         ShipmentsService.getShipments()
-        .then(results => {
-            console.log("shipments ctx: ", results.data);
-            setShipments(results.data);
-        })
-        .catch(err => console.log(err))
+            .then(results => {
+                setShipments(results.data);
+            })
+            .catch(err => console.log(err))
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getShipments();
     }, []);
 
-    return(<shipmentsContext.Provider value={{shipments, getShipments}}>
-            {props.children}
+    return (<shipmentsContext.Provider value={{ shipments, getShipments }}>
+        {props.children}
     </shipmentsContext.Provider>);
 }
 
-export {shipmentsContext, ShipmentsProviderWrapper};
+export { shipmentsContext, ShipmentsProviderWrapper };
