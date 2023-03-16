@@ -10,8 +10,6 @@ import OffersReceivedComponent from "../../components/OffersReceivedComponent/Of
 import { Link, useNavigate } from "react-router-dom";
 
 
-
-
 function ShipmentDetails() {
   const { id } = useParams();
   const [shipment, setShipment] = useState({});

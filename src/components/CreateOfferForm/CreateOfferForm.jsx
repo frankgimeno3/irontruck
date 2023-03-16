@@ -1,14 +1,11 @@
-
 import ShipmentsService from "../../services/shipments.service";
-import './CreateOfferForm.css';
+import "./CreateOfferForm.css";
 import React, { useState, useContext } from "react";
-import { AuthContext } from "../../context/auth.context"
-import { Navigate } from "react-router-dom";
-
+import { AuthContext } from "../../context/auth.context";
+import { useNavigate } from "react-router-dom";
 
 function CreateOfferForm() {
-
-  const { user } = useContext(AuthContext)
+  const { user, getToken } = useContext(AuthContext);
   const [formValues, setFormValues] = useState({
     pickUpDireccion: "",
     pickUpProvince: "",
@@ -18,8 +15,12 @@ function CreateOfferForm() {
     // creationDate: "2022-12-12"
   });
 
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log("entro en el handle submit")
+
     const shipment = {
       author: user._id,
       pickUpDireccion: formValues.pickUpDireccion,
@@ -28,10 +29,15 @@ function CreateOfferForm() {
       deliveryProvince: formValues.deliveryProvince,
       pallets: formValues.pallets,
     };
-    const shipmentsService = new ShipmentsService("your-token-here");
+    
+    const shipmentsService = new ShipmentsService(getToken());
+    console.log(shipmentsService);
+
     shipmentsService
       .addShipments(shipment)
       .then((response) => {
+        console.log(response);
+        console.log("CreateOfferForm después del add shipment");
         setFormValues({
           pickUpDireccion: "",
           pickUpProvince: "",
@@ -39,9 +45,10 @@ function CreateOfferForm() {
           deliveryProvince: "",
           pallets: 0,
         });
-      <Navigate to="/dashboard" />})
+        navigate("/profile");
+      })
       .catch((error) => {
-        console.log(error);
+        console.log("klfsdnjlsdfnjjoerror", error);
       });
   };
 
@@ -49,20 +56,27 @@ function CreateOfferForm() {
     const { name, value } = event.target;
     setFormValues((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
   return (
-
     <>
       <div className="dropdown">
-        <button type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
+        <button
+          type="button"
+          className="btn btn-primary dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+          data-bs-auto-close="outside"
+        >
           Create Offer
         </button>
         <form className="dropdown-menu p-4" onSubmit={handleSubmit}>
           <div className="mb-3">
-            <label htmlFor="pickUpDireccionInput" className="form-label">Pick up direction</label>
+            <label htmlFor="pickUpDireccionInput" className="form-label">
+              Pick up direction
+            </label>
             <input
               type="text"
               className="form-control"
@@ -75,7 +89,9 @@ function CreateOfferForm() {
           </div>
 
           <div className="mb-3">
-            <label htmlFor="pickUpProvinceInput" className="form-label">Pick up province</label>
+            <label htmlFor="pickUpProvinceInput" className="form-label">
+              Pick up province
+            </label>
             <input
               type="text"
               className="form-control"
@@ -88,7 +104,9 @@ function CreateOfferForm() {
           </div>
 
           <div className="mb-3">
-            <label htmlFor="deliveryDireccionInput" className="form-label">Delivery direction</label>
+            <label htmlFor="deliveryDireccionInput" className="form-label">
+              Delivery direction
+            </label>
             <input
               type="text"
               className="form-control"
@@ -101,7 +119,9 @@ function CreateOfferForm() {
           </div>
 
           <div className="mb-3">
-            <label htmlFor="deliveryProvinceInput" className="form-label">Delivery province</label>
+            <label htmlFor="deliveryProvinceInput" className="form-label">
+              Delivery province
+            </label>
             <input
               type="text"
               className="form-control"
@@ -114,7 +134,9 @@ function CreateOfferForm() {
           </div>
 
           <div className="mb-3">
-            <label htmlFor="palletsInput" className="form-label">Number of pallets</label>
+            <label htmlFor="palletsInput" className="form-label">
+              Number of pallets
+            </label>
             <input
               type="number"
               className="form-control"
@@ -126,7 +148,9 @@ function CreateOfferForm() {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="creationDateInput" className="form-label">Creation Date</label>
+            <label htmlFor="creationDateInput" className="form-label">
+              Creation Date
+            </label>
             <input
               type="date"
               className="form-control"
@@ -138,16 +162,13 @@ function CreateOfferForm() {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
         </form>
       </div>
-
-
     </>
-
   );
 }
 
 export default CreateOfferForm;
-
-

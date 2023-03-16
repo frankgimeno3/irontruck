@@ -32,7 +32,6 @@ function DriverChatComponent() {
       .getShipmentById(id)
 
       .then((response) => {
-        console.log(response.data.author.image)
         setShipmentAuthor(response.data.author.name);
         setShipmentAuthorID(response.data.author._id);
         setShipmentAuthorEmail(response.data.author.email);
@@ -60,7 +59,7 @@ function DriverChatComponent() {
         name: senderUser,
         email: senderUserEmail,
         photoUrl: 'https://www.shutterstock.com/image-photo/happy-elegant-mature-senior-aged-260nw-2067036776.jpg',
-        welcomeMessage: `Hello, ${senderUser}! In order to start our negotiation, please give me a pricerange for my offer. Please don't forget to add all your requiremets, and give me an approximate price for what I am asking. In the end, I will accept or decline your offer to close the deal.`,
+        welcomeMessage: `Hello! In order to start our negotiation, please give me a pricerange for my offer. Please don't forget to add all your requiremets, and give me an approximate price for what I am asking. In the end, I will accept or decline your offer to close the deal.`,
         role: 'default',
       });
 
