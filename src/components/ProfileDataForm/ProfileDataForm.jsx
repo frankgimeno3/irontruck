@@ -18,7 +18,7 @@ function EditProfileForm() {
       repeatPassword: ""
     });
   const [image, setImage] = useState("");
-  const [isLoading, setIsLoading] = useState(false); // nuevo estado
+  const [isLoading, setIsLoading] = useState(true); // nuevo estado
 
   const handleFileUpload = (e) => {
     const uploadData = new FormData();
@@ -60,7 +60,8 @@ function EditProfileForm() {
           repeatPassword: ""
         });
         setImage("");
-        setIsLoading(!isLoading)
+        setIsLoading(false)
+        
       })
       .catch((error) => {
         console.log(error);

@@ -25,7 +25,7 @@ class ProfileService {
         return this.api.put(`/profile/myprofile/${id}`, profile, this.headerObject);
     }
     deleteProfile(id) {
-        return this.api.delete(process.env.REACT_APP_SERVER_URL+`profile/myprofile/${id}`, this.headerObject);
+        return this.api.delete(`/profile/myprofile/${id}`, this.headerObject);
     }
 
 }
