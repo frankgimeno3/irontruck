@@ -30,10 +30,10 @@ function LandingPage() {
 
             <div className="LandingStructure">
                 <header >
-                    <h1>Send pallets or merchandise efficiently, make a request and receive an offer!</h1>
+                    <h2>Send pallets or merchandise efficiently, make a request and receive an offer!</h2>
                     <div className='headerStructure'>
                         <div className="CallButtons">
-                            <div>
+                            <div className='smallboxes'>
                                 <p>Do you want to send a pallet? Register as a Sender, post your request, receive offers from drivers and choose the best one.</p>
                                 <Link to="/signup"><button className="learn-more">
                                     <span className="circle" aria-hidden="true">
@@ -43,7 +43,7 @@ function LandingPage() {
                                 </button>
                                 </Link>
                             </div>
-                            <div>
+                            <div className='smallboxes'>
                                 <p>Do you have a truck? Do you need to find new customers? Are you sending a cargo and have an empty space and want to sell it? Create an account as a a driver, look for requests and get a profit from the empty spaces in your truck</p>
                                 <Link to="transportist/signup"><button className="learn-more">
                                     <span className="circle" aria-hidden="true">
@@ -58,15 +58,15 @@ function LandingPage() {
                 </header>
 
                 <main>
-                    <section>
+                    <section >
                         <h2>About Irontruck</h2>
-                        <p>At Irontruck, we firmly believe that the logistics industry has a responsibility to minimize its environmental impact and promote sustainability. We understand that our operations can have significant ecological consequences, and we are committed to reducing our carbon footprint through optimized routes and sustainable practices. Our mission is not only to provide exceptional shipping services but also to do so in a way that contributes towards a cleaner and more sustainable future for all..</p>
+                        <p id="aboutirontruck">At Irontruck, we firmly believe that the logistics industry has a responsibility to minimize its environmental impact and promote sustainability. We understand that our operations can have significant ecological consequences, and we are committed to reducing our carbon footprint through optimized routes and sustainable practices. Our mission is not only to provide exceptional shipping services but also to do so in a way that contributes towards a cleaner and more sustainable future for all..</p>
                     </section>
 
-                    <h1>Send pallets or merchandise efficiently, make a request and receive an offer!</h1>
+                    <h2>Send pallets or merchandise efficiently, make a request and receive an offer!</h2>
                     <div className='headerStructure'>
                         <div className="CallButtons">
-                            <div>
+                            <div className='smallboxes'>
                                 <p>Do you want to send a pallet? Register as a Sender, post your request, receive offers from drivers and choose the best one.</p>
                                 <Link to="/signup"><button className="learn-more">
                                     <span className="circle" aria-hidden="true">
@@ -76,7 +76,7 @@ function LandingPage() {
                                 </button>
                                 </Link>
                             </div>
-                            <div>
+                            <div className='smallboxes'>
                                 <p>Do you have a truck? Do you need to find new customers? Are you sending a cargo and have an empty space and want to sell it? Create an account as a a driver, look for requests and get a profit from the empty spaces in your truck</p>
                                 <Link to="transportist/signup"><button className="learn-more">
                                     <span className="circle" aria-hidden="true">
@@ -90,7 +90,7 @@ function LandingPage() {
                     </div>
 
                     <section>
-                        <h2>How to Send a Pallet?</h2>
+                        <h3>How to Send a Pallet?</h3>
                         <div className="Guidelines">
                             <h3>To send a European, American or special pallet, it is important to follow a series of guidelines regarding the palletization and placement of the goods:</h3>
                             <ul>
@@ -102,9 +102,9 @@ function LandingPage() {
                             </ul>
 
                         </div>
-                        <h2>Common Mistakes When Sending Pallets</h2>
+                        <h3>Common Mistakes When Sending Pallets</h3>
                         <div className="Guidelines">
-                            <h3>When sending a pallet, there are several common mistakes that can lead to problems during transportation:</h3>
+                            <h4>When sending a pallet, there are several common mistakes that can lead to problems during transportation:</h4>
                             <ul>
                                 <li>Not securing the goods properly: one of the most common problems when sending palletized goods is that they move during transportation, which can cause damage to the products. To avoid this, make sure the boxes are properly placed on the pallet and use appropriate packaging materials.</li>
                                 <li>Choosing the wrong size of pallet: the size of the pallet should be chosen based on the specific needs of the shipment and the characteristics of the goods.</li>
@@ -117,16 +117,16 @@ function LandingPage() {
 
             <footer>
                 <div className="legal-notice">
-                    <a href="/">Aviso Legal</a>
+                    <a href="/">Legal notice</a>
                 </div>
                 <div className="cookies-policy">
-                    <a href="/">Política de Cookies</a>
+                    <a href="/">Cookie policy</a>
                 </div>
                 <div className="contact-us">
-                    <a href="/">Contacto</a>
+                    <a href="/">Contact</a>
                 </div>
                 <div className="copyright">
-                    © 2023 Todos los derechos reservados.
+                    © 2023 All rights reserved.
                 </div>
             </footer>
 

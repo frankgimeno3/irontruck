@@ -37,6 +37,8 @@ function LoginTranspPage() {
     <>
       <div className="loginPage">
         <div >
+        <h1>Login as a Transportist</h1>
+
           <form className="px-4 py-3" onSubmit={handleLoginSubmit}>
             <div className="mb-3">
               <label htmlFor="exampleDropdownFormEmail1" className="form-label">Email address</label>
@@ -59,9 +61,23 @@ function LoginTranspPage() {
           {errorMessage && <p className="error-message">{errorMessage}</p>}
           <div className="dropdown-divider"></div>
           <p>New around here?</p>
-          <Link to={""} className="dropdown-item">  Sign up  </Link>
+        <Link to={"/transportist/signup"} className="dropdown-item">  Sign up  </Link>
         </div>
       </div>
+      <footer>
+                <div className="legal-notice">
+                    <a href="/">Legal notice</a>
+                </div>
+                <div className="cookies-policy">
+                    <a href="/">Cookie policy</a>
+                </div>
+                <div className="contact-us">
+                    <a href="/">Contact</a>
+                </div>
+                <div className="copyright">
+                    © 2023 All rights reserved.
+                </div>
+            </footer>
     </>
   );
 }

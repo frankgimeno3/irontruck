@@ -45,7 +45,7 @@ function CreateOfferForm() {
           deliveryProvince: "",
           pallets: 0,
         });
-        navigate("/profile");
+        navigate("/mycargos");
       })
       .catch((error) => {
         console.log("klfsdnjlsdfnjjoerror", error);

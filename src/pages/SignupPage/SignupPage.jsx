@@ -57,7 +57,7 @@ function SignupPage() {
   };
   return (
     <>
-
+      <h1>Sign Up as a Sender</h1>
       <div className="Loading Page">
         <form className="px-4 py-3" onSubmit={handleSignupSubmit}>
           <div className="mb-3">
@@ -84,43 +84,35 @@ function SignupPage() {
           <button type="submit" className="btn btn-primary">Sign Up</button>
         </form>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
-        <div className="dropdown-divider"></div>
-        <p>New around here?</p>
-        <Link to={"/login"} className="dropdown-item">  Log In  </Link>
+        <p>Already have account?</p>
+        <Link to={"/login"}> Login</Link>
+        <p>Do you want to create a driver account instead?</p>
+        <Link to={"/transportist/signup"} >  SignUp  </Link>
         <div className="input-group mb-3">
-          <h1>Sign Up</h1>
 
-          <form onSubmit={handleSignupSubmit}>
-            <label>Email:</label>
-            <input type="email" name="email" value={email} onChange={handleEmail} />
-
-            <label>Name:</label>
-            <input type="text" name="name" value={name} onChange={handleName} />
-
-            <label>Password:</label>
-            <input type="password" name="password" value={password} onChange={handlePassword} />
-
-
-            <label>Repeat Password</label>
-            <input type="password" name="password" value={passwordRep} onChange={handlePasswordRep} />
-
-            <label>Phone Number</label>
-            <input type="number" name="phoneNumber" value={phoneNumber} onChange={handlePhoneNumber} />
-
-            <label>Address</label>
-            <input type="text" name="address" value={address} onChange={handleAddress} />
-
-            <button type="submit">Sign Up</button>
-          </form>
+     
 
         </div>
 
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-        <p>Already have account?</p>
-        <Link to={"/login"}> Login</Link>
+      
       </div>
       <img src="https://www.rlicorp.com/sites/default/files/banner-images/LossControl_WebsiteHeader_02_72dpi_1.jpg" alt="banner" className="landingjpg" />
+      <footer>
+                <div className="legal-notice">
+                    <a href="/">Legal notice</a>
+                </div>
+                <div className="cookies-policy">
+                    <a href="/">Cookie policy</a>
+                </div>
+                <div className="contact-us">
+                    <a href="/">Contact</a>
+                </div>
+                <div className="copyright">
+                    © 2023 All rights reserved.
+                </div>
+            </footer>
+    
     </>
   );
 }

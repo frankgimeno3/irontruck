@@ -1,7 +1,7 @@
 import "./SignupPage.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import authService from "../../services/auth.service";
+import transpService from "../../services/transp.service";
 import axios from "axios";
 
 function SignupTranspPage() {
@@ -48,20 +48,28 @@ function SignupTranspPage() {
     // Send a request to the server using axios
 
     const authToken = localStorage.getItem("authToken");
-    axios.post(
-      `${process.env.REACT_APP_SERVER_URL}/transportist/signup`,
-      requestBody,
-      {
-        headers: { Authorization: `Bearer ${authToken}` },
-      })
-      .then((response) => {
-        navigate("transportist/login");
-      })
-      .catch((error) => {
-
+    transpService.signup(requestBody)
+    .then((response) => {
+        navigate("/");
+    })
+    .catch((error) => {
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
-      });
+    });
+    // axios.post(
+    //   `${process.env.REACT_APP_SERVER_URL}/transportist/signup`,
+    //   requestBody,
+    //   {
+    //     headers: { Authorization: `Bearer ${authToken}` },
+    //   })
+    //   .then((response) => {
+    //     navigate("/login");
+    //   })
+    //   .catch((error) => {
+
+    //     const errorDescription = error.response.data.message;
+    //     setErrorMessage(errorDescription);
+    //   });
 
   };
   return (

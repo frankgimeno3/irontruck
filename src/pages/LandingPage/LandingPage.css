@@ -25,17 +25,28 @@
   padding: 1%;
   width: 50vw;
 }
+.smallboxes{
+  width: 10vw;
+  padding-left:1vw;
+  padding-right:1vw;
+  margin-top:5vh;
+}
+.smallboxes:hover{
+   background-color: rgb(238, 240, 245);
+}
 
 p {
   padding-right: 1vw;
-  width: 80vw;
   font-size: 1.5rem;
+}
+#aboutirontruck {
+  margin-top:3vh;
 }
 
 .Guidelines {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   padding-bottom: 4vh;
   padding-top: 4vh;
 }
@@ -45,9 +56,18 @@ p {
   padding-top: 4vh;
 }
 
-h1,
-h2 {
+h2,
+h3 {
   padding-top: 7vh;
+}
+h2 {
+  margin: 0;
+  padding-top: 3rem;
+}
+
+h3 {
+  margin: 0;
+  padding-top: 3rem;
 }
 
 /* TODO ESTO ES CSS PARA EL BUTTON */
@@ -192,14 +212,3 @@ video {
   position: cover;
 }
 
-h1 {
-  margin: 0;
-  padding-top: 3rem;
-  padding-left: 2rem;
-}
-
-h2 {
-  margin: 0;
-  padding-top: 3rem;
-  padding-left: 2rem;
-}

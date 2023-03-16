@@ -76,7 +76,7 @@ function SignupTranspPage() {
         <>
 
             <div className="input-group mb-3">
-                <h1>Sign Up</h1>
+            <h1>Sign Up as a Transportist</h1>
 
                 <form className="labels" onSubmit={handleSignupSubmit}>
                     <label>Email:</label>
@@ -90,33 +90,50 @@ function SignupTranspPage() {
 
 
                     <label>Repeat Password</label>
-                    <input type="password" name="password" value={passwordRep} onChange={handlePasswordRep} />
+                    <input type="password" name="passwordRep" value={passwordRep} onChange={handlePasswordRep} />
 
                     <label>Phone Number</label>
                     <input type="number" name="phoneNumber" value={phoneNumber} onChange={handlePhoneNumber} />
 
                     <label>License Plate</label>
-                    <input type="text" name="address" value={licensePlate} onChange={handleLicensePlate} />
+                    <input type="text" name="licensePlate" value={licensePlate} onChange={handleLicensePlate} />
 
                     <label>NIF</label>
-                    <input type="text" name="address" value={nif} onChange={handleNif} />
+                    <input type="text" name="nif" value={nif} onChange={handleNif} />
 
                     <label>Profesional type</label>
-                    <input type="text" name="address" value={professionalType} onChange={handleProfessionalType} />
+                    <input type="text" name="professionalType" value={professionalType} onChange={handleProfessionalType} />
 
                     <label>Company </label>
-                    <input type="text" name="Company" value={company} onChange={handleCompany} />
+                    <input type="text" name="company" value={company} onChange={handleCompany} />
 
 
                     <button type="submit">Sign Up</button>
                 </form>
 
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-                <Link to={"transportist/login"}> Login</Link>
+                <p>Already have account?</p>
+                 <Link to={"/transportist/login"}> Login</Link>
+                 <p>Do you want to create a sender account instead?</p>
+                <Link to={"/signup"} >  SignUp  </Link>
             </div>
             <img src="https://www.rlicorp.com/sites/default/files/banner-images/LossControl_WebsiteHeader_02_72dpi_1.jpg" alt="banner" className="landingjpg" />
-        </>
+        
+            <footer>
+                <div className="legal-notice">
+                    <a href="/">Legal notice</a>
+                </div>
+                <div className="cookies-policy">
+                    <a href="/">Cookie policy</a>
+                </div>
+                <div className="contact-us">
+                    <a href="/">Contact</a>
+                </div>
+                <div className="copyright">
+                    © 2023 All rights reserved.
+                </div>
+            </footer>
+    </>
     );
 }
 

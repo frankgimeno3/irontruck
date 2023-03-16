@@ -9,7 +9,10 @@ function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
-        <h2 className="navbar-brand brandicon">Irontruck</h2>
+      <Link to="/" className="nav-link active" aria-current="page" href="/">        
+        <h2 className="navbar-brand brandicon">Irontruck</h2> 
+      </Link>
+
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -25,7 +28,12 @@ function Navbar() {
                 <Link to="/" className="nav-link" onClick={logOutUser}>LogOut</Link>
               </>
             }
-
+            {!isLoggedIn &&
+              <>
+                <Link to="/signup" className="nav-link">SignUp</Link>
+                <Link to="/login" className="nav-link">LogIn</Link>
+              </>
+            }
           </div>
         </div>
       </div>

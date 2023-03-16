@@ -24,9 +24,9 @@ function App() {
         <Route path="/profile/:id" element={<IsPrivate><ProfilePage /></IsPrivate>} />
         <Route path="/signup" element={<IsAnon><SignupPage /> </IsAnon>} />
         <Route path="/login" element={<IsAnon> <LoginPage /> </IsAnon>} />
-        <Route path="transportist/signup" element={<IsAnon><SignupTranspPage /> </IsAnon>} />
-        <Route path="transportist/login" element={<IsAnon> <LoginTranspPage /> </IsAnon>} />
-        <Route path="mycargos" element={<IsPrivate><MyCargos /></IsPrivate>} />
+        <Route path="/transportist/signup" element={<IsAnon><SignupTranspPage /> </IsAnon>} />
+        <Route path="/transportist/login" element={<IsAnon> <LoginTranspPage /> </IsAnon>} />
+        <Route path="/mycargos" element={<IsPrivate><MyCargos /></IsPrivate>} />
         <Route path="/shipments/:id" element={<IsPrivate> <ShipmentDetails /> </IsPrivate>} />
       </Routes>
     </div>
