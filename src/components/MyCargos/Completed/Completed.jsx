@@ -5,7 +5,7 @@ import "../../CargoExchange/CargoExchange.css";
 import '../../../pages/MyCargos/MyCargos.css';
 import ProfileService from "../../../services/profile.service";
 import { AuthContext } from "../../../context/auth.context"
-
+import CardShipment from "../../CargoExchange/CargoExchange"
 
 function CreatedShipments() {
   const { user } = useContext(AuthContext)
@@ -34,6 +34,8 @@ function CreatedShipments() {
       {shipments
         .filter((shipment) => shipment.state === "Completed")
         .map((shipment) => (
+
+
 
           shipment.state === "inNegotiation" &&
           <div key={shipment._id} className="card">

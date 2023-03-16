@@ -36,21 +36,40 @@ function ShipmentDetails() {
 
   const startNegotiation = () => {
     shipmentsService
-      .editShipments(shipment._id, { state: "inNegotiation", $push: { transportist: user._id } })
+      .editShipments(shipment._id, { state: "inNegotiation", $push: { transportist: user.id } })
       .then((response) => {
         setShipment(response.data)
-        profileService.editProfile(user._id, { $push: { currentShipments: response.data._id } })
-        // .then((response) => {
-        //   console.log(response.data)
-        // })
-        // .catch((error) => {
-        //   console.error("Failed to update Transportist state", error);
-        // })
+        profileService.editProfile(user.id, { $push: { currentShipments: response.data._id } })
+          .then((response) => {
+            console.log(response.data)
+          })
+          .catch((error) => {
+            console.error("Failed to update Transportist state", error);
+          })
       })
       .catch((error) => {
         console.error("Failed to update shipment state", error);
       });
   }
+
+  const acceptTransportist = () => {
+    shipmentsService
+      .editShipments(shipment._id, { state: "Completed", $push: { transportist: user._id } })
+      .then((response) => {
+        setShipment(response.data)
+        profileService.editProfile(user._id, { $push: { completedShipments: response.data._id }, $pull: { currentShipments: response.data._id } })
+          .then((response) => {
+            console.log(response.data)
+          })
+          .catch((error) => {
+            console.error("Failed to update Transportist state", error);
+          })
+      })
+      .catch((error) => {
+        console.error("Failed to update shipment state", error);
+      });
+  }
+
 
 
   return (
@@ -66,21 +85,29 @@ function ShipmentDetails() {
       <p>Number of pallets: {shipment.pallets}</p>
       <p>State: {shipment.state}</p>
 
-      <button className="button" >Save Shipment</button>
-      <button className="button" >Start Negotiating</button>
+
       {isLoading &&
         <Link to={`/profile/${shipment.author._id}`}>
           {/* <Route path="/:idShipment" component={ShipmentDetails} /> */}
-          <button className="detailsbutton">See Details</button>
+          <button className="detailsbutton">See Sender Details</button>
         </Link>
       }
 
 
-      {/* {shipment.transportists.includes(user._id) ? ( */}
+      {/* {!shipment.transportists.includes(user._id) ? ( */}
 
       <button className="btn btn-primary" onClick={startNegotiation}>
         Negotiate Shipment
       </button>
+
+
+      {/* <button className="btn btn-success" onClick={acceptTransportist}>
+        Accept Transaccion
+      </button>
+
+      <button className="btn btn-success" onClick={acceptTransportist}>
+        Rechazar
+      </button> */}
       {/* ) : null} */}
 
       {/* {!isLoading && !isTransportist && (
