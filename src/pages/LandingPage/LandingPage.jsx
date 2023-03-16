@@ -8,22 +8,22 @@ function LandingPage() {
     return (
         <>
 
-
-
-
             <div className="homepage-video-overlay">
 
-                {/* <div className="homepage-video-container">
-                    <video autoPlay loop muted>
-                        <source src={videoBg} type="video/mp4" />
-                    </video>
-                </div> */}
+                <section id="sect1" class="sect">
+
+                    <video src={videoBg} autoplay="true" muted="true" loop="true" poster="https://carontestudio.com/img/contacto.jpg"></video>
+                    <h1>Transport of the future</h1>
+
+                    <div className="buttons">
+                        <Link to="transportist/login"><button type="button" className="btn btn-primary btn-lg">Log In as a Carrier</button></Link>
+                        <Link to="/login"><button type="button" className="btn btn-secondary btn-lg">Log In as a Sender</button></Link>
+                    </div>
+
+                </section>
 
 
-                <div className="botones">
-                    <Link to="transportist/login"><button type="button" className="btn btn-primary btn-lg">Log In as a Carrier</button></Link>
-                    <Link to="/login"><button type="button" className="btn btn-secondary btn-lg">Log In as a Sender</button></Link>
-                </div>
+
 
             </div>
 

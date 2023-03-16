@@ -38,7 +38,7 @@ function NegotiatingShipments() {
 
   return (
     <div className="bg-dark-subtle">
-      <h2 className="text-body-emphasis">Created Shipments</h2>
+      <h2 className="text-body-emphasis"> Shipments in Negotiation</h2>
 
 
       {shipments
@@ -46,12 +46,55 @@ function NegotiatingShipments() {
         .map((shipment) => (
 
 
-          <CardShipment />
+          <div className="fondo-Cards">
 
+
+            <div >
+              <div key={shipment._id} id="scrollspyHeading1" className="">
+
+
+                <div className="card .bg-white">
+
+                  <div className="card-body">
+                    <h5 className="card-title">Shipment {shipment.pickUpProvince}  {shipment.deliveryProvince}</h5>
+                    <p> {shipment.pallets} Pallets</p>
+
+                    <div className="info">
+
+                      <div className="contact">
+                        <h6> Contact Information </h6>
+
+                        <p className=".text-body">{shipment?.author.name}</p>
+                        <p className=".text-body">{shipment?.author.email}</p>
+                        <p className=".text-body">{shipment?.author.phoneNumber} </p>
+                      </div>
+
+                      <Link to={`/shipments/${shipment._id}`}>
+                        <button className="btn btn-primary" >See Details</button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+                <div>
+
+
+
+                </div>
+              </div>
+            </div>
+          </div>
 
 
         ))}
+
+
     </div>
+
+
 
   );
 };
