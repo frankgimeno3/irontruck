@@ -1,8 +1,16 @@
 import axios from "axios";
 // import { authContext } from "../context/auth.context";
 class ShipmentsService {
-    constructor(token) {
-        this.headerObject = { headers: { authorization: `Bearer ${token}` } }
+    constructor() {
+        this.api = axios.create({
+            baseURL: process.env.REACT_APP_SERVER_URL || "http://localhost:5005"
+        });
+
+        // Create header object with JWT token
+        const storedToken = localStorage.getItem("authToken");
+        this.headerObject = storedToken
+            ? { headers: { Authorization: `Bearer ${storedToken}` } }
+            : {};
     }
     getShipments() {
         return axios.get(process.env.REACT_APP_SERVER_URL + "/api/shipment", this.headerObject);

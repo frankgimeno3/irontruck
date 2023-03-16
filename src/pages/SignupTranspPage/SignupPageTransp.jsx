@@ -107,7 +107,7 @@ function SignupTranspPage() {
                     <label>Phone Number</label>
                     <input type="number" name="phoneNumber" value={phoneNumber} onChange={handlePhoneNumber} />
 
-                    <label>Linsence Plate</label>
+                    <label>License Plate</label>
                     <input type="text" name="address" value={licensePlate} onChange={handleLicensePlate} />
 
                     <label>NIF</label>

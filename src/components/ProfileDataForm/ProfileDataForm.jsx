@@ -9,14 +9,17 @@ import { useNavigate } from "react-router-dom";
 function EditProfileForm() {
 
   const navigate = useNavigate();
-
+  const [isTransportist, setIsTransportist] = useState(false)
   const { user, authenticateUser, isLoggedIn, getToken } = useContext(AuthContext);
   const [formValues, setFormValues] = useState({
-      phoneNumber: 0,
-      address: "",
-      password: "",
-      repeatPassword: ""
-    });
+    phoneNumber: 0,
+    address: "",
+    password: "",
+    repeatPassword: "",
+    licensePlate: "",
+    nif: "",
+    professionalType: ""
+  });
   const [image, setImage] = useState("");
   const [isLoading, setIsLoading] = useState(true); // nuevo estado
 
@@ -39,6 +42,24 @@ function EditProfileForm() {
       });
   };
 
+  const getCurrentUser = async (id) => {
+    try {
+      authenticateUser();
+      console.log(id)
+      const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/profile/myprofile/${id}`, { headers: { Authorization: `Bearer ${getToken()}` } })
+      setCurrentUser(response.data);
+      setIsLoading(false);
+      console.log("response.data:", response.data)
+      console.log("response.data.isTransportist:", response.data.isTransportist)
+      if (response.data.isTransportist) {
+        setIsTransportist(true)
+      }
+      // navigate(`/profile/myprofile/${id}`); // Navigate to the profile page after setting the currentUser state variable
+    } catch (err) {
+      console.log("error del catch del getCurrentUser:", err);
+    }
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const updateValues = {
@@ -47,8 +68,11 @@ function EditProfileForm() {
       password: formValues.password,
       repeatPassword: formValues.repeatPassword,
       image: image,
+      licensePlate: formValues.licensePlate,
+      nif: formValues.nif,
+      professionalType: formValues.professionalType
     };
-    const profileService = new ProfileService(getToken());
+    const profileService = new ProfileService();
     profileService
       .editProfile(user._id, updateValues)
       .then((response) => {
@@ -57,7 +81,10 @@ function EditProfileForm() {
           phoneNumber: 0,
           address: "",
           password: "",
-          repeatPassword: ""
+          repeatPassword: "",
+          licensePlate: "",
+          nif: "",
+          professionalType: ""
         });
         setImage("");
         setIsLoading(false)
@@ -69,9 +96,9 @@ function EditProfileForm() {
   };
 
   const handleDelete = () => {
-    const profileService = new ProfileService(getToken());
+    const profileService = new ProfileService();
     profileService
-    .deleteProfile(user._id)
+      .deleteProfile(user._id)
       .then(() => {
         authenticateUser(null);
         navigate("/");
@@ -80,7 +107,7 @@ function EditProfileForm() {
         console.log("console.log del delete:", error);
       });
   };
-  
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormValues((prevState) => ({
@@ -88,55 +115,93 @@ function EditProfileForm() {
       [name]: value
     }));
   };
-  
+
   return (
-    <>
-      <div> 
-            {/* <Button variant="danger" onClick={handleDelete}>Delete Profile</Button> */}
-       <form onSubmit={handleSubmit}>
+    <div>
+      <button className= "btn btn-danger" onClick={handleDelete}>Delete Profile</button>
+      <form onSubmit={handleSubmit}>
 
-    <br>
-    </br>
-    <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">Profile image</label>
-        <input type="file" className="form-control" id="exampleFormControlInput1" placeholder="Insert your license plate here" name="image"  onChange={(e) => handleFileUpload(e)} />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">Phone number</label>
-        <input type="number" className="form-control" value={formValues.phoneNumber} id="exampleFormControlInput1"  name="phoneNumber" onChange={handleInputChange} placeholder="Insert your phone number here" />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">Address</label>
-        <input type="text" className="form-control" value={formValues.address} id="exampleFormControlInput1"  name="address" onChange={handleInputChange} />
-      </div>
-      <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">Password</label>
-        <input type="password" className="form-control" 
-       value={formValues.password} id="exampleFormControlInput1"  name="password" placeholder="Insert password here" onChange={handleInputChange}/>
-      </div>
-      <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">Repeat Password</label>
-        <input type="password" className="form-control" id="exampleFormControlInput1" placeholder="Insert password again" name="repeatPassword"  value={formValues.repeatPassword} onChange={handleInputChange} />
-      </div>
-     
-
-      {/* {isLoggedIn &&
+        <br>
+        </br>
+        <>
+        {!isLoading && isLoggedIn && !isTransportist &&
+          <section>
+            <div className="mb-3">
+              <label htmlFor="exampleFormControlInput1" className="form-label">Profile image</label>
+              <input type="file" className="form-control" id="exampleFormControlInput1" placeholder="Insert your license plate here" name="image" onChange={(e) => handleFileUpload(e)} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="exampleFormControlInput1" className="form-label">Phone number</label>
+              <input type="number" className="form-control" value={formValues.phoneNumber} id="exampleFormControlInput1" name="phoneNumber" onChange={handleInputChange} placeholder="Insert your phone number here" />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="exampleFormControlInput1" className="form-label">Address</label>
+              <input type="text" className="form-control" value={formValues.address} id="exampleFormControlInput1" name="address" onChange={handleInputChange} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="exampleFormControlInput1" className="form-label">Password</label>
+              <input type="password" className="form-control"
+                value={formValues.password} id="exampleFormControlInput1" name="password" placeholder="Insert password here" onChange={handleInputChange} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="exampleFormControlInput1" className="form-label">Repeat Password</label>
+              <input type="password" className="form-control" id="exampleFormControlInput1" placeholder="Insert password again" name="repeatPassword" value={formValues.repeatPassword} onChange={handleInputChange} />
+            </div>
+          </section>
+        }
+        </>
+        <>
+        {!isLoading && isLoggedIn && isTransportist &&
+          <section>
+            <div className="mb-3">
+              <label htmlFor="exampleFormControlInput1" className="form-label">Profile image</label>
+              <input type="file" className="form-control" id="exampleFormControlInput1" placeholder="Insert your license plate here" name="image" onChange={(e) => handleFileUpload(e)} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="exampleFormControlInput1" className="form-label">Phone number</label>
+              <input type="number" className="form-control" value={formValues.phoneNumber} id="exampleFormControlInput1" name="phoneNumber" onChange={handleInputChange} placeholder="Insert your phone number here" />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="exampleFormControlInput1" className="form-label">License Plate</label>
+              <input type="text" className="form-control" value={formValues.licensePlate} id="exampleFormControlInput1" name="licensePlate" onChange={handleInputChange} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="exampleFormControlInput1" className="form-label">Password</label>
+              <input type="password" className="form-control"
+                value={formValues.password} id="exampleFormControlInput1" name="password" placeholder="Insert password here" onChange={handleInputChange} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="exampleFormControlInput1" className="form-label">Repeat Password</label>
+              <input type="password" className="form-control" id="exampleFormControlInput1" placeholder="Insert password again" name="repeatPassword" value={formValues.repeatPassword} onChange={handleInputChange} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="exampleFormControlInput1" className="form-label">NIF</label>
+              <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Insert password again" name="nif" value={formValues.nif} onChange={handleInputChange} />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="exampleFormControlInput1" className="form-label">Professional Type</label>
+              <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Insert password again" name="professionalType" value={formValues.professionalType} onChange={handleInputChange} />
+            </div>
+          </section>
+        }
+        </>
+        {/* {isLoggedIn &&
       <div className="mb-3">
         <label htmlFor="exampleFormControlInput1" className="form-label">License Plate</label>
         <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Insert your license plate here" name="editLicensePlate"  onChange={handleInputChange} />
       </div>
       } */}
-      <button className="learn-more" type="submit">
-        <span className="circle" aria-hidden="true">
-          <span className="icon arrow"></span>
-        </span>
+        <button className="learn-more" type="submit">
+          <span className="circle" aria-hidden="true">
+            <span className="icon arrow"></span>
+          </span>
 
-        <span className="button-text">Submit changes</span>
-      </button>
+          <span className="button-text">Submit changes</span>
+        </button>
 
-    </form>
+      </form>
     </div>
-    </>
+
   );
 }
 
