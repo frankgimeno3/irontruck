@@ -3,7 +3,7 @@ import ShipmentsService from "../../services/shipments.service";
 import './CreateOfferForm.css';
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../../context/auth.context"
-
+import { Navigate } from "react-router-dom";
 
 
 function CreateOfferForm() {
@@ -38,9 +38,8 @@ function CreateOfferForm() {
           deliveryDireccion: "",
           deliveryProvince: "",
           pallets: 0,
-
         });
-      })
+      <Navigate to="/dashboard" />})
       .catch((error) => {
         console.log(error);
       });

@@ -8,13 +8,40 @@ import { AuthContext } from "../../context/auth.context";
 
 function DriverChatComponent() {
   const chatboxEl = useRef();
-  const [shipment, setShipment] = useState({});
+  const [shipmentAuthor, setShipmentAuthor] = useState({});
+  const [shipmentAuthorID, setShipmentAuthorID] = useState({});
+  const [shipmentAuthorEmail, setShipmentAuthorEmail] = useState({});
+  // const [shipmentAuthorImageURL, setShipmentAuthorImageURL] = useState({});
+ 
+
   const { id } = useParams();
   const { user, authenticateUser, isTransportist, getToken } = useContext(AuthContext);
+  const senderUser = `${shipmentAuthor}`;
+  const senderUserID = `${shipmentAuthorID}`;
+  const senderUserEmail = `${shipmentAuthorEmail}`;
+  // const senderUserImageURL = `${shipmentAuthorImageURL}`;
+
 
   // wait for TalkJS to load
   const [talkLoaded, markTalkLoaded] = useState(false);
 
+   
+  useEffect(() => {
+    const shipmentsService = new ShipmentsService(getToken());
+    shipmentsService
+      .getShipmentById(id)
+
+      .then((response) => {
+        console.log(response.data.author.image)
+        setShipmentAuthor(response.data.author.name);
+        setShipmentAuthorID(response.data.author._id);
+        setShipmentAuthorEmail(response.data.author.email);
+        // setShipmentAuthorImageURL(response.data.author.image);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [id]);
   useEffect(() => {
     Talk.ready.then(() => markTalkLoaded(true));
 
@@ -23,17 +50,17 @@ function DriverChatComponent() {
         id: '1',
         name: 'Henry Mill',
         email: 'henrymill@example.com',
-        photoUrl: 'henry.jpeg',
+        photoUrl: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHw%3D&w=1000&q=80',
         welcomeMessage: 'Hello!',
         role: 'default',
       });
 
       const otherUser = new Talk.User({
-        id: '2',
-        name: 'Jessica Wells',
-        email: 'jessicawells@example.com',
-        photoUrl: 'jessica.jpeg',
-        welcomeMessage: 'Hello!',
+        id: senderUserID,
+        name: senderUser,
+        email: senderUserEmail,
+        photoUrl: 'https://www.shutterstock.com/image-photo/happy-elegant-mature-senior-aged-260nw-2067036776.jpg',
+        welcomeMessage: `Hello, ${senderUser}! In order to start our negotiation, please give me a pricerange for my offer. Please don't forget to add all your requiremets, and give me an approximate price for what I am asking. In the end, I will accept or decline your offer to close the deal.`,
         role: 'default',
       });
 
@@ -54,18 +81,7 @@ function DriverChatComponent() {
       return () => session.destroy();
     }
   }, [talkLoaded]);
-  useEffect(() => {
-    const shipmentsService = new ShipmentsService(getToken());
-    shipmentsService
-      .getShipmentById(id)
 
-      .then((response) => {
-        setShipment(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [id]);
   return (
     <>
       <div ref={chatboxEl} className="chatbox"/>;
