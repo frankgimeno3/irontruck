@@ -1,11 +1,14 @@
 import React, { useState, useContext } from "react";
 import './ProfileDataForm.css';
 import ProfileService from "../../services/profile.service";
-import { AuthContext } from "../../context/auth.context"
-import service from "../../services/upload.service"
-
+import { AuthContext } from "../../context/auth.context";
+import service from "../../services/upload.service";
+import Button from 'react-bootstrap/Button';
+import { useNavigate } from "react-router-dom";
 
 function EditProfileForm() {
+
+  const navigate = useNavigate();
 
   const { user, authenticateUser, isLoggedIn, getToken } = useContext(AuthContext);
   const [formValues, setFormValues] = useState({
@@ -14,70 +17,95 @@ function EditProfileForm() {
       password: "",
       repeatPassword: ""
     });
-    const [image, setImage] = useState("");
+  const [image, setImage] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // nuevo estado
 
-   // ******** this method handles the file upload ********
-   const handleFileUpload = (e) => {
- 
+  const handleFileUpload = (e) => {
     const uploadData = new FormData();
     uploadData.append("image", e.target.files[0]);
- 
+
+    setIsLoading(true); // establecer isLoading a true
+
     service
       .uploadImage(uploadData)
       .then(response => {
-        console.log(response);
+        console.log("response:", response);
         setImage(response.fileUrl);
+        console.log("file.Url:", response.fileUrl);
       })
-      .catch(err => console.log("Error while uploading the file: ", err));
+      .catch(err => console.log("Error while uploading the file: ", err))
+      .finally(() => {
+        setIsLoading(false); // establecer isLoading a false
+      });
   };
 
-    const handleSubmit = (event) => {
-      event.preventDefault();
-      const updateValues = {
-        phoneNumber: formValues.phoneNumber,
-        address: formValues.address,
-        password: formValues.password,
-        repeatPassword: formValues.repeatPassword,
-        image: image,
-      };
-      const profileService = new ProfileService(getToken());
-      profileService
-        .editProfile(user._id, updateValues)
-        .then((response) => {
-          console.log("response.data:", response.data);
-          setFormValues({
-            phoneNumber: 0,
-            address: "",
-            password: "",
-            repeatPassword: ""
-  
-          });
-          setImage("");
-        })
-        .catch((error) => {
-          console.log(error);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const updateValues = {
+      phoneNumber: formValues.phoneNumber,
+      address: formValues.address,
+      password: formValues.password,
+      repeatPassword: formValues.repeatPassword,
+      image: image,
+    };
+    const profileService = new ProfileService(getToken());
+    profileService
+      .editProfile(user._id, updateValues)
+      .then((response) => {
+        console.log("response.data:", response.data);
+        setFormValues({
+          phoneNumber: 0,
+          address: "",
+          password: "",
+          repeatPassword: ""
         });
-    };
-  
-    const handleInputChange = (event) => {
-      const { name, value } = event.target;
-      setFormValues((prevState) => ({
-        ...prevState,
-        [name]: value
-      }));
-    };
-  
+        setImage("");
+        setIsLoading(!isLoading)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
+  const handleDelete = () => {
+    const profileService = new ProfileService(getToken());
+    profileService
+    .deleteProfile(user._id)
+      .then(() => {
+        authenticateUser(null);
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log("console.log del delete:", error);
+      });
+  };
+  
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormValues((prevState) => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+  
   return (
-    <form onSubmit={handleSubmit}>
+      <div> 
+            <Button variant="danger" onClick={handleDelete}>Delete Profile</Button>
+       <form onSubmit={handleSubmit}>
+
+    <br>
+    </br>
+    <div className="mb-3">
+        <label htmlFor="exampleFormControlInput1" className="form-label">Profile image</label>
+        <input type="file" className="form-control" id="exampleFormControlInput1" placeholder="Insert your license plate here" name="image"  onChange={(e) => handleFileUpload(e)} />
+      </div>
       <div className="mb-3">
         <label htmlFor="exampleFormControlInput1" className="form-label">Phone number</label>
         <input type="number" className="form-control" value={formValues.phoneNumber} id="exampleFormControlInput1"  name="phoneNumber" onChange={handleInputChange} placeholder="Insert your phone number here" />
       </div>
       <div className="mb-3">
         <label htmlFor="exampleFormControlInput1" className="form-label">Address</label>
-        <input type="text" className="form-control" value={formValues.address} id="exampleFormControlInput1"  name="address" onChange={handleInputChange}
- placeholder="Insert your phone number here" />
+        <input type="text" className="form-control" value={formValues.address} id="exampleFormControlInput1"  name="address" onChange={handleInputChange} />
       </div>
       <div className="mb-3">
         <label htmlFor="exampleFormControlInput1" className="form-label">Password</label>
@@ -88,10 +116,8 @@ function EditProfileForm() {
         <label htmlFor="exampleFormControlInput1" className="form-label">Repeat Password</label>
         <input type="password" className="form-control" id="exampleFormControlInput1" placeholder="Insert password again" name="repeatPassword"  value={formValues.repeatPassword} onChange={handleInputChange} />
       </div>
-      <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">Profile image</label>
-        <input type="file" className="form-control" id="exampleFormControlInput1" placeholder="Insert your license plate here" name="image"  onChange={(e) => handleFileUpload(e)} value={formValues.image} />
-      </div>
+     
+
       {/* {isLoggedIn &&
       <div className="mb-3">
         <label htmlFor="exampleFormControlInput1" className="form-label">License Plate</label>
@@ -107,6 +133,7 @@ function EditProfileForm() {
       </button>
 
     </form>
+    </div>
   );
 }
 
