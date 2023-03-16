@@ -13,7 +13,6 @@ function LandingPage() {
                 <section id="sect1" className="sect">
 
                     <video src={videoBg} autoplay="true" muted="true" loop="true" poster="https://carontestudio.com/img/contacto.jpg"></video>
-                    <h1>Transport of the future</h1>
 
                     <div className="buttons">
                         <Link to="transportist/login"><button type="button" className="btn btn-primary btn-lg">Log In as a Carrier</button></Link>

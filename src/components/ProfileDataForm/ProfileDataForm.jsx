@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState, useContext } from "react";
 import './ProfileDataForm.css';
 import ProfileService from "../../services/profile.service";
@@ -19,7 +20,8 @@ function EditProfileForm() {
     });
   const [image, setImage] = useState("");
   const [isLoading, setIsLoading] = useState(true); // nuevo estado
-
+  const [isTransportist, setIsTransportist] = useState();
+  const [currentUser, setCurrentUser] = useState();
   const handleFileUpload = (e) => {
     const uploadData = new FormData();
     uploadData.append("image", e.target.files[0]);
