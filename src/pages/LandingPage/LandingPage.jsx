@@ -10,7 +10,7 @@ function LandingPage() {
 
             <div className="homepage-video-overlay">
 
-                <section id="sect1" class="sect">
+                <section id="sect1" className="sect">
 
                     <video src={videoBg} autoplay="true" muted="true" loop="true" poster="https://carontestudio.com/img/contacto.jpg"></video>
                     <h1>Transport of the future</h1>

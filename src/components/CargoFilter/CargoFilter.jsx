@@ -1,7 +1,5 @@
-// ESTO TENEMOS QUE IMPORTARLO DESDE DASHBOARD
-// ACTUALMENTE EN DASHBOARD ESTÁ ESCRITO A MANO EN PLAN CUTRE SALCHICHERO
- 
 
+/* eslint-disable */
 import React, { useState } from 'react';
 import '../../App.css';
 import axios from 'axios'; // importa Axios
@@ -32,7 +30,7 @@ function CargoFilter() {
       </div>
       <button type="submit" className="btn btn-primary">Search</button>
       <div>
-        {/* {shipments.map((shipment) => <Shipment key={shipment._id} shipment={shipment} />)} */}
+
       </div>
     </form>
   );

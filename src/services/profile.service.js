@@ -13,6 +13,7 @@ class ProfileService {
             : {};
     }
 
+   
     getProfile(id) {
         return this.api.get(`/profile/myprofile/${id}`, this.headerObject);
     }

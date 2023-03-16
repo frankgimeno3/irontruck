@@ -57,33 +57,12 @@ function SignupTranspPage() {
       .then((response) => {
         navigate("transportist/login");
       })
-
-
-      // Or using a service
-      // authService
-      //   .signup(requestBody)
-      //   .then((response) => {
-      //     // If the POST request is successful redirect to the login page
-      //     navigate("/login");
-      //   })
       .catch((error) => {
-        // If the request resolves with an error, set the error message in the state
+
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
       });
 
-    //APUNTES
-    //   axios.post(process.env.REACT_APP_API_URL + "/auth/signup", { email, password, name, phoneNumber, address })
-    //     .then(response => {
-    //       console.log(response.data);
-    //       navigate("/login");
-    //     })
-    //     .catch(err => {
-    //       console.log(err);
-    //       setErrorMessage("Ha habido un error y no se ha podido registrar");
-    //       return;
-    //     })
-    // };
   };
   return (
     <>

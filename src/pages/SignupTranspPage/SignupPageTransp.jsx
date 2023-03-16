@@ -71,18 +71,6 @@ function SignupTranspPage() {
                 setErrorMessage(errorDescription);
             });
 
-        //APUNTES
-        //   axios.post(process.env.REACT_APP_API_URL + "/auth/signup", { email, password, name, phoneNumber, address })
-        //     .then(response => {
-        //       console.log(response.data);
-        //       navigate("/login");
-        //     })
-        //     .catch(err => {
-        //       console.log(err);
-        //       setErrorMessage("Ha habido un error y no se ha podido registrar");
-        //       return;
-        //     })
-        // };
     };
     return (
         <>
