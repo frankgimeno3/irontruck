@@ -6,8 +6,7 @@ import { AuthContext } from "../../context/auth.context.jsx";
 import "../../pages/MyCargos/MyCargos.css";
 import SenderChatComponent from "../../components/Chat/SenderChatComponent"
 import DriverChatComponent from "../../components/Chat/DriverChatComponent"
-import OffersReceivedComponent from "../../components/OffersReceivedComponent/OffersReceivedComponent"
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import TransportistCard from "../../components/Transportists/TransportistsCard"
 
 
@@ -124,11 +123,11 @@ function ShipmentDetails() {
       <TransportistCard shipment={shipment._id} />
 
       {!isTransportist && (
-      < SenderChatComponent />
+        < SenderChatComponent />
       )}
 
       {isTransportist && (
-      < DriverChatComponent />
+        < DriverChatComponent />
       )}
     </div>
 

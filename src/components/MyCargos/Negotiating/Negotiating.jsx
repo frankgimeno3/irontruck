@@ -5,7 +5,7 @@ import "../../CargoExchange/CargoExchange.css";
 import '../../../pages/MyCargos/MyCargos.css';
 import ProfileService from "../../../services/profile.service";
 import { AuthContext } from "../../../context/auth.context"
-import CardShipment from "../../CardShipment/CardShipment"
+
 
 function NegotiatingShipments() {
   const { user } = useContext(AuthContext)

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ShipmentsService from "../../services/shipments.service";
-import { Link } from "react-router-dom";
+
 
 
 function CardTransportist({ id }) {
