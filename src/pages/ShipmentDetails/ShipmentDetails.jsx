@@ -84,7 +84,7 @@ function ShipmentDetails() {
 
       {!isTransportist && (
         < SenderChatComponent />
-      )} */}
+      )}
 
       {isTransportist && (
         < DriverChatComponent />

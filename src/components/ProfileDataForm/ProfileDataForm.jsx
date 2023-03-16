@@ -88,7 +88,7 @@ function EditProfileForm() {
 
   return (
     <div>
-      <Button variant="danger" onClick={handleDelete}>Delete Profile</Button>
+      <button variant="danger" onClick={handleDelete}>Delete Profile</button>
       <form onSubmit={handleSubmit}>
 
         <br>
@@ -125,7 +125,6 @@ function EditProfileForm() {
 
       </form>
     </div>
-    </>
   );
 }
 
