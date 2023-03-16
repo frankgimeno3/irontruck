@@ -29,7 +29,7 @@ function EditProfileForm() {
     service
       .uploadImage(uploadData)
       .then(response => {
-        console.log(response);
+        console.log("response:", response);
         setImage(response.fileUrl);
         console.log("file.Url:", response.fileUrl);
       })
@@ -76,7 +76,7 @@ function EditProfileForm() {
         navigate("/");
       })
       .catch((error) => {
-        console.log(error);
+        console.log("console.log del delete:", error);
       });
   };
   
@@ -89,12 +89,16 @@ function EditProfileForm() {
   };
   
   return (
-      <div>
+      <div> 
             <Button variant="danger" onClick={handleDelete}>Delete Profile</Button>
        <form onSubmit={handleSubmit}>
 
     <br>
     </br>
+    <div className="mb-3">
+        <label htmlFor="exampleFormControlInput1" className="form-label">Profile image</label>
+        <input type="file" className="form-control" id="exampleFormControlInput1" placeholder="Insert your license plate here" name="image"  onChange={(e) => handleFileUpload(e)} />
+      </div>
       <div className="mb-3">
         <label htmlFor="exampleFormControlInput1" className="form-label">Phone number</label>
         <input type="number" className="form-control" value={formValues.phoneNumber} id="exampleFormControlInput1"  name="phoneNumber" onChange={handleInputChange} placeholder="Insert your phone number here" />
@@ -112,10 +116,7 @@ function EditProfileForm() {
         <label htmlFor="exampleFormControlInput1" className="form-label">Repeat Password</label>
         <input type="password" className="form-control" id="exampleFormControlInput1" placeholder="Insert password again" name="repeatPassword"  value={formValues.repeatPassword} onChange={handleInputChange} />
       </div>
-      <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">Profile image</label>
-        <input type="file" className="form-control" id="exampleFormControlInput1" placeholder="Insert your license plate here" name="image"  onChange={(e) => handleFileUpload(e)} />
-      </div>
+     
 
       {/* {isLoggedIn &&
       <div className="mb-3">
