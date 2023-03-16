@@ -3,7 +3,7 @@ import './ProfileDataForm.css';
 import ProfileService from "../../services/profile.service";
 import { AuthContext } from "../../context/auth.context";
 import service from "../../services/upload.service";
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
 
 function EditProfileForm() {
@@ -89,8 +89,9 @@ function EditProfileForm() {
   };
   
   return (
+    <>
       <div> 
-            <Button variant="danger" onClick={handleDelete}>Delete Profile</Button>
+            {/* <Button variant="danger" onClick={handleDelete}>Delete Profile</Button> */}
        <form onSubmit={handleSubmit}>
 
     <br>
@@ -134,6 +135,7 @@ function EditProfileForm() {
 
     </form>
     </div>
+    </>
   );
 }
 
