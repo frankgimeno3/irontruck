@@ -5,7 +5,7 @@ import "../../CargoExchange/CargoExchange.css";
 import '../../../pages/MyCargos/MyCargos.css';
 import ProfileService from "../../../services/profile.service";
 import { AuthContext } from "../../../context/auth.context";
-import CardShipment from "../../CardShipment/CardShipment"
+
 
 function CreatedShipments() {
   const { user } = useContext(AuthContext)
@@ -20,6 +20,7 @@ function CreatedShipments() {
       .then((response) => {
 
         setShipments(response.data.createdShipments)
+        console.log(response.data.createdShipments)
       })
       .catch((err) => { console.log(err) });
   }, []);
@@ -31,10 +32,47 @@ function CreatedShipments() {
 
 
       {shipments.map((shipment) => (
-        <CardShipment />
+        <div key={shipment._id} id="scrollspyHeading1" className="">
 
+
+          <div className="card .bg-white">
+
+            <div className="card-body">
+              <h5 className="card-title">Shipment {shipment.pickUpProvince}  {shipment.deliveryProvince}</h5>
+              <p> {shipment.pallets} Pallets</p>
+
+              <div className="info">
+
+                <div className="contact">
+                  <h6> Contact Information </h6>
+
+                  <p className=".text-body">{shipment?.author.name}</p>
+                  <p className=".text-body">{shipment?.author.email}</p>
+                  <p className=".text-body">{shipment?.author.phoneNumber} </p>
+                </div>
+
+                <Link to={`/shipments/${shipment._id}`}>
+                  <button className="btn btn-primary" >See Details</button>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <div>
+
+
+
+          </div>
+
+
+        </div>
       ))}
     </div>
+
+
   );
 };
 
