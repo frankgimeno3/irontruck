@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from 'react';
 import ProfileDataForm from '../../components/ProfileDataForm/ProfileDataForm';
 import "./MyProfilePage.css";
@@ -17,7 +19,6 @@ function MyProfilePage() {
   const getCurrentUser = async (id) => {
     try {
       authenticateUser();
-      console.log(id)
       const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/profile/myprofile/${id}`, { headers: { Authorization: `Bearer ${getToken()}` } })
       setCurrentUser(response.data);
       setIsLoading(false);
@@ -28,16 +29,8 @@ function MyProfilePage() {
       console.log("error del catch del getCurrentUser:", err);
     }
   }
-
   useEffect(() => {
     getCurrentUser(user._id);
-
-    // axios
-    //   .get(`${process.env.REACT_APP_SERVER_URL}/profile/${user._id}`)
-    //   .then((response) => {
-
-    //   })
-    //   .catch((err)=> console.log("error en el catch de profilepage", err))
   }, []);
 
   return (
@@ -109,22 +102,3 @@ export default MyProfilePage;
 
 
 
-
-
-
-    //       <section style="background-color: #eee;">
-    // //       <div className='container py-5'>
-    // //         <div className='row'>
-    // //           <div className='col-lg-4'>
-    // //             <div className='card mb-4'>
-    // //               <div className='card-body text-center'>
-    // //                 <img src={currentUser.image} alt="profile-image" className='rounded-circle img-fluid' style="width: 150px" />
-    // //                 <h5 className='my-3'>{currentUser.name}</h5>
-    // //                 <p className='text-muted mb-1'>{currentUser.email}</p>
-    // //               </div>
-    // //             </div>
-    // //           </div>
-    // //         </div>
-    // //         <ProfileDataForm />
-    // //       </div>
-    // //     </section>

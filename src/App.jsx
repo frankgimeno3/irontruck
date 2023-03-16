@@ -18,7 +18,6 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        {/* <Route path="/" element={<HomePage />} /> */}
         <Route path="/" element={<IsAnon><LandingPage /></IsAnon>} />
         <Route path="/dashboard" element={<IsPrivate> <Dashboard /> </IsPrivate>} />
         <Route path="/profile" element={<IsPrivate><MyProfilePage /></IsPrivate>} />

@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import ShipmentsService from "../../services/shipments.service";
 import { Link } from "react-router-dom";
 import "./CargoExchange.css";
-// import { Route } from "react-router-dom";
-// import ShipmentDetails from "../../pages/ShipmentDetails/ShipmentDetails"
 
 function CargoExchange() {
   const [shipments, setShipments] = useState([]);

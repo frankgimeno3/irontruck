@@ -1,7 +1,6 @@
 import "./SignupPage.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import authService from "../../services/auth.service";
 import axios from "axios";
 
 function SignupPage() {
@@ -50,32 +49,11 @@ function SignupPage() {
         navigate("/login");
       })
 
-
-      // Or using a service
-      // authService
-      //   .signup(requestBody)
-      //   .then((response) => {
-      //     // If the POST request is successful redirect to the login page
-      //     navigate("/login");
-      //   })
       .catch((error) => {
-        // If the request resolves with an error, set the error message in the state
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
       });
 
-    //APUNTES
-    //   axios.post(process.env.REACT_APP_API_URL + "/auth/signup", { email, password, name, phoneNumber, address })
-    //     .then(response => {
-    //       console.log(response.data);
-    //       navigate("/login");
-    //     })
-    //     .catch(err => {
-    //       console.log(err);
-    //       setErrorMessage("Ha habido un error y no se ha podido registrar");
-    //       return;
-    //     })
-    // };
   };
   return (
     <>
@@ -132,17 +110,10 @@ function SignupPage() {
             <label>Address</label>
             <input type="text" name="address" value={address} onChange={handleAddress} />
 
-
-
             <button type="submit">Sign Up</button>
           </form>
 
-
-
         </div>
-
-
-
 
         {errorMessage && <p className="error-message">{errorMessage}</p>}
 

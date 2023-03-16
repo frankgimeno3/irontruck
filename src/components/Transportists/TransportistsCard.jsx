@@ -1,21 +1,22 @@
+/* eslint-disable */
 import React, { useState, useEffect } from "react";
 import ShipmentsService from "../../services/shipments.service";
-import { Link } from "react-router-dom";
 
+function CardTransportist(idshipment) {
 
-function CardTransportist({ id }) {
-
-
-    const [shipments, setShipments] = useState([]);
+    const [transportists, setTransportists] = useState([]);
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         const shipmentsService = new ShipmentsService("your-token-here");
 
         shipmentsService
-            .getShipmentsById(id)
+            .getShipmentById(idshipment.shipment)
             .then((response) => {
-                console.log()
-                setShipments(response.data.transportist);
+
+                setTransportists(response.data.transportists);
+
+                setIsLoading(false)
             })
             .catch((error) => {
                 console.log(error);
@@ -23,11 +24,9 @@ function CardTransportist({ id }) {
     }, []);
 
     return (
-
         <div className="fondo-Cards">
-
             <div >
-                {shipments.map((transportist) => (
+                {transportists.map((transportist) => (
 
                     <div key={transportist._id} id="scrollspyHeading1" className="">
 

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect, useContext } from "react";
 import ShipmentsService from "../../services/shipments.service.js";
 import ProfileService from "../../services/profile.service.js";
@@ -6,7 +7,6 @@ import { AuthContext } from "../../context/auth.context.jsx";
 import "../../pages/MyCargos/MyCargos.css";
 import SenderChatComponent from "../../components/Chat/SenderChatComponent"
 import DriverChatComponent from "../../components/Chat/DriverChatComponent"
-import OffersReceivedComponent from "../../components/OffersReceivedComponent/OffersReceivedComponent"
 import { Link, useNavigate } from "react-router-dom";
 import TransportistCard from "../../components/Transportists/TransportistsCard"
 
@@ -16,7 +16,6 @@ function ShipmentDetails() {
   const { id } = useParams();
   const [shipment, setShipment] = useState({});
   const [isLoading, setIsLoading] = useState(false)
-  console.log(id);
   const profileService = new ProfileService();
   const shipmentsService = new ShipmentsService();
 
@@ -35,63 +34,24 @@ function ShipmentDetails() {
 
   const startNegotiation = () => {
     shipmentsService
-      .editShipments(shipment._id, { state: "inNegotiation", $push: { transportist: user.id } })
+      .editShipments(shipment._id, { state: "inNegotiation", $push: { transportist: user._id } })
       .then((response) => {
         setShipment(response.data)
-        profileService.editProfile(user.id, { $push: { currentShipments: response.data._id } })
+        profileService.editProfile(user._id, {
+          $push: {
+            currentShipments: response.data._id
+          }
+        })
           .then((response) => {
-            console.log(response.data)
           })
           .catch((error) => {
-            console.error("Failed to update Transportist state", error);
+            console.error("Failed to update Transportist", error);
           })
       })
       .catch((error) => {
         console.error("Failed to update shipment state", error);
       });
   }
-
-
-  const transportistShipment = () => {
-
-    shipmentsService
-      .getShipmentsById({ state: "inNegotiation", $push: { transportist: user.id } })
-      .then((response) => {
-        setShipment(response.data)
-        profileService.editProfile(user.id, { $push: { currentShipments: response.data._id } })
-          .then((response) => {
-            console.log(response.data)
-          })
-          .catch((error) => {
-            console.error("Failed to update Transportist state", error);
-          })
-      })
-      .catch((error) => {
-        console.error("Failed to update shipment state", error);
-      });
-
-
-  }
-
-  const acceptTransportist = () => {
-    shipmentsService
-      .getShipmentById(shipment._id, { state: "Completed", $push: { transportist: user._id } })
-      .then((response) => {
-        setShipment(response.data)
-        profileService.editProfile(user._id, { $push: { completedShipments: response.data._id }, $pull: { currentShipments: response.data._id } })
-          .then((response) => {
-            console.log(response.data)
-          })
-          .catch((error) => {
-            console.error("Failed to update Transportist state", error);
-          })
-      })
-      .catch((error) => {
-        console.error("Failed to update shipment state", error);
-      });
-  }
-
-
 
   return (
     <div>
@@ -109,36 +69,27 @@ function ShipmentDetails() {
 
       {isLoading &&
         <Link to={`/profile/${shipment.author._id}`}>
-          {/* <Route path="/:idShipment" component={ShipmentDetails} /> */}
           <button className="detailsbutton">See Sender Details</button>
         </Link>
       }
-
-
-      {/* {!shipment.transportists.includes(user._id) ? ( */}
-
-      <button className="btn btn-primary" onClick={startNegotiation}>
-        Negotiate Shipment
-      </button>
+      {!isLoading && isTransportist && (
+        <button className="btn btn-primary" onClick={startNegotiation}>
+          Negotiate Shipment
+        </button>
+      )}
 
       <TransportistCard shipment={shipment._id} />
 
-      {/* <button className="btn btn-success" onClick={acceptTransportist}>
-        Accept Transaccion
-      </button>
 
-      <button className="btn btn-success" onClick={acceptTransportist}>
-        Rechazar
-      </button> */}
-      {/* ) : null} */}
-
+      {/* 
       {/* {!isLoading && !isTransportist && (
         < SenderChatComponent />
-      )}
+      )} */}
 
-      {!isLoading && isTransportist && (
+      {/* {!isLoading && isTransportist && (
         < DriverChatComponent />
       )}  */}
+
       {/* <Chat /> */}
     </div>
 

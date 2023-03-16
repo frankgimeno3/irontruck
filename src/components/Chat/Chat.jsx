@@ -9,7 +9,6 @@ const ChatPage = () => {
     photoUrl: 'https://example.com/john.jpg',
     role: 'user'
   };
-
   const otherUser = {
     id: '2',
     name: 'Jane Doe',
@@ -17,9 +16,8 @@ const ChatPage = () => {
     photoUrl: 'https://example.com/jane.jpg',
     role: 'user'
   };
-
   return (
-     <TalkJSChat currentUser={currentUser} otherUser={otherUser} />
+    <TalkJSChat currentUser={currentUser} otherUser={otherUser} />
   )
 
 };
