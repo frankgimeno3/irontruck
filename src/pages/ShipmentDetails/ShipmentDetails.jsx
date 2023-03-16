@@ -15,7 +15,6 @@ function ShipmentDetails() {
   const { id } = useParams();
   const [shipment, setShipment] = useState({});
   const [isLoading, setIsLoading] = useState(false)
-  console.log(id);
   const { user, authenticateUser, isTransportist, getToken } = useContext(AuthContext);
 
   useEffect(() => {
@@ -57,11 +56,11 @@ function ShipmentDetails() {
       <h2>Offers Received</h2>
       <OffersReceivedComponent />
       <hr/>
-      {!isLoading && !isTransportist && (
+      {!isTransportist && (
       < SenderChatComponent />
       )}
 
-      {!isLoading && isTransportist && (
+      {isTransportist && (
       < DriverChatComponent />
       )}
       </div>

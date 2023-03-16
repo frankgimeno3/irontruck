@@ -1,30 +1,31 @@
-import React, { useEffect, useState } from 'react';
-import Talk from 'talkjs';
+// import Talk from 'talkjs';
 
-const TalkJSChat = ({ currentUser, otherUser }) => {
-  const [talkSession, setTalkSession] = useState(null);
+// Talk.ready.then(function () {
+//   var me = new Talk.User({
+//     id: '123456',
+//     name: 'Alice',
+//     email: 'alice@example.com',
+//     photoUrl: 'https://talkjs.com/images/avatar-1.jpg',
+//     welcomeMessage: 'Hey there! How are you? :-)',
+//   });
+//   window.talkSession = new Talk.Session({
+//     appId: 'tdU8Q2dM',
+//     me: me,
+//   });
+//   var other = new Talk.User({
+//     id: '654321',
+//     name: 'Sebastian',
+//     email: 'Sebastian@example.com',
+//     photoUrl: 'https://talkjs.com/images/avatar-5.jpg',
+//     welcomeMessage: 'Hey, how can I help?',
+//   });
 
-  useEffect(() => {
-    Talk.ready.then(() => {
-      const me = new Talk.User(currentUser);
-      const other = new Talk.User(otherUser);
+//   var conversation = talkSession.getOrCreateConversation(
+//     Talk.oneOnOneId(me, other)
+//   );
+//   conversation.setParticipant(me);
+//   conversation.setParticipant(other);
 
-      const session = new Talk.Session({
-        appId: 'tdU8Q2dM',
-        me,
-      });
-
-      const conversationId = Talk.oneOnOneId(me, other);
-      const conversation = session.getOrCreateConversation(conversationId);
-
-      conversation.setParticipant(me);
-      conversation.setParticipant(other);
-
-      setTalkSession(session);
-    });
-  }, []);
-
-  return <div id="talkjs-container" style={{ height: '500px' }}></div>;
-};
-
-export default TalkJSChat;
+//   var inbox = talkSession.createInbox({ selected: conversation });
+//   inbox.mount(document.getElementById('talkjs-container'));
+// });

@@ -1,39 +1,38 @@
 import Talk from 'talkjs';
-import { useEffect, useState, useRef } from 'react';
-import "./ChatComponent.css";
+import React, { useState, useEffect, useContext, useRef } from "react";
+import "./ChatComponent.css"
 import ShipmentsService from "../../services/shipments.service";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../../context/auth.context";
-import { useContext } from "react";
+
 
 function DriverChatComponent() {
   const chatboxEl = useRef();
-  const [senderUser, setSenderUser] = useState({});
   const [shipment, setShipment] = useState({});
-  const [talkLoaded, setTalkLoaded] = useState(false);
   const { id } = useParams();
-  const { currentUser } = useContext(AuthContext);
+  const { user, authenticateUser, isTransportist, getToken } = useContext(AuthContext);
+
+  // wait for TalkJS to load
+  const [talkLoaded, markTalkLoaded] = useState(false);
 
   useEffect(() => {
-    Talk.ready.then(() => setTalkLoaded(true));
-    const shipmentsService = new ShipmentsService("your-token-here");
-    shipmentsService.getShipmentById(id)
-      .then((response) => {
-        console.log("wachicha", response.data)
-        setShipment(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
+    Talk.ready.then(() => markTalkLoaded(true));
+
+    if (talkLoaded) {
+      const currentUser = new Talk.User({
+        id: '1',
+        name: 'Henry Mill',
+        email: 'henrymill@example.com',
+        photoUrl: 'henry.jpeg',
+        welcomeMessage: 'Hello!',
+        role: 'default',
       });
-  }, [id]);
 
-  useEffect(() => {
-    if (talkLoaded && currentUser) {
       const otherUser = new Talk.User({
-        id: shipment.driver_id,
-        name: shipment.driver_name,
-        email: shipment.driver_email,
-        photoUrl: shipment.driver_photo_url,
+        id: '2',
+        name: 'Jessica Wells',
+        email: 'jessicawells@example.com',
+        photoUrl: 'jessica.jpeg',
         welcomeMessage: 'Hello!',
         role: 'default',
       });
@@ -54,9 +53,24 @@ function DriverChatComponent() {
 
       return () => session.destroy();
     }
-  }, [talkLoaded, currentUser, shipment]);
+  }, [talkLoaded]);
+  useEffect(() => {
+    const shipmentsService = new ShipmentsService(getToken());
+    shipmentsService
+      .getShipmentById(id)
 
-  return <div ref={chatboxEl} className="chatbox" />;
+      .then((response) => {
+        setShipment(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [id]);
+  return (
+    <>
+      <div ref={chatboxEl} className="chatbox"/>;
+    </>
+  ) 
 }
 
 export default DriverChatComponent;
