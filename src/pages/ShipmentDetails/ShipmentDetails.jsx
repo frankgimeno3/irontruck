@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useMemo } from "react";
 import ShipmentsService from "../../services/shipments.service.js";
 import ProfileService from "../../services/profile.service.js";
 import { useParams } from "react-router-dom";
@@ -17,8 +17,9 @@ function ShipmentDetails() {
   const { isTransportist,  user } =
     useContext(AuthContext);
   const profileService = new ProfileService();
-  const shipmentsService = new ShipmentsService();
-  useEffect(() => {
+  const shipmentsService = useMemo(() => {
+    return new ShipmentsService();
+  }, []);  useEffect(() => {
     shipmentsService
       .getShipmentById(id)
 
