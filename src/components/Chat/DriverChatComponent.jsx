@@ -1,22 +1,18 @@
 import Talk from 'talkjs';
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./ChatComponent.css"
 import ShipmentsService from "../../services/shipments.service";
 import { useParams } from "react-router-dom";
-import { AuthContext } from "../../context/auth.context";
 
 
 function DriverChatComponent() {
   const chatboxEl = useRef();
-  const [shipmentAuthor, setShipmentAuthor] = useState({});
   const [shipmentAuthorID, setShipmentAuthorID] = useState({});
   const [shipmentAuthorEmail, setShipmentAuthorEmail] = useState({});
   // const [shipmentAuthorImageURL, setShipmentAuthorImageURL] = useState({});
  
 
   const { id } = useParams();
-  const { user, authenticateUser, isTransportist, getToken } = useContext(AuthContext);
-  const senderUser = `${shipmentAuthor}`;
   const senderUserID = `${shipmentAuthorID}`;
   const senderUserEmail = `${shipmentAuthorEmail}`;
   // const senderUserImageURL = `${shipmentAuthorImageURL}`;
@@ -27,12 +23,11 @@ function DriverChatComponent() {
 
    
   useEffect(() => {
-    const shipmentsService = new ShipmentsService(getToken());
+    const shipmentsService = new ShipmentsService();
     shipmentsService
       .getShipmentById(id)
 
       .then((response) => {
-        setShipmentAuthor(response.data.author.name);
         setShipmentAuthorID(response.data.author._id);
         setShipmentAuthorEmail(response.data.author.email);
         // setShipmentAuthorImageURL(response.data.author.image);
