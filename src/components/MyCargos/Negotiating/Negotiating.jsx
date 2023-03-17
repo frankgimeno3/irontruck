@@ -1,12 +1,14 @@
+/* eslint-disable */
 import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../../CargoExchange/CargoExchange.css";
 import '../../../pages/MyCargos/MyCargos.css';
 import ProfileService from "../../../services/profile.service";
-import { AuthContext } from "../../../context/auth.context"
+import { AuthContext } from "../../../context/auth.context";
 
 
-function Negotiating() {
+
+function NegotiatingShipments() {
   const { user } = useContext(AuthContext);
   const [shipments, setShipments] = useState([]);
 
@@ -15,21 +17,24 @@ function Negotiating() {
 
     profileService.getProfile(user._id)
       .then((response) => {
-        if (response.data && response.data.createdShipments) {
-          setShipments(response.data.createdShipments);
+        if (response.data.currentShipments) {
+          console.log("eso", response.data.currentShipments)
+          setShipments(response.data.currentShipments)
+        } else {
+          setShipments(undefined)
         }
       })
       .catch((err) => { console.log("no llega a pillar user id", err) });
   }, [user._id]);
 
   return (
-    <div>
-      <h2>Shipments in Negotiation</h2>
-      {shipments && shipments.length > 0 ? (
-        shipments
+    <div className="bg-dark-subtle">
+      <h2 className="text-body-emphasis"> Shipments in Negotiation</h2>
+
+      {shipments
         .filter((shipment) => shipment.state === "inNegotiation")
         .map((shipment) => (
-            <div className="fondo-Cards">
+          <div className="fondo-Cards">
             <div >
               <div key={shipment._id} id="scrollspyHeading1" className="">
                 <div className="card .bg-white">
@@ -52,12 +57,12 @@ function Negotiating() {
               </div>
             </div>
           </div>
-          ))
-      ) : (
-        <p>No shipments in Negotiation</p>
-      )}
+        ))
+        (
+          <p>No shipments in Negotiation</p>
+        )}
     </div>
   );
 };
 
-export default Negotiating;
+export default NegotiatingShipments;
