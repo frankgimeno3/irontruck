@@ -22,7 +22,7 @@ function Completed() {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [user._id]);
 
   return (
     <div>
