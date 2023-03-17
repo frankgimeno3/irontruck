@@ -6,7 +6,7 @@ import { AuthContext } from "../../context/auth.context.jsx";
 import "../../pages/MyCargos/MyCargos.css";
 import SenderChatComponent from "../../components/Chat/SenderChatComponent";
 import DriverChatComponent from "../../components/Chat/DriverChatComponent";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import TransportistCard from "../../components/Transportists/TransportistsCard";
 import "./ShipmentDetails.css";
 
@@ -14,7 +14,7 @@ function ShipmentDetails() {
   const { id } = useParams();
   const [shipment, setShipment] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const { authenticateUser, isTransportist, getToken, user, isLoggedIn } =
+  const { isTransportist,  user } =
     useContext(AuthContext);
   const profileService = new ProfileService();
   const shipmentsService = new ShipmentsService();
@@ -29,7 +29,7 @@ function ShipmentDetails() {
       .catch((error) => {
         console.log(error);
       });
-  }, [id]);
+  }, [id, isLoading, shipmentsService]);
   const startNegotiation = () => {
     shipmentsService
       .editShipments(shipment._id, {

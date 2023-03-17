@@ -21,7 +21,7 @@ function NegotiatingShipments() {
         }
       })
       .catch((err) => { console.log("no llega a pillar user id", err) });
-  }, []);
+  }, [user._id]);
 
   if (shipments === undefined) {
     return (

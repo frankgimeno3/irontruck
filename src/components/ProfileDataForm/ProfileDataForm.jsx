@@ -1,17 +1,18 @@
-import axios from 'axios'
+// import axios from 'axios'
 import React, { useState, useContext } from "react";
 import './ProfileDataForm.css';
 import ProfileService from "../../services/profile.service";
 import { AuthContext } from "../../context/auth.context";
 import service from "../../services/upload.service";
 // import Button from 'react-bootstrap/Button';
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 function EditProfileForm() {
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const { user, authenticateUser, isLoggedIn, getToken } = useContext(AuthContext);
+  const { user} = useContext(AuthContext);
+  // const { authenticateUser, isLoggedIn, getToken } = useContext(AuthContext);
   const [formValues, setFormValues] = useState({
       phoneNumber: 0,
       address: "",
@@ -19,14 +20,14 @@ function EditProfileForm() {
       repeatPassword: ""
     });
   const [image, setImage] = useState("");
-  const [isLoading, setIsLoading] = useState(true); // nuevo estado
-  const [isTransportist, setIsTransportist] = useState();
-  const [currentUser, setCurrentUser] = useState();
+  // const [isLoading, setIsLoading] = useState(true); // nuevo estado
+  // const [isTransportist, setIsTransportist] = useState();
+  // const [currentUser, setCurrentUser] = useState();
   const handleFileUpload = (e) => {
     const uploadData = new FormData();
     uploadData.append("image", e.target.files[0]);
 
-    setIsLoading(true); // establecer isLoading a true
+    // setIsLoading(true); // establecer isLoading a true
 
     service
       .uploadImage(uploadData)
@@ -35,27 +36,27 @@ function EditProfileForm() {
       })
       .catch(err => console.log("Error while uploading the file: ", err))
       .finally(() => {
-        setIsLoading(false); // establecer isLoading a false
+        // setIsLoading(false); // establecer isLoading a false
       });
   };
 
-  const getCurrentUser = async (id) => {
-    try {
-      authenticateUser();
-      console.log(id)
-      const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/profile/myprofile/${id}`, { headers: { Authorization: `Bearer ${getToken()}` } })
-      setCurrentUser(response.data);
-      setIsLoading(false);
-      console.log("response.data:", response.data)
-      console.log("response.data.isTransportist:", response.data.isTransportist)
-      if (response.data.isTransportist) {
-        setIsTransportist(true)
-      }
-      // navigate(`/profile/myprofile/${id}`); // Navigate to the profile page after setting the currentUser state variable
-    } catch (err) {
-      console.log("error del catch del getCurrentUser:", err);
-    }
-  }
+  // const getCurrentUser = async (id) => {
+  //   try {
+  //     authenticateUser();
+  //     console.log(id)
+  //     const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/profile/myprofile/${id}`, { headers: { Authorization: `Bearer ${getToken()}` } })
+  //     setCurrentUser(response.data);
+  //     setIsLoading(false);
+  //     console.log("response.data:", response.data)
+  //     console.log("response.data.isTransportist:", response.data.isTransportist)
+  //     if (response.data.isTransportist) {
+  //       setIsTransportist(true)
+  //     }
+  //     // navigate(`/profile/myprofile/${id}`); // Navigate to the profile page after setting the currentUser state variable
+  //   } catch (err) {
+  //     console.log("error del catch del getCurrentUser:", err);
+  //   }
+  // }
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -83,7 +84,7 @@ function EditProfileForm() {
           professionalType: ""
         });
         setImage("");
-        setIsLoading(false)
+        // setIsLoading(false)
         
       })
       .catch((error) => {
@@ -91,18 +92,18 @@ function EditProfileForm() {
       });
   };
 
-  const handleDelete = () => {
-    const profileService = new ProfileService();
-    profileService
-      .deleteProfile(user._id)
-      .then(() => {
-        authenticateUser(null);
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log("console.log del delete:", error);
-      });
-  };
+  // const handleDelete = () => {
+  //   const profileService = new ProfileService();
+  //   profileService
+  //     .deleteProfile(user._id)
+  //     .then(() => {
+  //       authenticateUser(null);
+  //       navigate("/");
+  //     })
+  //     .catch((error) => {
+  //       console.log("console.log del delete:", error);
+  //     });
+  // };
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
