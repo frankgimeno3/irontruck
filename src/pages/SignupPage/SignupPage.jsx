@@ -1,3 +1,4 @@
+/* eslint-disable */
 import "./SignupPage.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -89,29 +90,29 @@ function SignupPage() {
         <Link to={"/transportist/signup"} >  SignUp  </Link>
         <div className="input-group mb-3">
 
-     
+
 
         </div>
 
 
-      
+
       </div>
       <img src="https://www.rlicorp.com/sites/default/files/banner-images/LossControl_WebsiteHeader_02_72dpi_1.jpg" alt="banner" className="landingjpg" />
       <footer>
-                <div className="legal-notice">
-                    <a href="/">Legal notice</a>
-                </div>
-                <div className="cookies-policy">
-                    <a href="/">Cookie policy</a>
-                </div>
-                <div className="contact-us">
-                    <a href="/">Contact</a>
-                </div>
-                <div className="copyright">
-                    © 2023 All rights reserved.
-                </div>
-            </footer>
-    
+        <div className="legal-notice">
+          <a href="/">Legal notice</a>
+        </div>
+        <div className="cookies-policy">
+          <a href="/">Cookie policy</a>
+        </div>
+        <div className="contact-us">
+          <a href="/">Contact</a>
+        </div>
+        <div className="copyright">
+          © 2023 All rights reserved.
+        </div>
+      </footer>
+
     </>
   );
 }
