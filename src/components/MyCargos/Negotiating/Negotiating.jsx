@@ -8,7 +8,7 @@ import { AuthContext } from "../../../context/auth.context";
 
 
 
-function Negotiating() {
+function NegotiatingShipments() {
   const { user } = useContext(AuthContext);
   const [shipments, setShipments] = useState([]);
 

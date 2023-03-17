@@ -7,7 +7,7 @@ import ProfileService from "../../../services/profile.service";
 import { AuthContext } from "../../../context/auth.context";
 
 
-function Completed() {
+function CompletedShipments() {
   const { user, isTransportist } = useContext(AuthContext);
   const [shipments, setShipments] = useState([]);
 
