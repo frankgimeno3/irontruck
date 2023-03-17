@@ -24,7 +24,9 @@ function Negotiating() {
           setShipments(undefined)
         }
       })
-      .catch((err) => { console.log("no llega a pillar user id", err) });
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
@@ -58,9 +60,9 @@ function Negotiating() {
             </div>
           </div>
         ))
-      ) : (
-      <p>No shipments in Negotiation</p>
-      )}
+        (
+          <p>No shipments in Negotiation</p>
+        )}
     </div>
   );
 };
