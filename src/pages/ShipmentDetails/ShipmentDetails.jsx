@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { useState, useEffect, useContext } from "react";
+import "./ShipmentDetails.css"
 import ShipmentsService from "../../services/shipments.service.js";
 import ProfileService from "../../services/profile.service.js";
 import { useParams } from "react-router-dom";
@@ -56,7 +57,7 @@ function ShipmentDetails() {
   }
 
   return (
-    <div>
+    <div className="container py-5">
       <h1>Shipping Details</h1>
       <p>Shipment id: {shipment._id}</p>
       <p>Author: {shipment.author?.name}</p>
@@ -71,9 +72,10 @@ function ShipmentDetails() {
 
       {isLoading &&
         <Link to={`/profile/${shipment.author._id}`}>
-          <button className="detailsbutton">See Sender Details</button>
+          <button className=" mx-auto btn btn-info">See Sender Details</button>
         </Link>
       }
+      
       {!isLoading && isTransportist && (
         <button className="btn btn-primary" onClick={startNegotiation}>
           Negotiate Shipment

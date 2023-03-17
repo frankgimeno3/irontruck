@@ -1,7 +1,7 @@
 /* eslint-disable */
-
+import ProfileDataFormTransportist from '../../components/ProfileDataFormTransportist/ProfileDataFormTransportist';
 import React from 'react';
-import ProfileDataForm from '../../components/ProfileDataForm/ProfileDataForm';
+import ProfileDataFormSender from '../../components/ProfileDataFormSender/ProfileDataFormSender';
 import "./MyProfilePage.css";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/auth.context"
@@ -29,13 +29,14 @@ function MyProfilePage() {
       if (response.data.isTransportist) {
         setIsTransportist(true)
       }
-      // navigate(`/profile/myprofile/${id}`); // Navigate to the profile page after setting the currentUser state variable
     } catch (err) {
       console.log("error del catch del getCurrentUser:", err);
     }
   }
   useEffect(() => {
     getCurrentUser(user._id);
+          // navigate(`/profile/myprofile/${id}`); // Navigate to the profile page after setting the currentUser state variable
+
   }, []);
 
   return (
@@ -93,7 +94,7 @@ function MyProfilePage() {
           </div>
           <section>
             <h2>Edit your profile data </h2>
-            <ProfileDataForm />
+            <ProfileDataFormSender />
           </section>
         </div>
       }
@@ -168,7 +169,7 @@ function MyProfilePage() {
           </div>
           <section>
             <h2>Edit your profile data </h2>
-            <ProfileDataForm />
+            <ProfileDataFormTransportist />
           </section>
         </div>
       }
