@@ -86,6 +86,7 @@ function ShipmentDetails() {
         console.error("Failed to update shipment state", error);
       });
   };
+  const shipmenttransportists = shipment.transportists;
 
   return (
     <>
@@ -107,18 +108,20 @@ function ShipmentDetails() {
             </Link>
           )}
         </div>
-        {!isLoading && isTransportist && (
-          <button className="btn btn-primary" onClick={startNegotiation}>
-            Negotiate Shipment
-          </button>
-        )}
+        
         <div className="container2">
-          <TransportistCard shipment={shipment._id} />
+          {!isTransportist && <TransportistCard shipment={shipmenttransportists}  />}
+          
           {!isTransportist && <SenderChatComponent />}
           {isTransportist && <DriverChatComponent />}
         </div>
         </div>
         <div className="container1">
+        {isTransportist && (
+          <button className="btn btn-primary" onClick={startNegotiation}>
+            Negotiate Shipment
+          </button>
+        )}
         {!isTransportist && (
           <button className="btn btn-danger" onClick={deleteShipment}>
             Delete Shipment

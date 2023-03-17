@@ -63,6 +63,8 @@ function LoginPage() {
         </form>
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         <div className="dropdown-divider"></div>
+        <p>Do you want to log in as a driver instead?</p>
+        <Link to={"/transportist/login"} >  Log in as a driver  </Link>
         <p>New around here?</p>
         <Link to={"/signup"} className="dropdown-item">  Sign up  </Link>
         <img src="https://www.rlicorp.com/sites/default/files/banner-images/LossControl_WebsiteHeader_02_72dpi_1.jpg" alt="banner" className="landingjpg" />

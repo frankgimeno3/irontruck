@@ -60,6 +60,8 @@ function LoginTranspPage() {
           </form>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
           <div className="dropdown-divider"></div>
+          <p>Do you want to log in as a sender instead?</p>
+        <Link to={"/login"} >  Log in as a sender  </Link>
           <p>New around here?</p>
         <Link to={"/transportist/signup"} className="dropdown-item">  Sign up  </Link>
         </div>

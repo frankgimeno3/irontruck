@@ -1,27 +1,24 @@
 /* eslint-disable */
 import React, { useState, useEffect } from "react";
-import ShipmentsService from "../../services/shipments.service";
+import TranspService from "../../services/transp.service";
 
-function CardTransportist(idshipment) {
-
+function CardTransportist(shipmenttransportists) {
+    const  idTransportist = shipmenttransportists._id;
     const [transportists, setTransportists] = useState([]);
     const [isLoading, setIsLoading] = useState(true)
-
     useEffect(() => {
-        const shipmentsService = new ShipmentsService("your-token-here");
-
-        shipmentsService
-            .getShipmentById(idshipment.shipment)
-            .then((response) => {
-
-                setTransportists(response.data.transportists);
-
-                setIsLoading(false)
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }, []);
+        TranspService
+          .getTransportistById(idTransportist)
+    
+          .then((response) => {
+            setTransportists(response.data);
+            setIsLoading(!isLoading);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }, [idTransportist]);
+   
 
     return (
         <div className="fondo-Cards">

@@ -24,6 +24,9 @@ class TranspService {
   verify () {
     return this.api.get("/transportist/verify");
    };
+   getTransportistById(idTransportist) {
+    return axios.get(process.env.REACT_APP_SERVER_URL + `/transportist/${idTransportist}`, this.headerObject);
+}
 }
 
 const transpService = new TranspService();

@@ -13,8 +13,9 @@ function NegotiatingShipments() {
     const profileService = new ProfileService();
     profileService.getProfile(user._id)
       .then((response) => {
-        if (response.data.createdShipments) {
-          setShipments(response.data.createdShipments)
+        if (response.data.currentShipments) {
+          console.log("eso", response.data.currentShipments)
+          setShipments(response.data.currentShipments)
         } else {
           setShipments(undefined)
         }
