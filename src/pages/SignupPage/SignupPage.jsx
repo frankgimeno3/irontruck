@@ -7,7 +7,7 @@ function SignupPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordRep, setPasswordRep] = useState("");
-  const [name, setName] = useState("");
+  const [name,] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
