@@ -74,7 +74,7 @@ function DriverChatComponent() {
 
       return () => session.destroy();
     }
-  }, [talkLoaded]);
+  }, [senderUserEmail, senderUserID, talkLoaded]);
 
   return (
     <>
