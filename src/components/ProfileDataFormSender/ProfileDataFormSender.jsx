@@ -1,19 +1,15 @@
 /* eslint-disable */
 
-import axios from 'axios'
 import React, { useState, useContext } from "react";
-import './ProfileDataForm.css';
+import './ProfileDataFormSender.css';
 import ProfileService from "../../services/profile.service";
 import { AuthContext } from "../../context/auth.context";
 import service from "../../services/upload.service";
 // import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
-
-function EditProfileForm() {
-
+function EditProfileFormSender() {
   const navigate = useNavigate();
-
-  const { user, authenticateUser, isLoggedIn, getToken } = useContext(AuthContext);
+  const { user, authenticateUser } = useContext(AuthContext);
   const [formValues, setFormValues] = useState({
     phoneNumber: 0,
     address: "",
@@ -21,15 +17,11 @@ function EditProfileForm() {
     repeatPassword: ""
   });
   const [image, setImage] = useState("");
-  const [isLoading, setIsLoading] = useState(true); // nuevo estado
-  const [isTransportist, setIsTransportist] = useState();
-  const [currentUser, setCurrentUser] = useState();
+  const [isLoading, setIsLoading] = useState(true);
   const handleFileUpload = (e) => {
     const uploadData = new FormData();
     uploadData.append("image", e.target.files[0]);
-
-    setIsLoading(true); // establecer isLoading a true
-
+    setIsLoading(true);
     service
       .uploadImage(uploadData)
       .then(response => {
@@ -37,28 +29,9 @@ function EditProfileForm() {
       })
       .catch(err => console.log("Error while uploading the file: ", err))
       .finally(() => {
-        setIsLoading(false); // establecer isLoading a false
+        setIsLoading(!isLoading);
       });
   };
-
-  const getCurrentUser = async (id) => {
-    try {
-      authenticateUser();
-      console.log(id)
-      const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/profile/myprofile/${id}`, { headers: { Authorization: `Bearer ${getToken()}` } })
-      setCurrentUser(response.data);
-      setIsLoading(false);
-      console.log("response.data:", response.data)
-      console.log("response.data.isTransportist:", response.data.isTransportist)
-      if (response.data.isTransportist) {
-        setIsTransportist(true)
-      }
-
-    } catch (err) {
-      console.log("error del catch del getCurrentUser:", err);
-    }
-  }
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const updateValues = {
@@ -67,9 +40,6 @@ function EditProfileForm() {
       password: formValues.password,
       repeatPassword: formValues.repeatPassword,
       image: image,
-      licensePlate: formValues.licensePlate,
-      nif: formValues.nif,
-      professionalType: formValues.professionalType
     };
     const profileService = new ProfileService();
     profileService
@@ -79,20 +49,15 @@ function EditProfileForm() {
           phoneNumber: 0,
           address: "",
           password: "",
-          repeatPassword: "",
-          licensePlate: "",
-          nif: "",
-          professionalType: ""
+          repeatPassword: ""
         });
         setImage("");
         setIsLoading(false)
-
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
   const handleDelete = () => {
     const profileService = new ProfileService();
     profileService
@@ -105,7 +70,6 @@ function EditProfileForm() {
         console.log("console.log del delete:", error);
       });
   };
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormValues((prevState) => ({
@@ -113,13 +77,11 @@ function EditProfileForm() {
       [name]: value
     }));
   };
-
   return (
     <>
       <div>
-        {/* <Button variant="danger" onClick={handleDelete}>Delete Profile</Button> */}
+        <button className="btn btn-danger" onClick={handleDelete}>Delete Profile</button>
         <form onSubmit={handleSubmit}>
-
           <br>
           </br>
           <div className="mb-3">
@@ -143,21 +105,15 @@ function EditProfileForm() {
             <label htmlFor="exampleFormControlInput1" className="form-label">Repeat Password</label>
             <input type="password" className="form-control" id="exampleFormControlInput1" placeholder="Insert password again" name="repeatPassword" value={formValues.repeatPassword} onChange={handleInputChange} />
           </div>
-
-
-
           <button className="learn-more" type="submit">
             <span className="circle" aria-hidden="true">
               <span className="icon arrow"></span>
             </span>
-
             <span className="button-text">Submit changes</span>
           </button>
-
         </form>
       </div>
     </>
   );
 }
-
-export default EditProfileForm;
+export default EditProfileFormSender;
