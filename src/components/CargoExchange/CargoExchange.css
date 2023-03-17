@@ -55,3 +55,14 @@
   align-items: center;
 
 }
+
+.active {
+    font-weight: bolder;
+
+}
+
+#sortbyorigin, #sortbydestination, #sortbypallets {
+  margin-right: 1vw;
+  padding: 1vh;
+  border: 1px solid black;
+}

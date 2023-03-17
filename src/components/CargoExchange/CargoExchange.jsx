@@ -5,6 +5,7 @@ import "./CargoExchange.css";
 
 function CargoExchange() {
   const [shipments, setShipments] = useState([]);
+  const [sortType, setSortType] = useState("");
 
   useEffect(() => {
     const shipmentsService = new ShipmentsService("your-token-here");
@@ -18,67 +19,55 @@ function CargoExchange() {
       });
   }, []);
 
+  const sortByOrigin = () => {
+    setSortType("origin");
+    setShipments([...shipments].sort((a, b) => a.pickUpProvince.localeCompare(b.pickUpProvince)));
+  };
+
+  const sortByDestination = () => {
+    setSortType("destination");
+    setShipments([...shipments].sort((a, b) => a.deliveryProvince.localeCompare(b.deliveryProvince)));
+  };
+
+  const sortByPallets = () => {
+    setSortType("pallets");
+    setShipments([...shipments].sort((a, b) => b.pallets - a.pallets));
+  };
+
   return (
-
     <div>
-
-      <nav id="navbar-example2" className="navbar bg-body-tertiary px-3 mb-3">
-        <Link className="navbar-brand" href="#">Shipments List</Link>
-        <ul className="nav nav-pills">
-          <li className="nav-item">
-            <a className="nav-link" href="#scrollspyHeading1">First</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#scrollspyHeading2">Second</a>
-          </li>
-          <li className="nav-item dropdown">
-            <Link className="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</Link>
-            <ul className="dropdown-menu">
-              <li><Link className="dropdown-item" href="#scrollspyHeading3">Third</Link></li>
-              <li><Link className="dropdown-item" href="#scrollspyHeading4">Fourth</Link></li>
-              <li>
-
-              </li>
-              <li><Link className="dropdown-item" href="#scrollspyHeading5">Fifth</Link></li>
-            </ul>
-          </li>
-        </ul>
+      
+      <div >
+        <h2>Filter shipments</h2>
+        <nav>
+        <button className={sortType === "origin" ? "active" : ""} onClick={sortByOrigin} id="sortbyorigin">
+          Sort by Origin Alphabetically
+        </button>
+        <button className={sortType === "destination" ? "active" : ""} onClick={sortByDestination} id="sortbydestination">
+          Sort by Destination Alphabetically
+        </button>
+        <button className={sortType === "pallets" ? "active" : ""} onClick={sortByPallets} id="sortbypallets"> 
+          Sort by Number of Pallets
+        </button>
       </nav>
-      <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" className="scrollspy-example bg-body-tertiary p-3 rounded-2" tabIndex="0">
-        <h4 id="scrollspyHeading1">First heading</h4>
-        <p>...</p>
-
       </div>
+      
+      <h2>Shipments List</h2>
       <div className="cards">
         {shipments.map((shipment) => (
           <div key={shipment._id} className="card" id="scrollspyHeading1">
-
             <div className="card-body">
-
               <p>
-                Shipment {shipment.pickUpProvince} to {shipment.deliveryProvince}.   {shipment.pallets} pallets
+                Shipment from {shipment.pickUpProvince} to {shipment.deliveryProvince}. {shipment.pallets} pallets
               </p>
-
-
-
-
             </div>
-
-
             <Link to={`/shipments/${shipment._id}`}>
-              {/* <Route path="/:idShipment" component={ShipmentDetails} /> */}
-              <button className="btn btn-primary" >See Details</button>
+              <button className="btn btn-primary">See Details</button>
             </Link>
-
-
           </div>
         ))}
       </div>
     </div>
-
-
-
-
   );
 }
 
