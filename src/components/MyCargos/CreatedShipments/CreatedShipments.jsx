@@ -27,8 +27,8 @@ function CreatedShipments() {
         <div key={shipment._id} id="scrollspyHeading1" className="">
           <div className="card .bg-white">
             <div className="card-body">
-              <h5 className="card-title">Shipment {shipment.pickUpProvince}  {shipment.deliveryProvince}</h5>
-              <p> {shipment.pallets} Pallets</p>
+              <h5 className="card-title">Shipment from {shipment.pickUpProvince} to {shipment.deliveryProvince}</h5>
+              <p> Content: {shipment.pallets} Pallets</p>
               <div className="info">
                 <div className="contact">
                   <h6> Contact Information </h6>
