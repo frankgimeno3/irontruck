@@ -19,7 +19,6 @@ function CreateOfferForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("entro en el handle submit")
 
     const shipment = {
       author: user._id,
@@ -31,13 +30,11 @@ function CreateOfferForm() {
     };
     
     const shipmentsService = new ShipmentsService(getToken());
-    console.log(shipmentsService);
 
     shipmentsService
       .addShipments(shipment)
       .then((response) => {
         console.log(response);
-        console.log("CreateOfferForm después del add shipment");
         setFormValues({
           pickUpDireccion: "",
           pickUpProvince: "",
@@ -48,7 +45,7 @@ function CreateOfferForm() {
         navigate("/mycargos");
       })
       .catch((error) => {
-        console.log("klfsdnjlsdfnjjoerror", error);
+        console.log("No se ha podido anyadir un shipment", error);
       });
   };
 

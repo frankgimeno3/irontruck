@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import "./ShipmentDetails.css"
 import ShipmentsService from "../../services/shipments.service.js";
 import ProfileService from "../../services/profile.service.js";
 import { useParams } from "react-router-dom";
@@ -9,6 +10,7 @@ import DriverChatComponent from "../../components/Chat/DriverChatComponent";
 import { Link } from "react-router-dom";
 import TransportistCard from "../../components/Transportists/TransportistsCard";
 import "./ShipmentDetails.css";
+
 
 function ShipmentDetails() {
   const { id } = useParams();
@@ -44,7 +46,7 @@ function ShipmentDetails() {
               currentShipments: response.data._id,
             },
           })
-          .then((response) => {})
+          .then((response) => { })
           .catch((error) => {
             console.error("Failed to update Transportist", error);
           });
@@ -77,7 +79,7 @@ function ShipmentDetails() {
               currentShipments: response.data._id,
             },
           })
-          .then((response) => {})
+          .then((response) => { })
           .catch((error) => {
             console.error("Failed to update Transportist", error);
           });
@@ -89,52 +91,49 @@ function ShipmentDetails() {
   const shipmenttransportists = shipment.transportists;
 
   return (
-    <>
-      <h1>Shipping Details</h1>
-      <div className="container1">
-        <div className="container2">
-          <p>Shipment id: {shipment._id}</p>
-          <p>Author: {shipment.author?.name}</p>
-          <p>Creation Date: {shipment.creationDate}</p>
-          <p>Pickup address: {shipment.pickUpDireccion}</p>
-          <p>PickUp Province: {shipment.pickUpProvince}</p>
-          <p>Delivery address: {shipment.deliveryDireccion}</p>
-          <p>Delivery Province: {shipment.deliveryProvince}</p>
-          <p>Number of pallets: {shipment.pallets}</p>
-          <p>State: {shipment.state}</p>
-          {isLoading && (
-            <Link to={`/profile/${shipment.author._id}`}>
-              <button className="detailsbutton">See Sender Details</button>
-            </Link>
-          )}
+
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-8">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item font-weight-bold h4">Shipping Details</li>
+            <li class="list-group-item">Shipment id: <span class="font-weight-bold">{shipment._id}</span></li>
+            <li class="list-group-item">Author: <span class="font-weight-bold">{shipment.author?.name}</span></li>
+            <li class="list-group-item">Creation Date: <span class="font-weight-bold">{shipment.creationDate}</span></li>
+            <li class="list-group-item">Pickup address: <span class="font-weight-bold">{shipment.pickUpDireccion}</span></li>
+            <li class="list-group-item">PickUp Province: <span class="font-weight-bold">{shipment.pickUpProvince}</span></li>
+            <li class="list-group-item">Delivery address: <span class="font-weight-bold">{shipment.deliveryDireccion}</span></li>
+            <li class="list-group-item">Delivery Province: <span class="font-weight-bold">{shipment.deliveryProvince}</span></li>
+            <li class="list-group-item">Number of pallets: <span class="font-weight-bold">{shipment.pallets}</span></li>
+            <li class="list-group-item">State: <span class="font-weight-bold">{shipment.state}</span></li>
+            <li class="list-group-item">
+              {isLoading &&
+                <a href={`/profile/${shipment.author._id}`}>
+                  <button class="btn btn-info">See Sender Details</button>
+                </a>
+              }
+              {isTransportist && (
+                <button class="btn btn-primary btn-lg" onClick={startNegotiation}>
+                  Negotiate Shipment
+                </button>
+              )}
+              {!isTransportist && (
+                <SenderChatComponent class="mt-5" />
+              )}
+              {isTransportist && (
+                <DriverChatComponent class="mt-5" />
+              )}
+            </li>
+          </ul>
         </div>
-        
-        <div className="container2">
-          {!isTransportist && <TransportistCard shipment={shipmenttransportists}  />}
-          
-          {!isTransportist && <SenderChatComponent />}
-          {isTransportist && <DriverChatComponent />}
+        <div class="col-md-4">
+          <TransportistCard class="mt-10" />
         </div>
-        </div>
-        <div className="container1">
-        {isTransportist && (
-          <button className="btn btn-primary" onClick={startNegotiation}>
-            Negotiate Shipment
-          </button>
-        )}
-        {!isTransportist && (
-          <button className="btn btn-danger" onClick={deleteShipment}>
-            Delete Shipment
-          </button>
-        )}
-      
-      {!isTransportist && (
-          <button className="btn btn-success" onClick={acceptShipment}>
-            Accept Shipment
-          </button>
-        )}
       </div>
-    </>
+    </div>
+
+
+
   );
 }
 export default ShipmentDetails;

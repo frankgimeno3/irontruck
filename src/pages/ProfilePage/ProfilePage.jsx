@@ -3,7 +3,6 @@
 import React from 'react';
 import "./ProfilePage.css";
 import { useContext, useEffect, useState } from "react";
-import ProfileService from "../../services/profile.service"
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from "../../context/auth.context"
@@ -36,12 +35,58 @@ function ProfilePage() {
   return (
     <>
       {!isLoading &&
-        <div>
-          <h1>Profile page</h1>
-          <p className="card-text">{currentUser.name}</p>
-          <p className="card-text">{currentUser.email}</p>
-          <img src={currentUser.image} alt="profile image" />
-        </div>}
+        <div className='container py-5'>
+        <div className='col-lg-4'>
+          <div className='card mb-4'>
+            <div className='card-body text-center'>
+              <img src={currentUser.image} alt="profile image" />
+            </div>
+          </div>
+          <div className='col-lg-8'>
+            <div className='card mb-4'>
+              <div className='card-body'>
+                <div className='row'>
+                  <div className='col-sm-3'>
+                    <p className='mb-0'>Name</p>
+                  </div>
+                  <div className='col-sm-9'>
+                    <p className='text-muted mb-0'>{currentUser.name}</p>
+                  </div>
+                </div>
+                <hr></hr>
+                <div className='row'>
+                  <div className='col-sm-3'>
+                    <p className='mb-0'>Email</p>
+                  </div>
+                  <div className='col-sm-9'>
+                    <p className='text-muted mb-0'>{currentUser.email}</p>
+                  </div>
+                </div>
+                <hr></hr>
+                <div className='row'>
+                  <div className='col-sm-3'>
+                    <p className='mb-0'>Address</p>
+                  </div>
+                  <div className='col-sm-9'>
+                    <p className='text-muted mb-0'>{currentUser.address}</p>
+                  </div>
+                </div>
+                <hr></hr>
+                <div className='row'>
+                  <div className='col-sm-3'>
+                    <p className='mb-0'>Phone Number</p>
+                  </div>
+                  <div className='col-sm-9'>
+                    <p className='text-muted mb-0'>{currentUser.phoneNumber}</p>
+                  </div>
+                </div>
+                <hr></hr>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+}
     </>
   );
 }

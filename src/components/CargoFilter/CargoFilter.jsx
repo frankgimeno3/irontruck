@@ -11,11 +11,11 @@ function CargoFilter() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await axios.post('/api/shipments', { // envía una solicitud POST utilizando Axios
+    const response = await axios.post('/api/shipments', {
       pickUpDireccion,
       deliveryDireccion,
     });
-    setShipments(response.data); // actualiza el estado con los envíos filtrados
+    setShipments(response.data);
   };
 
   return (

@@ -5,9 +5,9 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { AuthContext } from './auth.context';
 import ShipmentsService from '../services/shipments.service';
 
-const shipmentsContext = createContext();    //para "consumir" los datos del context
+const shipmentsContext = createContext();
 
-function ShipmentsProviderWrapper(props) {    //para "proveer" datos
+function ShipmentsProviderWrapper(props) {
 
     const [shipments, setShipments] = useState([]);
     const { getToken } = useContext(AuthContext);

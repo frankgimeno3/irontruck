@@ -1,32 +1,34 @@
+/* eslint-disable */
+
 import axios from 'axios'
 import React, { useState, useContext } from "react";
-import './ProfileDataForm.css';
+import './ProfileDataFormTransportist.css';
 import ProfileService from "../../services/profile.service";
 import { AuthContext } from "../../context/auth.context";
 import service from "../../services/upload.service";
-// import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
 
-function EditProfileForm() {
+function EditProfileFormSender() {
 
   const navigate = useNavigate();
 
-  const { user, authenticateUser, isLoggedIn, getToken } = useContext(AuthContext);
+  const { user, authenticateUser } = useContext(AuthContext);
   const [formValues, setFormValues] = useState({
       phoneNumber: 0,
-      address: "",
       password: "",
-      repeatPassword: ""
+      repeatPassword: "",
+      licensePlate: "",
+      nif: "",
+      professionalType: ""
     });
   const [image, setImage] = useState("");
-  const [isLoading, setIsLoading] = useState(true); // nuevo estado
-  const [isTransportist, setIsTransportist] = useState();
-  const [currentUser, setCurrentUser] = useState();
+  const [isLoading, setIsLoading] = useState(true); 
+
   const handleFileUpload = (e) => {
     const uploadData = new FormData();
     uploadData.append("image", e.target.files[0]);
 
-    setIsLoading(true); // establecer isLoading a true
+    setIsLoading(true);
 
     service
       .uploadImage(uploadData)
@@ -35,33 +37,14 @@ function EditProfileForm() {
       })
       .catch(err => console.log("Error while uploading the file: ", err))
       .finally(() => {
-        setIsLoading(false); // establecer isLoading a false
+        setIsLoading(!isLoading);
       });
   };
-
-  const getCurrentUser = async (id) => {
-    try {
-      authenticateUser();
-      console.log(id)
-      const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/profile/myprofile/${id}`, { headers: { Authorization: `Bearer ${getToken()}` } })
-      setCurrentUser(response.data);
-      setIsLoading(false);
-      console.log("response.data:", response.data)
-      console.log("response.data.isTransportist:", response.data.isTransportist)
-      if (response.data.isTransportist) {
-        setIsTransportist(true)
-      }
-      // navigate(`/profile/myprofile/${id}`); // Navigate to the profile page after setting the currentUser state variable
-    } catch (err) {
-      console.log("error del catch del getCurrentUser:", err);
-    }
-  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const updateValues = {
       phoneNumber: formValues.phoneNumber,
-      address: formValues.address,
       password: formValues.password,
       repeatPassword: formValues.repeatPassword,
       image: image,
@@ -75,7 +58,6 @@ function EditProfileForm() {
       .then((response) => {
         setFormValues({
           phoneNumber: 0,
-          address: "",
           password: "",
           repeatPassword: "",
           licensePlate: "",
@@ -84,7 +66,7 @@ function EditProfileForm() {
         });
         setImage("");
         setIsLoading(false)
-        
+
       })
       .catch((error) => {
         console.log(error);
@@ -115,7 +97,7 @@ function EditProfileForm() {
   return (
     <>
       <div> 
-            {/* <Button variant="danger" onClick={handleDelete}>Delete Profile</Button> */}
+         <button className= "btn btn-danger" onClick={handleDelete}>Delete Profile</button>
        <form onSubmit={handleSubmit}>
 
     <br>
@@ -129,8 +111,8 @@ function EditProfileForm() {
         <input type="number" className="form-control" value={formValues.phoneNumber} id="exampleFormControlInput1"  name="phoneNumber" onChange={handleInputChange} placeholder="Insert your phone number here" />
       </div>
       <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">Address</label>
-        <input type="text" className="form-control" value={formValues.address} id="exampleFormControlInput1"  name="address" onChange={handleInputChange} />
+        <label htmlFor="exampleFormControlInput1" className="form-label">License Plate</label>
+        <input type="text" className="form-control" value={formValues.licensePlate} id="exampleFormControlInput1"  name="licensePlate" onChange={handleInputChange} />
       </div>
       <div className="mb-3">
         <label htmlFor="exampleFormControlInput1" className="form-label">Password</label>
@@ -141,14 +123,15 @@ function EditProfileForm() {
         <label htmlFor="exampleFormControlInput1" className="form-label">Repeat Password</label>
         <input type="password" className="form-control" id="exampleFormControlInput1" placeholder="Insert password again" name="repeatPassword"  value={formValues.repeatPassword} onChange={handleInputChange} />
       </div>
-     
-
-      {/* {isLoggedIn &&
       <div className="mb-3">
-        <label htmlFor="exampleFormControlInput1" className="form-label">License Plate</label>
-        <input type="text" className="form-control" id="exampleFormControlInput1" placeholder="Insert your license plate here" name="editLicensePlate"  onChange={handleInputChange} />
+        <label htmlFor="exampleFormControlInput1" className="form-label">NIF</label>
+        <input type="text" className="form-control" value={formValues.nif} id="exampleFormControlInput1"  name="nif" onChange={handleInputChange} />
       </div>
-      } */}
+      <div className="mb-3">
+        <label htmlFor="exampleFormControlInput1" className="form-label">ProfessionalType</label>
+        <input type="text" className="form-control" value={formValues.professionalType} id="exampleFormControlInput1"  name="professionalType" onChange={handleInputChange} />
+      </div>
+     
       <button className="learn-more" type="submit">
         <span className="circle" aria-hidden="true">
           <span className="icon arrow"></span>
@@ -163,4 +146,4 @@ function EditProfileForm() {
   );
 }
 
-export default EditProfileForm;
+export default EditProfileFormSender;
