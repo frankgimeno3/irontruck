@@ -7,7 +7,7 @@ import { AuthContext } from "../../../context/auth.context"
 
 
 function Completed() {
-  const { user, isTransportist } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [shipments, setShipments] = useState([]);
 
   useEffect(() => {
