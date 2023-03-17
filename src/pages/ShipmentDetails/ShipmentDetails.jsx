@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { useState, useEffect, useContext } from "react";
+import "./ShipmentDetails.css"
 import ShipmentsService from "../../services/shipments.service.js";
 import ProfileService from "../../services/profile.service.js";
 import { useParams } from "react-router-dom";
@@ -7,18 +8,17 @@ import { AuthContext } from "../../context/auth.context.jsx";
 import "../../pages/MyCargos/MyCargos.css";
 import SenderChatComponent from "../../components/Chat/SenderChatComponent";
 import DriverChatComponent from "../../components/Chat/DriverChatComponent";
-import { Link, useNavigate } from "react-router-dom";
-import TransportistCard from "../../components/TransportistCard/TransportistCard"
+import { Link } from "react-router-dom";
+import TransportistCard from "../../components/Transportists/TransportistsCard";
 import "./ShipmentDetails.css";
 
 
 function ShipmentDetails() {
   const { id } = useParams();
   const [shipment, setShipment] = useState({});
-  const [isLoading, setIsLoading] = useState(false)
-  const { authenticateUser, isTransportist, user, isLoggedIn } = useContext(AuthContext);
-
-
+  const [isLoading, setIsLoading] = useState(false);
+  const {  isTransportist,  user } =
+    useContext(AuthContext);
   const profileService = new ProfileService();
   const shipmentsService = new ShipmentsService();
   useEffect(() => {
@@ -140,3 +140,6 @@ function ShipmentDetails() {
   );
 }
 export default ShipmentDetails;
+
+
+

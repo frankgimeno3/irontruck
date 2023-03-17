@@ -7,17 +7,20 @@ import ProfileService from "../../../services/profile.service";
 import { AuthContext } from "../../../context/auth.context";
 
 
-function CompletedShipments() {
-  const { user } = useContext(AuthContext)
+function Completed() {
+  const { user, isTransportist } = useContext(AuthContext);
   const [shipments, setShipments] = useState([]);
 
   useEffect(() => {
     const profileService = new ProfileService();
+
     profileService.getProfile(user._id)
       .then((response) => {
         setShipments(response.data.createdShipments)
       })
-      .catch((err) => { console.log(err) });
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   return (
