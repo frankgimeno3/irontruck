@@ -7,7 +7,7 @@ import ProfileService from "../../../services/profile.service";
 import { AuthContext } from "../../../context/auth.context";
 
 
-function Completed() {
+function CompletedShipments() {
   const { user, isTransportist } = useContext(AuthContext);
   const [shipments, setShipments] = useState([]);
 
@@ -27,7 +27,7 @@ function Completed() {
     <div className="bg-dark-subtle">
       <h2 className="text-body-emphasis">Created Shipments</h2>
       {shipments
-        .filter((shipment) => shipment.state === "Completed")
+
         .map((shipment) => (
           <div key={shipment._id} id="scrollspyHeading1" className="">
             <div className="card .bg-white">

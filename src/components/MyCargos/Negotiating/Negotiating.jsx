@@ -8,7 +8,7 @@ import { AuthContext } from "../../../context/auth.context";
 
 
 
-function Negotiating() {
+function NegotiatingShipments() {
   const { user } = useContext(AuthContext);
   const [shipments, setShipments] = useState([]);
 
@@ -34,7 +34,7 @@ function Negotiating() {
       <h2 className="text-body-emphasis"> Shipments in Negotiation</h2>
 
       {shipments
-        .filter((shipment) => shipment.state === "inNegotiation")
+
         .map((shipment) => (
           <div className="fondo-Cards">
             <div >
