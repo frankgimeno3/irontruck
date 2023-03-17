@@ -3,7 +3,6 @@
 import React from 'react';
 import "./ProfilePage.css";
 import { useContext, useEffect, useState } from "react";
-import ProfileService from "../../services/profile.service"
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { AuthContext } from "../../context/auth.context"

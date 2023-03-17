@@ -8,16 +8,17 @@ import "../../pages/MyCargos/MyCargos.css";
 import SenderChatComponent from "../../components/Chat/SenderChatComponent"
 import DriverChatComponent from "../../components/Chat/DriverChatComponent"
 import { Link, useNavigate } from "react-router-dom";
-import TransportistCard from "../../components/Transportists/TransportistsCard"
+import TransportistCard from "../../components/TransportistCard/TransportistCard"
+import "./ShipmentDetails.css";
 
 
 function ShipmentDetails() {
   const { id } = useParams();
   const [shipment, setShipment] = useState({});
   const [isLoading, setIsLoading] = useState(false)
-  const { authenticateUser, isTransportist, getToken, user, isLoggedIn } = useContext(AuthContext);
+  const { authenticateUser, isTransportist, user, isLoggedIn } = useContext(AuthContext);
 
-  console.log(id);
+
   const profileService = new ProfileService();
   const shipmentsService = new ShipmentsService();
 
@@ -56,40 +57,48 @@ function ShipmentDetails() {
   }
 
   return (
-    <div>
-      <h1>Shipping Details</h1>
-      <p>Shipment id: {shipment._id}</p>
-      <p>Author: {shipment.author?.name}</p>
-      <p>Creation Date: {shipment.creationDate}</p>
-      <p>Pickup address: {shipment.pickUpDireccion}</p>
-      <p>PickUp Province: {shipment.pickUpProvince}</p>
-      <p>Delivery address: {shipment.deliveryDireccion}</p>
-      <p>Delivery Province: {shipment.deliveryProvince}</p>
-      <p>Number of pallets: {shipment.pallets}</p>
-      <p>State: {shipment.state}</p>
 
-
-      {isLoading &&
-        <Link to={`/profile/${shipment.author._id}`}>
-          <button className="detailsbutton">See Sender Details</button>
-        </Link>
-      }
-      {!isLoading && isTransportist && (
-        <button className="btn btn-primary" onClick={startNegotiation}>
-          Negotiate Shipment
-        </button>
-      )}
-
-      <TransportistCard shipment={shipment._id} />
-
-      {!isTransportist && (
-        < SenderChatComponent />
-      )}
-
-      {isTransportist && (
-        < DriverChatComponent />
-      )}
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-8">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item font-weight-bold h4">Shipping Details</li>
+            <li class="list-group-item">Shipment id: <span class="font-weight-bold">{shipment._id}</span></li>
+            <li class="list-group-item">Author: <span class="font-weight-bold">{shipment.author?.name}</span></li>
+            <li class="list-group-item">Creation Date: <span class="font-weight-bold">{shipment.creationDate}</span></li>
+            <li class="list-group-item">Pickup address: <span class="font-weight-bold">{shipment.pickUpDireccion}</span></li>
+            <li class="list-group-item">PickUp Province: <span class="font-weight-bold">{shipment.pickUpProvince}</span></li>
+            <li class="list-group-item">Delivery address: <span class="font-weight-bold">{shipment.deliveryDireccion}</span></li>
+            <li class="list-group-item">Delivery Province: <span class="font-weight-bold">{shipment.deliveryProvince}</span></li>
+            <li class="list-group-item">Number of pallets: <span class="font-weight-bold">{shipment.pallets}</span></li>
+            <li class="list-group-item">State: <span class="font-weight-bold">{shipment.state}</span></li>
+            <li class="list-group-item">
+              {isLoading &&
+                <a href={`/profile/${shipment.author._id}`}>
+                  <button class="btn btn-info">See Sender Details</button>
+                </a>
+              }
+              {isTransportist && (
+                <button class="btn btn-primary btn-lg" onClick={startNegotiation}>
+                  Negotiate Shipment
+                </button>
+              )}
+              {!isTransportist && (
+                <SenderChatComponent class="mt-5" />
+              )}
+              {isTransportist && (
+                <DriverChatComponent class="mt-5" />
+              )}
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <TransportistCard class="mt-10" />
+        </div>
+      </div>
     </div>
+
+
 
   );
 }
