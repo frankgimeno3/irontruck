@@ -31,25 +31,29 @@ function Completed() {
         shipments
           .filter((shipment) => shipment.state === "Completed")
           .map((shipment) => (
-            <div key={shipment._id} className="card">
-              <div className="shipment-info">
-                <p>Creation Date: {shipment.creationDate}</p>
-                <p>Shipment pallets: {shipment.pallets}</p>
-              </div>
-              <div className="shipment-address">
-                <div className="pickup-address">
-                  <p>Pick up direction: {shipment.pickUpDireccion}</p>
-                  <p>Pick up province: {shipment.pickUpProvince}</p>
+            <div className="fondo-Cards">
+            <div >
+              <div key={shipment._id} id="scrollspyHeading1" className="">
+                <div className="card .bg-white">
+                  <div className="card-body">
+                    <h5 className="card-title">Shipment from {shipment.pickUpProvince} to {shipment.deliveryProvince}</h5>
+                    <p> Content: {shipment.pallets} Pallets</p>
+                    <div className="info">
+                      <div className="contact">
+                        <h6> Contact Information </h6>
+                        <p className=".text-body">{shipment?.author.name}</p>
+                        <p className=".text-body">{shipment?.author.email}</p>
+                        <p className=".text-body">{shipment?.author.phoneNumber} </p>
+                      </div>
+                      <Link to={`/shipments/${shipment._id}`}>
+                        <button className="btn btn-primary" >See Details</button>
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-                <div className="delivery-address">
-                  <p>Delivery direction: {shipment.deliveryDireccion}</p>
-                  <p>Delivery province: {shipment.deliveryProvince}</p>
-                </div>
               </div>
-              <Link to={`/shipments/${shipment._id}`}>
-                <button className="detailsbutton">See Details</button>
-              </Link>
             </div>
+          </div>
           ))
       ) : (
         <p>No shipments completed</p>
