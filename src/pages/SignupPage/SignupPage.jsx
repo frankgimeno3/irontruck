@@ -17,7 +17,6 @@ function SignupPage() {
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
   const handlePasswordRep = (e) => setPasswordRep(e.target.value);
-  const handleName = (e) => setName(e.target.value);
   const handlePhoneNumber = (e) => setPhoneNumber(e.target.value);
   const handleAddress = (e) => setAddress(e.target.value);
 
