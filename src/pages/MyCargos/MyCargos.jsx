@@ -3,9 +3,9 @@ import './MyCargos.css';
 import CreatedShipments from '../../components/MyCargos/CreatedShipments/CreatedShipments';
 import Negotiating from '../../components/MyCargos/Negotiating/Negotiating';
 import Completed from '../../components/MyCargos/Completed/Completed';
+import StartingPoint from '../../components/MyCargos/StartingPoint/StartingPoint';
 import { AuthContext } from "../../context/auth.context";
 import { useContext } from "react";
-
 
 const MyCargos = () => {
   const [currentComponent, setCurrentComponent] = useState(null);
@@ -28,7 +28,7 @@ const MyCargos = () => {
         <button className="button green" onClick={() => handleClick(<Completed />)}>Completed</button>
       </section>
       <section className="components">
-        {currentComponent}
+        {currentComponent || <StartingPoint />}
       </section>
     </div>
   );

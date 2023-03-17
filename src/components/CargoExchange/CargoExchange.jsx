@@ -39,7 +39,7 @@ function CargoExchange() {
       
       <div >
         <h2>Filter shipments</h2>
-        <nav>
+        <div className="filterdiv">
         <button className={sortType === "origin" ? "active" : ""} onClick={sortByOrigin} id="sortbyorigin">
           Sort by Origin Alphabetically
         </button>
@@ -49,7 +49,7 @@ function CargoExchange() {
         <button className={sortType === "pallets" ? "active" : ""} onClick={sortByPallets} id="sortbypallets"> 
           Sort by Number of Pallets
         </button>
-      </nav>
+      </div>
       </div>
       
       <h2>Shipments List</h2>

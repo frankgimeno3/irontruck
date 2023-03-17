@@ -8,6 +8,8 @@ import SenderChatComponent from "../../components/Chat/SenderChatComponent"
 import DriverChatComponent from "../../components/Chat/DriverChatComponent"
 import { Link, useNavigate } from "react-router-dom";
 import TransportistCard from "../../components/Transportists/TransportistsCard"
+import "./ShipmentDetails.css"
+
 function ShipmentDetails() {
   const { id } = useParams();
   const [shipment, setShipment] = useState({});
@@ -58,17 +60,19 @@ function ShipmentDetails() {
       });
   }
   return (
-    <div>
-      <h1>Shipping Details</h1>
-      <p>Shipment id: {shipment._id}</p>
-      <p>Author: {shipment.author?.name}</p>
-      <p>Creation Date: {shipment.creationDate}</p>
-      <p>Pickup address: {shipment.pickUpDireccion}</p>
-      <p>PickUp Province: {shipment.pickUpProvince}</p>
-      <p>Delivery address: {shipment.deliveryDireccion}</p>
-      <p>Delivery Province: {shipment.deliveryProvince}</p>
-      <p>Number of pallets: {shipment.pallets}</p>
-      <p>State: {shipment.state}</p>
+    <>
+    <h1>Shipping Details</h1>
+    <div className="container1">
+      <div className="container2">
+        <p>Shipment id: {shipment._id}</p>
+        <p>Author: {shipment.author?.name}</p>
+        <p>Creation Date: {shipment.creationDate}</p>
+        <p>Pickup address: {shipment.pickUpDireccion}</p>
+        <p>PickUp Province: {shipment.pickUpProvince}</p>
+        <p>Delivery address: {shipment.deliveryDireccion}</p>
+        <p>Delivery Province: {shipment.deliveryProvince}</p>
+        <p>Number of pallets: {shipment.pallets}</p>
+        <p>State: {shipment.state}</p>
       {isLoading &&
         <Link to={`/profile/${shipment.author._id}`}>
           <button className="detailsbutton">See Sender Details</button>
@@ -79,6 +83,9 @@ function ShipmentDetails() {
           Negotiate Shipment
         </button>
       )}
+      </div>
+      <div className="container2">
+
       <TransportistCard shipment={shipment._id} />
       {!isTransportist && (
         < SenderChatComponent />
@@ -86,12 +93,14 @@ function ShipmentDetails() {
       {isTransportist && (
         < DriverChatComponent />
       )}
+      </div>
       {!isTransportist && (
         <button className="btn btn-danger" onClick={deleteShipment}>
           Delete Shipment
         </button>
       )}
     </div>
+    </>
 
   );
 }

@@ -27,11 +27,7 @@ function MyProfilePage() {
       );
       setCurrentUser(response.data);
       setIsLoading(false);
-      console.log("response.data:", response.data);
-      console.log(
-        "response.data.isTransportist:",
-        response.data.isTransportist
-      );
+
       if (response.data.isTransportist) {
         setIsTransportist(true);
       }

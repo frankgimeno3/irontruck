@@ -56,7 +56,7 @@ function DriverChatComponent() {
 
       const otherUser = new Talk.User({
         id: senderUserID,
-        name: senderUser,
+        name: "Chat with the sender",
         email: senderUserEmail,
         photoUrl: 'https://www.shutterstock.com/image-photo/happy-elegant-mature-senior-aged-260nw-2067036776.jpg',
         welcomeMessage: `Hello! In order to start our negotiation, please give me a pricerange for my offer. Please don't forget to add all your requiremets, and give me an approximate price for what I am asking. In the end, I will accept or decline your offer to close the deal.`,

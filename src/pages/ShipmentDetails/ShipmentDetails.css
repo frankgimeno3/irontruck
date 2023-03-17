@@ -1,0 +1,31 @@
+
+h1{    
+    margin-left:5vw;
+    margin-top: 5vh;
+}
+.container1{
+    width: 90vw;
+    margin:5vw;
+    margin-top:3vh;
+    display: flex;
+    flex-direction: row;
+}
+.container2{
+    display: flex;
+    width: 30vw;
+    flex-direction: wrap;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.container2, section{
+    padding: 1vw;
+    border: 1px solid rgb(228, 228, 228);
+    margin:1vw;
+
+}
+.container3, .container4, .container5{
+    margin:1vw;
+}
+.container3{
+    margin:1vw;
+}

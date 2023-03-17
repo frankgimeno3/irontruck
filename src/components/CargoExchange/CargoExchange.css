@@ -64,5 +64,11 @@
 #sortbyorigin, #sortbydestination, #sortbypallets {
   margin-right: 1vw;
   padding: 1vh;
-  border: 1px solid black;
+  border: 1px solid rgb(224, 224, 224);
+  font-size: 1rem;
+}
+
+.filterdiv{
+  padding:1vw;
+  margin:1vw;
 }
