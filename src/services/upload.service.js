@@ -1,22 +1,23 @@
 import axios from "axios";
- 
+
 const api = axios.create({
-  // make sure you use PORT = 5005 (the port where our server is running)
+  // asegúrese de usar PORT = 5005 (el puerto donde se ejecuta nuestro servidor)
   baseURL: "http://localhost:5005"
-  // withCredentials: true // => you might need this option if using cookies and sessions
+  // withCredentials: true // => es posible que necesite esta opción si usa cookies y sesiones
 });
- 
+
 const errorHandler = (err) => {
   throw err;
 };
- 
 
 const uploadImage = (file) => {
   return api.post("/profile/myprofile/upload", file)
     .then(res => res.data)
     .catch(errorHandler);
 };
- 
-export default {
+
+const uploadService = {
   uploadImage
 };
+
+export default uploadService;
