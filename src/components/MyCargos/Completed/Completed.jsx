@@ -7,13 +7,23 @@ import { AuthContext } from "../../../context/auth.context"
 
 
 function Completed() {
-  const { user } = useContext(AuthContext);
+  const { user, isTransportist } = useContext(AuthContext);
   const [shipments, setShipments] = useState([]);
 
   useEffect(() => {
     const profileService = new ProfileService();
-
-    profileService.getProfile(user._id)
+    if (user.isTransportist){
+      profileService.getProfile(user._id)
+      .then((response) => {
+        if (response.data && response.data.currentShipments) {
+          setShipments(response.data.currentShipments);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    } else{
+      profileService.getProfile(user._id)
       .then((response) => {
         if (response.data && response.data.createdShipments) {
           setShipments(response.data.createdShipments);
@@ -22,7 +32,9 @@ function Completed() {
       .catch((err) => {
         console.log(err);
       });
-  }, [user._id]);
+    }
+    
+  }, [user._id, user.isTransportist]);
 
   return (
     <div>

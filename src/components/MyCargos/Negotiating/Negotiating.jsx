@@ -5,38 +5,31 @@ import '../../../pages/MyCargos/MyCargos.css';
 import ProfileService from "../../../services/profile.service";
 import { AuthContext } from "../../../context/auth.context"
 
-function NegotiatingShipments() {
-  const { user } = useContext(AuthContext)
+
+function Negotiating() {
+  const { user } = useContext(AuthContext);
   const [shipments, setShipments] = useState([]);
 
   useEffect(() => {
     const profileService = new ProfileService();
+
     profileService.getProfile(user._id)
       .then((response) => {
-        if (response.data.currentShipments) {
-          console.log("eso", response.data.currentShipments)
-          setShipments(response.data.currentShipments)
-        } else {
-          setShipments(undefined)
+        if (response.data && response.data.createdShipments) {
+          setShipments(response.data.createdShipments);
         }
       })
       .catch((err) => { console.log("no llega a pillar user id", err) });
   }, [user._id]);
 
-  if (shipments === undefined) {
-    return (
-      <p>No shipments in negotiation</p>
-    )
-  }
-
   return (
-    <div className="bg-dark-subtle">
-      <h2 className="text-body-emphasis"> Shipments in Negotiation</h2>
-
-      {shipments
+    <div>
+      <h2>Shipments in Negotiation</h2>
+      {shipments && shipments.length > 0 ? (
+        shipments
         .filter((shipment) => shipment.state === "inNegotiation")
         .map((shipment) => (
-          <div className="fondo-Cards">
+            <div className="fondo-Cards">
             <div >
               <div key={shipment._id} id="scrollspyHeading1" className="">
                 <div className="card .bg-white">
@@ -59,9 +52,12 @@ function NegotiatingShipments() {
               </div>
             </div>
           </div>
-        ))}
+          ))
+      ) : (
+        <p>No shipments in Negotiation</p>
+      )}
     </div>
   );
 };
 
-export default NegotiatingShipments;
+export default Negotiating;
