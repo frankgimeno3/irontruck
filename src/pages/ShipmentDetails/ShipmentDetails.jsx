@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import "./ShipmentDetails.css"
 import ShipmentsService from "../../services/shipments.service.js";
 import ProfileService from "../../services/profile.service.js";
 import { useParams } from "react-router-dom";
