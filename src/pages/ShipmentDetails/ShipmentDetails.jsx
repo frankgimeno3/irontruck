@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect, useContext } from "react";
 import ShipmentsService from "../../services/shipments.service.js";
 import ProfileService from "../../services/profile.service.js";
@@ -88,50 +89,52 @@ function ShipmentDetails() {
         console.error("Failed to update shipment state", error);
       });
   };
-  const shipmenttransportists = shipment.transportists;
 
   return (
 
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-md-8">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item font-weight-bold h4">Shipping Details</li>
-            <li class="list-group-item">Shipment id: <span class="font-weight-bold">{shipment._id}</span></li>
-            <li class="list-group-item">Author: <span class="font-weight-bold">{shipment.author?.name}</span></li>
-            <li class="list-group-item">Creation Date: <span class="font-weight-bold">{shipment.creationDate}</span></li>
-            <li class="list-group-item">Pickup address: <span class="font-weight-bold">{shipment.pickUpDireccion}</span></li>
-            <li class="list-group-item">PickUp Province: <span class="font-weight-bold">{shipment.pickUpProvince}</span></li>
-            <li class="list-group-item">Delivery address: <span class="font-weight-bold">{shipment.deliveryDireccion}</span></li>
-            <li class="list-group-item">Delivery Province: <span class="font-weight-bold">{shipment.deliveryProvince}</span></li>
-            <li class="list-group-item">Number of pallets: <span class="font-weight-bold">{shipment.pallets}</span></li>
-            <li class="list-group-item">State: <span class="font-weight-bold">{shipment.state}</span></li>
-            <li class="list-group-item">
+    <div className="container mt-5">
+      <div className="row">
+        <div className="col-md-8">
+          <ul className="list-group list-group-flush">
+            <li className="list-group-item font-weight-bold h4">Shipping Details</li>
+            <li className="list-group-item">Shipment id: <span className="font-weight-bold">{shipment._id}</span></li>
+            <li className="list-group-item">Author: <span className="font-weight-bold">{shipment.author?.name}</span></li>
+            <li className="list-group-item">Creation Date: <span className="font-weight-bold">{shipment.creationDate}</span></li>
+            <li className="list-group-item">Pickup address: <span className="font-weight-bold">{shipment.pickUpDireccion}</span></li>
+            <li className="list-group-item">PickUp Province: <span className="font-weight-bold">{shipment.pickUpProvince}</span></li>
+            <li className="list-group-item">Delivery address: <span className="font-weight-bold">{shipment.deliveryDireccion}</span></li>
+            <li className="list-group-item">Delivery Province: <span className="font-weight-bold">{shipment.deliveryProvince}</span></li>
+            <li className="list-group-item">Number of pallets: <span className="font-weight-bold">{shipment.pallets}</span></li>
+            <li className="list-group-item">State: <span className="font-weight-bold">{shipment.state}</span></li>
+            <li className="list-group-item">
               {isLoading &&
                 <a href={`/profile/${shipment.author._id}`}>
-                  <button class="btn btn-info">See Sender Details</button>
+                  <button className="btn btn-info">See Sender Details</button>
                 </a>
               }
               {isTransportist && (
-                <button class="btn btn-primary btn-lg" onClick={startNegotiation}>
+                <button className="btn btn-primary btn-lg" onClick={startNegotiation}>
                   Negotiate Shipment
                 </button>
               )}
+
+              <div>
+                {!isTransportist && (
+                  <TransportistCard />
+                )}
+              </div>
+
               {!isTransportist && (
-                <SenderChatComponent class="mt-5" />
+                <SenderChatComponent className="mt-5" />
               )}
               {isTransportist && (
-                <DriverChatComponent class="mt-5" />
+                <DriverChatComponent className="mt-5" />
               )}
             </li>
           </ul>
         </div>
-        <div class="col-md-4">
-          <TransportistCard class="mt-10" />
-        </div>
       </div>
     </div>
-
 
 
   );
