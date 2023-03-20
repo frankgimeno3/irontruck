@@ -111,7 +111,7 @@ function ShipmentDetails() {
                 <a href={`/profile/${shipment.author._id}`}>
                   <button className="btn btn-info">See Sender Details</button>
                 </a>
-              } */}
+              }
               {isTransportist && (
                 <button className="btn btn-primary btn-lg" onClick={startNegotiation}>
                   Negotiate Shipment
@@ -127,6 +127,7 @@ function ShipmentDetails() {
               {!isTransportist && (
                 <SenderChatComponent className="mt-5" />
               )}
+
               {isTransportist && (
                 <DriverChatComponent className="mt-5" />
               )}
