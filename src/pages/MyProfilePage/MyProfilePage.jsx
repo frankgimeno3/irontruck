@@ -7,7 +7,6 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/auth.context";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
 function MyProfilePage() {
   const navigate = useNavigate();
 
@@ -27,7 +26,6 @@ function MyProfilePage() {
       );
       setCurrentUser(response.data);
       setIsLoading(false);
-
       if (response.data.isTransportist) {
         setIsTransportist(true);
       }
@@ -37,10 +35,9 @@ function MyProfilePage() {
   };
   useEffect(() => {
     getCurrentUser(user._id);
-          // navigate(`/profile/myprofile/${id}`); // Navigate to the profile page after setting the currentUser state variable
+    // navigate(`/profile/myprofile/${id}`); // Navigate to the profile page after setting the currentUser state variable
 
   }, []);
-
   return (
     <>
       {!isLoading && isLoggedIn && !isTransportist && (
@@ -104,7 +101,6 @@ function MyProfilePage() {
               </div>
             </div>
           </div>
-
           <section>
             <h2>Edit your profile data </h2>
             <ProfileDataFormSender />
@@ -112,49 +108,43 @@ function MyProfilePage() {
         </div>
       )}
       {!isLoading && isLoggedIn && isTransportist && (
-          <div className="container1">
-            <div className="container2">
+        <div className="container1">
+          <div className="container2">
+            <div className="container3">
+              <div className="container4">
+                <img src={currentUser.image} alt="profile image" />
+              </div>
+            </div>
+            <div className="col-lg-8">
               <div className="container3">
                 <div className="container4">
-                  <img src={currentUser.image} alt="profile image" />
-                </div>
-              </div>
-              <div className="col-lg-8">
-                <div className="container3">
-                  <div className="container4">
-                    <div className="row">
-                      <div className="col-sm-3">
-                        <p className="container5">Name</p>
+                  <div className="row">
+                    <div className="col-sm-3">
+                      <p className="container5">Name</p>
+                    </div>
+                    <div className="col-sm-9">
+                      <p className="container6">{currentUser.name}</p>
+                    </div>
+                    <hr></hr>
+                    <div className="profile-row">
+                      <div className="profile-col-sm-3">
+                        <p className="profile-mb-0">Address</p>
                       </div>
-                      <div className="col-sm-9">
-                        <p className="container6">{currentUser.name}</p>
+                      <div className="profile-col-sm-9">
+                        <p className="profile-text-muted profile-mb-0">
+                          {currentUser.address}
+                        </p>
                       </div>
                     </div>
                     <hr></hr>
-                    <div className="row">
-                      <div className="col-sm-3">
-                        <p className="container5">Email</p>
+                    <div className="profile-row">
+                      <div className="profile-col-sm-3">
+                        <p className="profile-mb-0">Phone Number</p>
                       </div>
-                      <div className="col-sm-9">
-                        <p className="container6">{currentUser.email}</p>
-                      </div>
-                    </div>
-                    <hr></hr>
-                    <div className="row">
-                      <div className="col-sm-3">
-                        <p className="container5">Address</p>
-                      </div>
-                      <div className="col-sm-9">
-                        <p className="container6">{currentUser.address}</p>
-                      </div>
-                    </div>
-                    <hr></hr>
-                    <div className="row">
-                      <div className="col-sm-3">
-                        <p className="container5">Phone Number</p>
-                      </div>
-                      <div className="col-sm-9">
-                        <p className="container6">{currentUser.phoneNumber}</p>
+                      <div className="profile-col-sm-9">
+                        <p className="profile-text-muted profile-mb-0">
+                          {currentUser.phoneNumber}
+                        </p>
                       </div>
                     </div>
                     <hr></hr>
@@ -162,14 +152,16 @@ function MyProfilePage() {
                 </div>
               </div>
             </div>
+          </div>
+
           <section>
             <h2>Edit your profile data </h2>
-            <ProfileDataFormTransportist />
+            <ProfileDataFormSender />
           </section>
         </div>
       )}
+
     </>
   );
 }
-
 export default MyProfilePage;

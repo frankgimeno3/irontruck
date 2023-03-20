@@ -22,16 +22,15 @@
   <title>IronLauncher App</title>
   <script src="https://cdn.talkjs.com/talk.js"></script>
   <script>
-    Talk.ready
-      .then(() => {
-        Talk.setUser({
-          id: '1',
-          name: 'John Doe',
-          email: 'john@example.com',
-          photoUrl: 'https://example.com/john.jpg',
-          welcomeMessage: 'Hola, ¿en qué puedo ayudarte?',
-        });
+    Talk.ready.then(() => {
+      Talk.setUser({
+        id: '1',
+        name: 'John Doe',
+        email: 'john@example.com',
+        photoUrl: 'https://example.com/john.jpg',
+        welcomeMessage: 'Hola, ¿en qué puedo ayudarte?',
       });
+    });
   </script>
 </head>
 

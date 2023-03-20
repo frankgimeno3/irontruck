@@ -27,6 +27,7 @@ function CompletedShipments() {
     <div className="bg-dark-subtle">
       <h2 className="text-body-emphasis">Created Shipments</h2>
       {shipments
+
         .filter((shipment) => shipment.state === "Completed")
         .map((shipment) => (
           <div key={shipment._id} id="scrollspyHeading1" className="">
