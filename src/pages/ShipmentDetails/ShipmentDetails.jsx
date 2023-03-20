@@ -108,7 +108,7 @@ function ShipmentDetails() {
             <li className="list-group-item">State: <span className="font-weight-bold">{shipment.state}</span></li>
             <li className="list-group-item">
               {isLoading &&
-                <a href={`/profile/${shipment.author._id}`}>
+                <a href={`/profile/${shipment?.author?._id ?? "unknown"}`}>
                   <button className="btn btn-info">See Sender Details</button>
                 </a>
               }
