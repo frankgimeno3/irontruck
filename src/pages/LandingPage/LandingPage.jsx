@@ -12,7 +12,7 @@ function LandingPage() {
 
                 <section id="sect1" className="sect">
 
-                    <video src={videoBg} autoPlay="true" muted={"true"} loop="true" poster="https://carontestudio.com/img/contacto.jpg"></video>
+                    <video src={videoBg} autoPlay={true} muted={true} loop={true} poster="https://carontestudio.com/img/contacto.jpg"></video>
 
                     <div className="buttons">
                         <Link to="transportist/login"><button type="button" className="btn btn-primary btn-lg">Log In as a Carrier</button></Link>
@@ -29,33 +29,6 @@ function LandingPage() {
 
 
             <div className="LandingStructure">
-                <header >
-                    <h2>Send pallets or merchandise efficiently, make a request and receive an offer!</h2>
-                    <div className='headerStructure'>
-                        <div className="CallButtons">
-                            <div className='smallboxes'>
-                                <p>Do you want to send a pallet? Register as a Sender, post your request, receive offers from drivers and choose the best one.</p>
-                                <Link to="/signup"><button className="learn-more">
-                                    <span className="circle" aria-hidden="true">
-                                        <span className="icon arrow"></span>
-                                    </span>
-                                    <span className="button-text">Sign Up</span>
-                                </button>
-                                </Link>
-                            </div>
-                            <div className='smallboxes'>
-                                <p>Do you have a truck? Do you need to find new customers? Are you sending a cargo and have an empty space and want to sell it? Create an account as a a driver, look for requests and get a profit from the empty spaces in your truck</p>
-                                <Link to="transportist/signup"><button className="learn-more">
-                                    <span className="circle" aria-hidden="true">
-                                        <span className="icon arrow"></span>
-                                    </span>
-                                    <span className="button-text">Sign Up</span>
-                                </button>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </header>
 
                 <main>
                     <section >
