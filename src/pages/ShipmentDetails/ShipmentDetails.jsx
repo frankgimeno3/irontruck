@@ -17,7 +17,7 @@ function ShipmentDetails() {
   const { id } = useParams();
   const [shipment, setShipment] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const {  isTransportist,  user } =
+  const { isTransportist, user } =
     useContext(AuthContext);
   const profileService = new ProfileService();
   const shipmentsService = new ShipmentsService();
@@ -111,7 +111,7 @@ function ShipmentDetails() {
                 <a href={`/profile/${shipment.author._id}`}>
                   <button className="btn btn-info">See Sender Details</button>
                 </a>
-              }
+              } */}
               {isTransportist && (
                 <button className="btn btn-primary btn-lg" onClick={startNegotiation}>
                   Negotiate Shipment
@@ -132,6 +132,9 @@ function ShipmentDetails() {
               )}
             </li>
           </ul>
+        </div>
+        <div className="col-md-4">
+          <TransportistCard className="mt-10" />
         </div>
       </div>
     </div>
